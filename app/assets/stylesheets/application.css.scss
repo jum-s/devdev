@@ -1,0 +1,124 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require font-awesome
+ */
+
+/*
+$primary-color: #244028;
+$secondary-color: #BF9D36;
+$alert-color: #732020;
+$success-color: #7DA63F;
+$warning-color: #732020;
+$info-color: #437336;
+*/
+
+@import 'foundation_and_overrides';
+
+
+.background_image {
+  background-image: url(background1.jpg);
+  background-repeat: no-repeat ;
+  background-position: top center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@font-face {
+  font-family: "nunito";
+  src: url('nunito.ttf');
+}
+
+@font-face {
+  font-family: 'old_press';
+  src: font-url('old_press.ttf') format('truetype');
+}
+
+.jump {
+  margin-bottom: 8em;
+}
+
+.heading-1, .heading {
+  font-family: "nunito";
+}
+
+
+.btn-down {
+  position: relative;
+  top: 7px;
+}
+.big_title {
+  font-family: 'old_press';
+  font-size: 6em;
+  color: #EEE ;
+  text-shadow: 4px 4px 6px rgba(0, 0, 0, 1);
+}
+.subtitle {
+  text-shadow: 4px 4px 6px rgba(255, 255, 255, 1);
+  font-size: 1.5em;
+  color: #222 ;
+}
+
+.quote_box {
+  position :relative;
+  top : -25px;
+  padding-top :20px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  background-color: #FAFAFA;
+  border-radius : 3px;
+}
+
+.well_title {
+  padding: 30px 0px 1px 0px;
+  width: 100%;
+  margin: 55px 0 50px 0;
+  background-color: rgba(245, 245, 245, 0.75);
+  -webkit-border-radius: 2px;
+     -moz-border-radius: 2px;
+          border-radius: 2px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.with_margin {
+  margin-right: 10px;
+}
+
+.footer {
+  background: #244028;
+  border-radius: 0px;
+  color: #E5E5E5;
+  border-left: 3px solid #E5E5E5; 
+  padding-left: 12px;
+  padding-top: 20px ;
+  h3 {
+      color: #dbdbdb;
+      margin-bottom: 10px;
+    }
+
+  a {
+      color: #E5E5E5;
+    }
+
+  a:hover, a:focus {
+      color: #CCCCCC; 
+    }
+}
+
+
+.p-3 {
+  margin: 10px 0px 10px 0px;
+  font-weight: 600;
+}

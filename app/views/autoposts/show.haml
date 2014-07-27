@@ -1,0 +1,10 @@
+- if @autopost.text == nil then
+  redirect_to @autopost.url
+- else
+  .row
+    .jump
+    .small-8.small-centered.columns
+      %h3
+        = @autopost.title.html_safe
+      %p
+        = @autopost.text.html_safe  

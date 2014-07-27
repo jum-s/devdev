@@ -1,0 +1,13 @@
+- @autoposts.each do |auto|
+  .columns.small-6.medium-4.large-3
+    %hr
+    = link_to auto.url do
+      %h4
+        = auto.pocket_date.strftime("%e %b.")
+        |
+        = icon('clock-o')
+        \~ #{get_reading_time(auto)}
+      %h4.heading-1
+        %strong= auto.title
+      %p.p-1
+        = auto.excerpt

@@ -1,0 +1,32 @@
+%br/
+%br/
+%br/
+%br/
+%br/
+= form_for :post, url: posts_path do |f|
+  .row.well
+    - if notice
+      %p.alert.alert-notice= notice
+    - if alert
+      %p.alert.alert-error= alert
+    .large-8.large-centered.columns
+      - if user_signed_in? && current_user.admin == true
+        %a{href: "/user"}= current_user.email
+        = link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link'
+        = link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'
+        %div
+          %br/
+          %p
+            = f.label :title
+            %br/
+            = f.text_field :title
+          %p
+            = f.label :text
+            %br/
+            = f.text_area :text
+          %p
+            = f.submit "New !", :class => "small button"
+            = link_to 'Back', posts_path, :class => "small button"
+      - else
+        = link_to "Sign up", new_user_registration_path, :class => 'navbar-link'
+        = link_to "Login", new_user_session_path, :class => 'navbar-link'
