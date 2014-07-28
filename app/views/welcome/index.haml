@@ -1,6 +1,6 @@
 .row
   .columns.small-3.big_title Dev4Dev
-  .columns.small-8.push-1.subtitle.hide-for-small #P2P #humanitaire #education #pauvreté #politique #technologie #sciences #humanité #edtech #internet #philosophie #data
+  .columns.small-8.push-1.subtitle.hide-for-small #peer-to-peer #humanitaire #education #pauvreté #politique #technologie #sciences #humanité #edtech #internet #philosophie #data
   .jump
   %br
   %br
@@ -11,9 +11,7 @@
     .columns.small-10.quote_box
       %blockquote
         .columns
-          #{icon('quote-left')} #{@pensee_random} 
-        .columns.small-1
-          #{icon('quote-right')}
+          #{icon('quote-left')} #{@pensee_random} #{icon('quote-right')}
     .jump
     .columns.small-6
       %h2.heading= link_to 'Réflexions courtes', posts_path
@@ -39,7 +37,7 @@
       - @autoposts.each do |auto|
         %hr
         = link_to auto.url do
-          %h4
+          %h4.subheader
             = auto.pocket_date.strftime("%e %b.")
             |
             = icon('clock-o')

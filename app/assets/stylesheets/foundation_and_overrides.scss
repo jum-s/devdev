@@ -124,9 +124,9 @@ $body-bg: scale-color($info-color, $lightness: 95%) ;
 
 // We use these to control header font styles
 // $header-font-family: $body-font-family;
-$header-font-weight: bold;
+$header-font-weight: 100;
 $header-font-style: "nunito";
- $header-font-color: $alert-color;
+$header-font-color: $alert-color;
 // $header-line-height: 1.4;
 // $header-top-margin: .2rem;
 // $header-bottom-margin: .5rem;
@@ -150,20 +150,21 @@ $header-font-style: "nunito";
 
 // These control how subheaders are styled.
 // $subheader-line-height: 1.4;
-// $subheader-font-color: scale-color($header-font-color, $lightness: 35%);
-// $subheader-font-weight: $font-weight-normal;
+$subheader-font-color: scale-color($header-font-color, $lightness: 5%);
+$subheader-font-weight: lighter;
 // $subheader-top-margin: .2rem;
 // $subheader-bottom-margin: .5rem;
 
 // A general <small> styling
-// $small-font-size: 60%;
-// $small-font-color: scale-color($header-font-color, $lightness: 35%);
+$small-font-size: 70%;
+$small-font-color: scale-color($header-font-color, $lightness: 10%);
+$small-font-weight: lighter;
 
 // We use these to style paragraphs
 // $paragraph-font-family: inherit;
 // $paragraph-font-weight: $font-weight-normal;
 // $paragraph-font-size: 1rem;
-// $paragraph-line-height: 1.6;
+$paragraph-line-height: 1.55;
 // $paragraph-margin-bottom: rem-calc(20);
 // $paragraph-aside-font-size: rem-calc(14);
 // $paragraph-aside-line-height: 1.35;

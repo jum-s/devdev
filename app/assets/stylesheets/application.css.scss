@@ -25,7 +25,7 @@ $info-color: #437336;
 
 
 .background_image {
-  background-image: url(background1.jpg);
+  background-image: url(background2.jpg);
   background-repeat: no-repeat ;
   background-position: top center;
   -webkit-background-size: contain;
@@ -49,10 +49,19 @@ $info-color: #437336;
   margin-bottom: 8em;
 }
 
-.heading-1, .heading {
+.heading-1, .heading, .subtitle {
   font-family: "nunito";
 }
 
+.fa {
+  font-size: 1.3em;
+}
+.fa-quote-left {
+  margin-right: 4px;
+}
+.fa-quote-right {
+  margin-left: 4px;
+}
 
 .btn-down {
   position: relative;
@@ -65,15 +74,26 @@ $info-color: #437336;
   text-shadow: 4px 4px 6px rgba(0, 0, 0, 1);
 }
 .subtitle {
-  text-shadow: 4px 4px 6px rgba(255, 255, 255, 1);
+  text-shadow: 4px 4px 6px rgba(0, 0, 0, 1);
   font-size: 1.5em;
-  color: #222 ;
+  color: #DDD ;
+}
+
+.reading_box {
+  background-color: #FAFAFA;
+  
+}
+
+.source, .source a {
+  font-size: 0.9em;
+  color: #AAA;
+  margin: 12px 0 20px;
 }
 
 .quote_box {
   position :relative;
   top : -25px;
-  padding-top :20px;
+  padding :20px 0 20px 0;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
   background-color: #FAFAFA;
   border-radius : 3px;
@@ -121,4 +141,16 @@ $info-color: #437336;
 .p-3 {
   margin: 10px 0px 10px 0px;
   font-weight: 600;
+}
+
+.next_article_box {
+  padding : 5px 15px 5px 15px;
+  margin : 5px 0 20px 0;
+  background-color: #FFF;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 2px 1px rgba(0, 0, 0, 0.5);
+     -moz-box-shadow: 0 2px 1px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 2px 1px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  
 }

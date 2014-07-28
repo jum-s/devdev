@@ -20,4 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  links_to_read: "LinksToRead"
+  food: "FoodForThoughts"
+
+fr:
+  links_to_read: "Liens à lire"
+  food: "Réflexions courtes"  

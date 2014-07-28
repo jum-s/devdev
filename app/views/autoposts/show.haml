@@ -3,8 +3,23 @@
 - else
   .row
     .jump
-    .small-8.small-centered.columns
-      %h3
-        = @autopost.title.html_safe
+    .small-7.small-centered.columns.reading_box
+      %br 
+      %h3= @autopost.title.html_safe
+      %p.source
+        =link_to(icon('link') + " Source", @autopost.url)
+        |
+        = @autopost.pocket_date.strftime("%e %B %Y")
       %p
-        = @autopost.text.html_safe  
+        = @autopost.text.html_safe 
+      %br
+      %br
+  .row-fluid
+    .columns
+      %hr
+      %h4= link_to "Pour continuer :", :controller => "autoposts"
+      - @next_autoposts.each do |auto|
+        .small-3.next_article_box
+          = link_to auto do
+            %h4= auto.title
+      %hr
