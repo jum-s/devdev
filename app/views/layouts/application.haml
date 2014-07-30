@@ -1,7 +1,7 @@
 !!!
 %html{lang: "en"}
   %head
-    %title Dev4Dev
+    %title DevSquare
     %meta{charset: "utf-8"}/
     %meta{content: "width=device-width, initial-scale=1, maximum-scale=1", name: "viewport"}/
     = stylesheet_link_tag "application"
@@ -13,14 +13,14 @@
       %ul.title-area
         %li.name
           %h1
-            %a{href: "/"} Dev4Dev
+            %a{href: "/"} DevSquare
       %section.top-bar-section
         / Right Nav Section
         %ul.right
           %li
             %a{href: "/"}
               = image_tag "logo.jpg", :size => "30x30", :id => "logo"
-              by Jum's
+              written with ♥ by Vincent Jumeaux
           %li
             =link_to(icon('github'), "https://github/jum-s") 
           %li
@@ -31,11 +31,11 @@
         / Left Nav Section
         %ul.left
           %li
-            %a{href: "/posts"} =t('food')
+            %a{href: "/posts"} Réflexions Courtes
           %li
-            %a{href: "/autoposts"} =t('links_to_read')
+            %a{href: "/autoposts"} Article A Lire
           %li
-            %a{href: "/owns"} AboutMe
+            %a{href: "/mois/cv"} A Mon Propos
     .jump
 
     .row
@@ -44,17 +44,20 @@
     .row-fluid
       .columns.small-12.medium-4.footer
         %h3.heading Me concernant
-        %p Mon CV
-        %p Mes réalisations
         %p
-          %a{href: "http://www.dailymotion.com/video/x1536di_tour-de-france-moto-2013_auto"} Mon Tour de France moto 2013
-        #dom-elem-82.paragraph
+          =link_to("Mon Cv", :controller => "mois", :action => "cv") 
+        %p
+          =link_to("Mes réalisations", :controller => "mois", :action => "realisation") 
+        %p
+          =link_to("Mon Tour de France moto 2013", :controller => "mois", :action => "tour") 
       .columns.small-12.medium-4.footer
         %h3.heading Mes amis
         %p
-          %a{href: "http://maxlath.eu/"} Maxlath
+          =link_to "Simplon.co", "http://simplon.co"
         %p
-          %a{href: "http://simplon.co/"} Simplon
+          =link_to "Maxlath", "http://maxlath.eu/"
+        %p
+          =link_to "Em-hack", "http://bepos.be/"
       .columns.small-12.medium-4.footer
         %h3.heading Ces vidéos qui changent la vie
         %p
@@ -64,4 +67,3 @@
           %a{href: "http://www.youtube.com/watch?v=OwSzDZnNjUk&feature=youtu.be"} Coalition of the willing
         %p
           %a{href: "https://www.youtube.com/watch?v=c6Bkr_udado"} The Innovation of Loneliness
-    

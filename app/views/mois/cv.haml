@@ -1,0 +1,169 @@
+!!!
+%html{lang: "en"}
+  %head
+    %title Vincent Jumeaux
+    %meta{charset: "utf-8"}/
+    %meta{content: "width=device-width, initial-scale=1, maximum-scale=1", name: "viewport"}/
+    = stylesheet_link_tag "application"
+  %body
+    .row.small-centered
+      %br
+      =link_to(icon('file-pdf-o') + "  Download in PDF", "/resume_vincent_jumeaux.pdf", class: "label right") 
+      .columns.small-6
+        %h1 Vincent Jumeaux
+        %br
+        %ul
+          %li 
+            Freelance web developper at 
+            =link_to("chopsticks.io", "https://www.chopsticks.io")
+          %li Project manager in humanitarian education
+          %li Consultant in political risk management 
+      .columns.small-6.resume_contact_box
+        %br
+        .label
+          =icon 'envelope-o' 
+          vincent.jumeaux @ gmail.com
+        %br
+        %br
+        .label
+          =icon 'phone'
+          +260 (0) 096-446-1904
+        %br
+        %br
+        .label 
+          =link_to(icon('github') + " My github account", "https://github/jum-s") 
+        %br
+        %br
+        .label 
+          =link_to(icon('twitter') + " Follow me on Twitter", "https://tweeter/Jumijums")
+    .row.small-centered
+      .columns
+        %hr
+        %h3
+          =icon 'graduation-cap'
+          Education
+    .row.small-centered
+      .columns.small-2 
+        =image_tag("simplon.png")
+      .columns.small-4
+        %h4
+          =link_to "Simplon.co, 1 year", "http://simplon.co"
+        %ul
+          %li Computer Science
+          %li Entrepreunarial managment
+      .columns.small-2 
+        =image_tag 'sciencespo.jpg'
+      .columns.small-4
+        %h4
+          =link_to "Sciences Po Bordeaux, 5 years", "http://www.sciencespobordeaux.fr/en/index.html"
+        %ul
+          %li Master degree - International Relationship
+          %li Risk managment in southern countries
+      .columns.small-6
+        %br
+        %h4
+          =icon 'laptop'
+          Technical skills | 
+        %p
+          =link_to(icon('link') + " See my webprojects", :controller => "mois", :action => "realisation") 
+        .columns.inline
+          Programming Languages
+          .label Ruby
+          .label Javascript
+        .columns.inline
+          %br
+          Web Frameworks
+          .label Rails
+          .label Sinatra
+          .label Jekyll
+          .label Meteor
+        .columns.inline
+          %br
+          Databases
+          .label PostgresSQL
+          .label MongoDB
+        .columns.inline
+          %br
+          Productivity
+          .label Git
+          .label Rspec
+        .columns.inline
+          %br
+          Frontend
+          .label Foundation
+          .label Bootstrap
+          .label Jquery
+        .columns.inline
+          %br
+          Admin System
+          .label Ubuntu server
+          .label Arch
+          .label Apache
+          .label Ngnix
+
+      .columns.small-6
+        %br
+        %h4
+          =icon 'flask'
+          Academic Studies & Achievements
+        %ul
+          %li License degree courses : Politics, Geography, Macro-economy, Constitutional Law, Sociology 
+          %li Master degree courses : Risk managment, Cooperation and Developpement in Southern Countries, International Relationship, MENA studies, World History
+          %li Research team paper : Risk evaluation of solar panels installation project in United Arab Emirates by Abasol co
+      .columns
+        %hr
+        %h3
+          =icon 'briefcase'
+          Professional Experience
+        .columns.small-4
+          %p.source Jan. 2011 – Jul. 2012
+          %h4
+            Project manager at
+            %a{href: "http://www.librarieswithoutborders.org/"} Library Without Borders
+          %ul
+            %li Project cycle management from end to end of the largest digital library in Haiti. 80 computers for State university students
+            %li Proposal redaction for mobile library in Port-au-Prince | 30k€ funded by European Union
+            %li Training of 35 librians for the State University
+        .columns.small-4
+          %p.source Apr. 2010 – Sept. 2010
+          %h4
+            Operational project manager at
+            %a{href: "rac-f.org/Who-are-we"} Climate Action Network - France
+          %ul
+            %li
+              Operational manager of workshop in Saly, Senegal for the
+              %a{href: "http://ressourcesclimatdeveloppement.jimdo.com/"} Climate  Development Network
+            %li
+              Co-author of the annual report :
+              %a{href: "ressourcesclimatdeveloppement.jimdo.com/app/download/4656496664/53cf765c%2Ff8e026d8c921140af4dcd85159736b3b5a41d479%2FCLIDEV-A.pdf?t=1289294663"} Climate  Development: local strategies and international governance
+        .columns.small-4
+          %p.source Jun. 2009 – Mar. 2010
+          %h4
+            Community manager at 
+            %a{href: "http://www.cleanwateraction.org/"} Clean Water Action
+            , Hartford, CT - United States
+          %ul
+            %li Grassroot community manager of 35 Clean Energy Task Forces, aiming to empower citizen on the revendication to their local governement to demand clean energy
+            %li Author of a comprehensive guidebook for clean energy in Connecticut.
+    .row.small-centered
+      .columns
+        %hr
+        %h3
+          =icon 'star'
+          Other skills
+      .columns.small-6
+        %p
+          =icon 'plane'
+          Strong inter-cultural experience
+          %ul
+            %li Kyoto, Japan : 1year student at Ritsumeikan University
+            %li Lusaka, Zambia : 1year as freelance web developper
+            %li 4 months in South-East-Asia
+            %li 2 months in China
+      .columns.small-6
+        %p
+          =icon 'home'
+          Construction : electricity, roofing, masonry, tiling
+        %p
+          =icon 'dribbble'
+          Sports : climbing, jujitsu, motobike (Kawasaki Er6)

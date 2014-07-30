@@ -1,43 +1,41 @@
 .row
-  .columns.small-3.big_title Dev4Dev
-  .columns.small-8.push-1.subtitle.hide-for-small #peer-to-peer #humanitaire #education #pauvreté #politique #technologie #sciences #humanité #edtech #internet #philosophie #data
+  .columns.small-4.big_title Vincent Jumeaux
+  .columns.small-8.subtitle.hide-for-small #freelance #webdev #curration #Ruby #wikimedia #humanitaire #edtech #api #connaissance #technologie #lifehack #humanité #internet #philo
   .jump
   %br
   %br
 .row
   .columns.small-12.medium-8
     .columns.small-2
-      %h4 Pensée aléatoire
+      %h3.heading Pensée aléatoire
     .columns.small-10.quote_box
       %blockquote
         .columns
           #{icon('quote-left')} #{@pensee_random} #{icon('quote-right')}
-    .jump
+    %hr
     .columns.small-6
       %h2.heading= link_to 'Réflexions courtes', posts_path
-    .columns.small-6.pull-3.btn-down
+    .columns.small-6.pull-3
       = link_to "Voir tous les textes", posts_path, :class => "button tiny alert pull-right"
-    - @posts.each do |post|
-      %hr
-      = link_to post do
-        .row
-          .columns.small-9
-            %h4.heading
-              %strong.alignleft
-                = post.title
-          .columns.small-3
-            %p.alignright.date
-              = post.created_at.strftime("%e %b")
-          .columns
-            %p
-              = post.text.to_s[0, 140]
+    .columns
+      - @posts.each do |post|
+        = link_to post do
+          %h4.time_date
+            = post.created_at.strftime("%e %b")
+          %h3.heading
+            = post.title
+          %p.p-1
+            = post.text
+        %hr
   .columns.small-12.medium-4
     .container-fluid
-      %h2.heading= link_to 'LinksToRead', :controller => "autoposts"
+      %h2.heading= link_to 'Article à Lire', :controller => "autoposts"
+      %p.source
+        %small posté par l'outil du diable Pocket.io
       - @autoposts.each do |auto|
         %hr
-        = link_to auto.url do
-          %h4.subheader
+        = link_to auto do
+          %h4.time_date
             = auto.pocket_date.strftime("%e %b.")
             |
             = icon('clock-o')

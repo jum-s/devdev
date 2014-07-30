@@ -1,0 +1,2 @@
+module MoisHelper
+end

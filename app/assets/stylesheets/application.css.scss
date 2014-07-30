@@ -37,7 +37,7 @@ $info-color: #437336;
 
 @font-face {
   font-family: "nunito";
-  src: url('nunito.ttf');
+  src: url('nunito.ttf') format('truetype');
 }
 
 @font-face {
@@ -69,7 +69,7 @@ $info-color: #437336;
 }
 .big_title {
   font-family: 'old_press';
-  font-size: 6em;
+  font-size: 4em;
   color: #EEE ;
   text-shadow: 4px 4px 6px rgba(0, 0, 0, 1);
 }
@@ -82,6 +82,11 @@ $info-color: #437336;
 .reading_box {
   background-color: #FAFAFA;
   
+}
+
+.time_date {
+  color: #AAA;
+  font-size: 0.9em;
 }
 
 .source, .source a {
@@ -126,6 +131,7 @@ $info-color: #437336;
   h3 {
       color: #dbdbdb;
       margin-bottom: 10px;
+      font-weight: bold;
     }
 
   a {
