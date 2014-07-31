@@ -9,18 +9,19 @@
     = auto_discovery_link_tag :atom, "/feed"
     = auto_discovery_link_tag :rss, "/feed.rss"
   %body.background_image
-    .nav.top-bar{"data-topbar" => ""}
-      %ul.title-area
-        %li.name
-          %h1
-            %a{href: "/"} DevSquare
+    %nav.top-bar{"data-topbar" => ""}
+      %ul.title-area.hide-for-medium
+        %li.toggle-topbar
+          %a{href: "/"} Menu
       %section.top-bar-section
-        / Right Nav Section
+        %ul.title-area
+          %li.toggle-topbar
+            %a{href: "/"} foo
         %ul.right
           %li
             %a{href: "/"}
               = image_tag "logo.jpg", :size => "30x30", :id => "logo"
-              written with ♥ by Vincent Jumeaux
+              
           %li
             =link_to(icon('github'), "https://github/jum-s") 
           %li
@@ -67,3 +68,7 @@
           %a{href: "http://www.youtube.com/watch?v=OwSzDZnNjUk&feature=youtu.be"} Coalition of the willing
         %p
           %a{href: "https://www.youtube.com/watch?v=c6Bkr_udado"} The Innovation of Loneliness
+      .columns.footer
+        %p
+          %small written with ♥ by Vincent Jumeaux
+    = javascript_include_tag "application"
