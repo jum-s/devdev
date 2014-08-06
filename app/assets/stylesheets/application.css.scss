@@ -128,7 +128,9 @@ $info-color: #437336;
   color: #E5E5E5;
   border-left: 3px solid #E5E5E5; 
   padding-left: 12px;
-  padding-top: 20px ;
+  p{
+    margin-bottom: 5px;
+  }
   h3 {
       color: #dbdbdb;
       margin-bottom: 10px;
