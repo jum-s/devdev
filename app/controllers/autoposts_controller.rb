@@ -13,3 +13,4 @@ class AutopostsController < ApplicationController
     @next_autoposts = Autopost.order("pocket_date DESC").last(4)
   end
 end
+

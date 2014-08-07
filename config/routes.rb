@@ -4,10 +4,9 @@ Devdev::Application.routes.draw do
   get '/feed', :controller => 'posts', :action => :feed, :defaults => { :format => 'atom' }
   root to: 'welcome#index'
   
-  get 'autoposts/show'
-  get 'autoposts/index'
   get 'autoposts/video'
   resources :posts
+  resources :autoposts
   get 'mois/cv'
   get 'mois/realisation'
   get 'mois/tour'

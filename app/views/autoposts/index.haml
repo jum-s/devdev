@@ -10,5 +10,6 @@
         \~ #{get_reading_time(auto)}
       %h4
         %strong= auto.title
-      %p.p-1
-        = auto.excerpt
+      - auto.tag.split(",").each do |tag|
+        %p.inline.label= tag
+      %p.p-1= auto.excerpt
