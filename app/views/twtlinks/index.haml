@@ -1,0 +1,23 @@
+.jump
+- @twtlinks.each do |twt|
+  .columns.small-12.medium-4.large-3
+    %hr
+    = link_to twt do
+      %h4.source
+        = twt.created_at.strftime("%e %b.")
+        |
+        = icon('clock-o')
+        \~ #{get_reading_time(twt)}
+        - if twt.sentiment == 1
+          |
+          = icon('smile-o')
+          |
+        - elsif twt.sentiment == 2
+          |
+          = icon('meh-o')
+        - elsif twt.sentiment == 3
+          = icon('frown-o')
+      %h4
+        %strong= twt.title
+      - twt.tag.split(",").each do |tag|
+        %p.inline.label= tag

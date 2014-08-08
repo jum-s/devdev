@@ -41,8 +41,24 @@ task getpocket: :environment do
     end
     
     #Autotag through Alchemy API  
-    alchemy = AlchemyAPI::Client.new('991ecc3d3a0f9e23afa918325deb016a7041b472')
-    tags = alchemy.HTMLGetRankedKeywords(html: text_content)["keywords"].first(10).map {|v| v["text"]}.join(",")
+    connect_alchemy = AlchemyAPI::Client.new('991ecc3d3a0f9e23afa918325deb016a7041b472')
+    
+    text_analysis = connect_alchemy.HTMLGetRankedKeywords(html: text_content)
+    tags = text_analysis["keywords"].first(10).map {|v| v["text"]}.join(",")
+    language = text_analysis["language"]
+    
+
+    sentiment_score = (connect_alchemy.HTMLGetTextSentiment(html: text_content)["docSentiment"]["score"].to_f * 100).round if language == "english"
+    if sentiment_score == nil
+      sentiment = nil 
+    elsif sentiment_score >= 10
+      sentiment = 1 
+    elsif sentiment_score <= -10
+      sentiment = 3
+    else 
+      sentiment = 2
+    end
+
     Autopost.create(url: h[:url], 
                     pid: h[:item_id], 
                     title: h[:title], 
@@ -51,8 +67,9 @@ task getpocket: :environment do
                     word_count: h[:word_count],
                     text: text_content,
                     tag: tags,
+                    language: language,
+                    sentiment: sentiment,
                     pocket_date: updated_datetime)
-
   end
 end
 # Merci Andrei !

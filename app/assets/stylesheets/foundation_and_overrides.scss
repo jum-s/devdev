@@ -163,8 +163,8 @@ $small-font-weight: lighter;
 // We use these to style paragraphs
 // $paragraph-font-family: inherit;
 // $paragraph-font-weight: $font-weight-normal;
-// $paragraph-font-size: 1rem;
-$paragraph-line-height: 1.55;
+$paragraph-font-size: 1.1rem;
+$paragraph-line-height: 1.45;
 // $paragraph-margin-bottom: rem-calc(20);
 // $paragraph-aside-font-size: rem-calc(14);
 // $paragraph-aside-line-height: 1.35;
@@ -663,7 +663,7 @@ $blockquote-font-color: scale-color($info-color, $lightness: 5%);
 // $label-radius: $global-radius;
 
 // We use these to style the label text
-// $label-font-sizing: rem-calc(11);
+ $label-font-sizing: rem-calc(12);
 // $label-font-weight: $font-weight-normal;
 // $label-font-color: #333;
 // $label-font-color-alt: #fff;

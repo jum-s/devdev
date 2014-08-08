@@ -8,6 +8,15 @@
         |
         = icon('clock-o')
         \~ #{get_reading_time(auto)}
+        - if auto.sentiment == 1
+          |
+          = icon('smile-o')
+          |
+        - elsif auto.sentiment == 2
+          |
+          = icon('meh-o')
+        - elsif auto.sentiment == 3
+          = icon('frown-o')
       %h4
         %strong= auto.title
       - auto.tag.split(",").each do |tag|

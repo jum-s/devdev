@@ -1,0 +1,25 @@
+- if @twtlink.text == nil then
+  redirect_to @twtlink.url
+- else
+  .row
+    .jump
+    .small-7.small-centered.columns.reading_box
+      %br 
+      %h3= @twtlink.title.html_safe
+      %p.source
+        =link_to(icon('link') + " Source", @twtlink.url)
+        |
+        = @twtlink.created_at.strftime("%e %B %Y")
+      %p
+        = @twtlink.text.html_safe 
+      %br
+      %br
+  .row-fluid
+    .columns
+      %hr
+      %h4= link_to "Pour continuer :", :controller => "autoposts"
+      - @next_twtlinks.each do |twt|
+        .next_article_box
+          = link_to twt do
+            %h4= twt.title
+      %hr

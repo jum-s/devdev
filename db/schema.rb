@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140807113755) do
+ActiveRecord::Schema.define(version: 20140808145103) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20140807113755) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "tag"
+    t.integer  "sentiment"
   end
 
   create_table "pensees", force: true do |t|
@@ -69,6 +70,17 @@ ActiveRecord::Schema.define(version: 20140807113755) do
   create_table "posts", force: true do |t|
     t.string   "title"
     t.text     "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "twtlinks", force: true do |t|
+    t.string   "url"
+    t.string   "title"
+    t.text     "text"
+    t.string   "tag"
+    t.integer  "sentiment"
+    t.integer  "word_count"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

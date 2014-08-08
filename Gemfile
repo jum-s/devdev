@@ -11,6 +11,7 @@ gem 'jbuilder', '~> 2.0'
 
 gem 'rails-clean-logs'
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'oauth'
 gem 'alchemy-api'
 gem 'active_admin_editor'
 gem 'foundation-rails'
