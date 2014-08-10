@@ -34,7 +34,9 @@
           %li
             %a{href: "/posts"} Réflexions Courtes
           %li
-            %a{href: "/autoposts"} Article A Lire
+            %a{href: "/autoposts"} Articles   A Lire d'Urgence
+          %li
+            %a{href: "/twtlinks"} Articles Tweetés
           %li
             %a{href: "/mois/cv"} A Mon Propos
     .jump
@@ -43,6 +45,15 @@
       .columns
         = yield
     .row-fluid
+      .columns
+        %hr
+        .next_article_box
+          %h4 Pour continuer
+          - @next_articles.each do |next_article|
+            = link_to next_article do
+              %h3
+                = next_article.title
+                = icon('twitter') if next_article.class == Twtlink
       .columns.small-12.medium-4.footer
         %h3.heading Me concernant
         %p
@@ -50,8 +61,9 @@
         %p
           =link_to("Mes Réalisations", :controller => "mois", :action => "realisation") 
         %p
-          =link_to("Mon Tour de France moto 2013", :controller => "mois", :action => "tour") 
+          =link_to("Mon Tour de France", :controller => "mois", :action => "tour") 
       .columns.small-12.medium-4.footer
+        %hr.hide-for-medium.hide-for-large
         %h3.heading Mes amis
         %p
           =link_to "Simplon.co", "http://simplon.co"
@@ -60,6 +72,7 @@
         %p
           =link_to "Em-hack", "http://bepos.be/"
       .columns.small-12.medium-4.footer
+        %hr.hide-for-medium.hide-for-large
         %h3.heading Ces vidéos qui changent la vie
         %p
           %a{href: "https://www.youtube.com/watch?v=-cwdVDcm-Z0"} Le revenu de base
@@ -69,6 +82,7 @@
         %p
           %a{href: "https://www.youtube.com/watch?v=c6Bkr_udado"} The Innovation of Loneliness
       .columns.footer
+        %hr.hide-for-medium.hide-for-large
         %p
           %small written with ♥ by Vincent Jumeaux
     = javascript_include_tag "application"

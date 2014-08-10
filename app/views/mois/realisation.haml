@@ -1,2 +1,71 @@
-<h1>Mois#realisation</h1>
-<p>Find me in app/views/mois/realisation.html.erb</p>
+.jump
+.row
+  .columns
+    %h1 What I do
+    %br
+    %br
+  .columns.medium-2
+    %h2 Who
+    = link_to "Go to my resume", mois_cv_path, class: "label" 
+  .columns.medium-10
+    %ul.no-bullet
+      %li Vincent Jumeaux, 28yo, born and raised near Paris, France. 
+      %li Backend developper (who can also do front) learning Ruby on Rails & Node.js
+      %li Background of humanities (master degree in risk managment in southern countries)
+  %hr
+  .columns.medium-2
+    %h2 How
+    =image_tag("simplon.png", width: "110px")
+  .columns.medium-10
+    %ul
+      %li Graduated of 1st promotion of Simplon.co
+      %li 6 months intensive Bootcamp near Paris
+      %li Tech studies
+      #{icon('arrow-right')} Ruby On Rails, Git, JS, Linux, agility, scrum, entreprenariat
+      %li Management studies
+      #{icon('arrow-right')} bootstraping, agility, scrum, entreprenariat
+  %hr
+  .columns
+    %h2 What
+    .columns.medium-4
+      %h3 Appli Stop Le Controle Au Faciès
+      %p.source= link_to icon('link') + " http://appli.stoplecontroleaufacies.fr", "http://appli.stoplecontroleaufacies.fr"
+      %p Features
+      %ul
+        %li.label Multiple file upload
+        %li.label Automatic postal code guess
+        %li.label Separate pages form
+        %li.label Full adminitration control features
+    .columns.medium-8
+      =link_to image_tag("scrnshot_controle_facies.png"), "http://appli.stoplecontroleaufacies.fr"
+    .columns
+      %hr
+    .columns.medium-4
+      %h3 Primotravaux
+      %p.source= link_to icon('link') + " www.primotravaux.fr", "http://www.primotravaux.fr"
+      %p Features
+      %ul
+        %li.label Retrieve Picasa album from API
+        %li.label Mailer contact form 
+        %li.label Fast image downloading (asynchronous Javascript) 
+        %li.label Deployment : Heroku 
+    .columns.medium-8
+      =link_to image_tag("scrnshot_primotravaux.png"), "http://www.primotravaux.fr"
+      %hr
+    .columns.medium-4
+      %h3 Les Amis de Gérard Jumeaux
+      %p.source= link_to icon('link') + " www.tropheesjumeaux.com", "http://www.tropheesjumeaux.com"
+      %p Features
+      %ul
+        %li.label Album slideshow
+        %li.label Photo galleries generated on the fly
+        %li.label Deployment : Ubuntu, Nginx - Digital Ocean
+    .columns.medium-8
+      =link_to image_tag("scrnshot_trophees_jumeaux.png"), "http://www.tropheesjumeaux.com"
+    .columns
+      %hr
+    .columns.medium-4
+      %h3 Simplon Distance training
+    .columns.medium-8
+      %p Under Construction
+

@@ -35,7 +35,15 @@ task getpocket: :environment do
     
     # extract content with readability gem
     begin
-      text_content = Readability::Document.new(open(h[:url]).read).content
+      read_connect = Readability::Document.new(open(url).read)
+      text_content = read_connect.content
+      word_count = text_content.split.count
+      images_array = read_connect.images
+      if images_array.count > 1
+        image = images_array.first 
+      else
+        image = images_array
+      end 
     rescue
       text_content = nil
     end

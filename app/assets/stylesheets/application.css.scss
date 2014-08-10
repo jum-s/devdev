@@ -96,16 +96,16 @@ $info-color: #437336;
 
 .source, .source a {
   font-size: 0.9em;
-  color: #AAA;
+  color: #888;
   margin: 12px 0 20px;
 }
 
 .quote_box {
   position :relative;
   top : -25px;
-  padding :20px 0 20px 0;
+  padding : 0 0 20px 0;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-  background-color: #FAFAFA;
+  background-color: #EAF4E8;
   border-radius : 3px;
 }
 
@@ -159,11 +159,10 @@ $info-color: #437336;
 .next_article_box {
   padding : 5px 15px 5px 15px;
   margin : 5px 0 20px 0;
-  background-color: #FFF;
+  background-color: #EAF4E8;
   border-radius: 3px;
   -webkit-box-shadow: 0 2px 1px rgba(0, 0, 0, 0.5);
      -moz-box-shadow: 0 2px 1px rgba(0, 0, 0, 0.5);
           box-shadow: 0 2px 1px rgba(0, 0, 0, 0.5);
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-  
 }

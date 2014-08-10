@@ -8,7 +8,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
-
+gem 'fastimage'
 gem 'rails-clean-logs'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'oauth'

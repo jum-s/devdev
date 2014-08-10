@@ -14,12 +14,3 @@
         = @twtlink.text.html_safe 
       %br
       %br
-  .row-fluid
-    .columns
-      %hr
-      %h4= link_to "Pour continuer :", :controller => "autoposts"
-      - @next_twtlinks.each do |twt|
-        .next_article_box
-          = link_to twt do
-            %h4= twt.title
-      %hr

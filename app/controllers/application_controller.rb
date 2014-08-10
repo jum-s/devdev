@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # # For APIs, you may want to use :null_session instead.
-  # protect_from_forgery with: :exception
+before_filter :next_links
+
+  def next_links
+    @next_articles = (Twtlink.last(6) + Autopost.last(4)).sample(5)
+  end
 end

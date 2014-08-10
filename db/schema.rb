@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20140808145103) do
     t.datetime "updated_at"
     t.text     "tag"
     t.integer  "sentiment"
+    t.string   "image"
   end
 
   create_table "pensees", force: true do |t|
@@ -81,6 +82,7 @@ ActiveRecord::Schema.define(version: 20140808145103) do
     t.string   "tag"
     t.integer  "sentiment"
     t.integer  "word_count"
+    t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
