@@ -47,7 +47,7 @@ task getpocket: :environment do
     connect_alchemy = AlchemyAPI::Client.new('991ecc3d3a0f9e23afa918325deb016a7041b472')
     
     text_analysis = connect_alchemy.HTMLGetRankedKeywords(html: text_content)
-    tags = text_analysis["keywords"].first(10).map {|v| v["text"]}.join(",")
+    tags = text_analysis["keywords"].first(6).map {|v| v["text"]}.join(",")
     language = text_analysis["language"]
     
 

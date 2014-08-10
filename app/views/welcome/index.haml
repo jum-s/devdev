@@ -18,30 +18,26 @@
       .text_box
         - @autoposts.each do |auto|
           = link_to auto do
-            - if auto.image != nil 
-              .columns.small-4
-                = image_tag auto.image
-              .columns.small-8
-                %h4.time_date
-                  = auto.pocket_date.strftime("%e %b.")
-                  |
-                  = icon('clock-o')
-                  \~ #{get_reading_time(auto)}
-                %h4.heading
-                  %strong= auto.title
-                - auto.tag.split(",").each do |tag|
-                  %p.inline.label= tag
+            .columns.medium-3
+              %h4.time_date
+                = auto.pocket_date.strftime("%e %b.")
+                |
+                = icon('clock-o')
+                \~ #{get_reading_time(auto)}
+            .columns.medium-9
+              = icon('tag')
+              - auto.tag.split(",").each do |tag|
+                %p.inline.label
+                  = tag
+            %h4= auto.title
+            - if auto.image == nil
+              = auto.excerpt.first(155) + "..."
             - else
-              .columns.small-12
-                %h4.time_date
-                  = auto.pocket_date.strftime("%e %b.")
-                  |
-                  = icon('clock-o')
-                  \~ #{get_reading_time(auto)}
-                %h4.heading
-                  %strong= auto.title
-                - auto.tag.split(",").each do |tag|
-                  %p.inline.label= tag
+              .crop
+                = image_tag(auto.image) if auto.image != nil
+              .text
+                = auto.excerpt.first(155) + "..."
+          %br
           %hr
     .columns.small-6
       %h2.heading= link_to 'Réflexions courtes', posts_path
