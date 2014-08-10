@@ -6,7 +6,7 @@
   %br
 .row
   .columns.small-12.medium-8
-    .columns.small-12.medium-10.quote_box
+    .columns.quote_box
       %blockquote
         .columns
           %h3.heading Pensée aléatoire
@@ -14,18 +14,34 @@
     %hr
     .columns
       %h2.heading= link_to "Article à Lire", :controller => "autoposts"
+      %small posté par l'outil du diable getpocket.com
       .text_box
         - @autoposts.each do |auto|
           = link_to auto do
-            %h4.time_date
-              = auto.pocket_date.strftime("%e %b.")
-              |
-              = icon('clock-o')
-              \~ #{get_reading_time(auto)}
-            %h4.heading
-              %strong= auto.title
-            - auto.tag.split(",").each do |tag|
-              %p.inline.label= tag
+            - if auto.image != nil 
+              .columns.small-4
+                = image_tag auto.image
+              .columns.small-8
+                %h4.time_date
+                  = auto.pocket_date.strftime("%e %b.")
+                  |
+                  = icon('clock-o')
+                  \~ #{get_reading_time(auto)}
+                %h4.heading
+                  %strong= auto.title
+                - auto.tag.split(",").each do |tag|
+                  %p.inline.label= tag
+            - else
+              .columns.small-12
+                %h4.time_date
+                  = auto.pocket_date.strftime("%e %b.")
+                  |
+                  = icon('clock-o')
+                  \~ #{get_reading_time(auto)}
+                %h4.heading
+                  %strong= auto.title
+                - auto.tag.split(",").each do |tag|
+                  %p.inline.label= tag
           %hr
     .columns.small-6
       %h2.heading= link_to 'Réflexions courtes', posts_path
@@ -47,7 +63,6 @@
         Mes articles tweetés 
         = icon('twitter')
       .source
-        %small posté par l'outil du diable Pocket.io
       - @twtlinks.each do |twt|
         = link_to twt do
           .time_date

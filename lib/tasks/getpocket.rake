@@ -35,19 +35,14 @@ task getpocket: :environment do
     
     # extract content with readability gem
     begin
-      read_connect = Readability::Document.new(open(url).read)
+      read_connect = Readability::Document.new(open(h[:url]).read)
       text_content = read_connect.content
       word_count = text_content.split.count
-      images_array = read_connect.images
-      if images_array.count > 1
-        image = images_array.first 
-      else
-        image = images_array
-      end 
+      image = read_connect.images[0]
     rescue
       text_content = nil
     end
-    
+
     #Autotag through Alchemy API  
     connect_alchemy = AlchemyAPI::Client.new('991ecc3d3a0f9e23afa918325deb016a7041b472')
     
@@ -66,7 +61,6 @@ task getpocket: :environment do
     else 
       sentiment = 2
     end
-
     Autopost.create(url: h[:url], 
                     pid: h[:item_id], 
                     title: h[:title], 
@@ -77,6 +71,7 @@ task getpocket: :environment do
                     tag: tags,
                     language: language,
                     sentiment: sentiment,
+                    image: image,
                     pocket_date: updated_datetime)
   end
 end
