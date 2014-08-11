@@ -14,12 +14,3 @@
         = @autopost.text.html_safe 
       %br
       %br
-  .row-fluid
-    .columns
-      %hr
-      %h4= link_to "Pour continuer :", :controller => "autoposts"
-      - @next_autoposts.each do |auto|
-        .small-3.next_article_box
-          = link_to auto do
-            %h4= auto.title
-      %hr

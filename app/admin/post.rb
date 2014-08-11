@@ -9,7 +9,7 @@ ActiveAdmin.register Post do
 
   form do |texte|
     texte.inputs "Post" do
-      texte.input :titre
+      texte.input :title
       texte.input :text, as: :html_editor
     end
     texte.actions

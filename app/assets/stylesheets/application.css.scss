@@ -25,7 +25,7 @@ $info-color: #437336;
 
 
 .background_image {
-  background-image: url(background2.jpg);
+  background-image: asset-url(background2.jpg);
   background-repeat: no-repeat ;
   background-position: top center;
   -webkit-background-size: contain;
