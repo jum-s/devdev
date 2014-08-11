@@ -86,7 +86,21 @@ $info-color: #437336;
 
 .reading_box {
   background-color: #FAFAFA;
-  
+}
+
+.twt_box {
+  padding : 5px 0px 5px 15px;
+  background-color: #EFEFEF;
+  top : -25px;
+}
+
+.quote_box {
+  position :relative;
+  top : -25px;
+  padding : 0 0 20px 0;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  background-color: #EFEFEF;
+  border-radius : 3px;
 }
 
 .time_date {
@@ -100,31 +114,30 @@ $info-color: #437336;
   margin: 12px 0 20px;
 }
 
-.quote_box {
-  position :relative;
-  top : -25px;
-  padding : 0 0 20px 0;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-  background-color: #EAF4E8;
-  border-radius : 3px;
-}
-
 .crop {
-    width: 100%;
-    height: 150px;
-    overflow: hidden;
+  margin-bottom: 5px;
+  height: 150px;
+  overflow: hidden;
+  float: left;
+  .text {
+    position:absolute;
+    bottom:0px; 
+    left:0px;  
+    width:100%;  
+    color:white;  
+    opacity:0.9;
+    background-color:rgba(51,51,51,0.65);
+    padding:0.625rem 0.875rem;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);
+  }
 }
 
 .crop img {
-    margin: -13% 0 0 0;
+   width: 100%;
 }
 
-.text {
-  background-color:rgba(51,51,51,0.65);
-  width:100%;
-  padding:0.625rem 0.875rem;
-  top:-52px;
-  position:relative
+.no-pad {
+  padding: 0;
 }
 
 .well_title {
@@ -142,6 +155,20 @@ $info-color: #437336;
 
 .with_margin {
   margin-right: 10px;
+}
+
+.resume_contact_box .label {
+  margin-bottom: 5px;
+  padding: 6px;
+  a {color: #FFF;}
+}
+
+.reflexion_box {
+  margin-bottom: 28px;
+}
+
+.photo_cv {
+  border-radius: 3px;
 }
 
 .footer {
@@ -177,10 +204,6 @@ $info-color: #437336;
 .next_article_box {
   padding : 5px 15px 5px 15px;
   margin : 5px 0 20px 0;
-  background-color: #EAF4E8;
+  background-color: #EFEFEF;
   border-radius: 3px;
-  -webkit-box-shadow: 0 2px 1px rgba(0, 0, 0, 0.5);
-     -moz-box-shadow: 0 2px 1px rgba(0, 0, 0, 0.5);
-          box-shadow: 0 2px 1px rgba(0, 0, 0, 0.5);
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }

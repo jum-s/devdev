@@ -72,7 +72,7 @@ task getpocket: :environment do
                     language: language,
                     sentiment: sentiment,
                     image: image,
-                    pocket_date: updated_datetime)
+                    pocket_date: updated_datetime) if text_content != nil
   end
 end
 # Merci Andrei !

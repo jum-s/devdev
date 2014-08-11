@@ -18,28 +18,29 @@
       .text_box
         - @autoposts.each do |auto|
           = link_to auto do
-            .columns.medium-3
-              %h4.time_date
-                = auto.pocket_date.strftime("%e %b.")
-                |
-                = icon('clock-o')
-                \~ #{get_reading_time(auto)}
-            .columns.medium-9
+            %h4.time_date
+              = auto.pocket_date.strftime("%e %b.")
+              |
+              = icon('clock-o')
+              \~ #{get_reading_time(auto)}
+            %h3= auto.title
+            - if auto.image == nil
+              %p= auto.excerpt.first(155) + "..."
               = icon('tag')
               - auto.tag.split(",").each do |tag|
                 %p.inline.label
                   = tag
-            %h4= auto.title
-            - if auto.image == nil
-              = auto.excerpt.first(155) + "..."
             - else
-              .crop
+              .columns.crop.no-pad
                 = image_tag(auto.image) if auto.image != nil
-              .text
-                = auto.excerpt.first(155) + "..."
+                .text.show-for-small-only= auto.excerpt.first(55) + "..."
+                .text.show-for-medium-up= auto.excerpt.first(155) + "..."
+              = icon('tag')
+              - auto.tag.split(",").each do |tag|
+                %p.inline.label= tag
           %br
           %hr
-    .columns.small-6
+    .columns.small-6.reflexion_box
       %h2.heading= link_to 'Réflexions courtes', posts_path
     .columns.small-6.pull-3
       = link_to "Voir tous les textes", posts_path, :class => "button tiny alert pull-right"
@@ -53,19 +54,17 @@
           %p.p-1
             = post.text
         %hr
-  .columns.small-12.medium-4
-    .columns.next_article_box
-      %h3.heading 
-        Mes articles tweetés 
-        = icon('twitter')
-      .source
-      - @twtlinks.each do |twt|
-        = link_to twt do
-          .time_date
-            = twt.created_at.strftime("%e %b.")
-            |
-            = icon('clock-o')
-            \~ #{get_reading_time(twt)}
-          = twt.title
-        %hr 
+  .columns.small-12.medium-4.twt_box
+    %h3.heading 
+      Mes articles tweetés 
+      = icon('twitter')
+    - @twtlinks.each do |twt|
+      = link_to twt do
+        .time_date
+          = twt.created_at.strftime("%e %b.")
+          |
+          = icon('clock-o')
+          \~ #{get_reading_time(twt)}
+        %p= twt.title
+      %hr 
           
