@@ -25,7 +25,7 @@ $info-color: #437336;
 
 
 .background_image {
-  background-image: asset-url(background2.jpg);
+  background-image: asset-url('background2.jpg');
   background-repeat: no-repeat ;
   background-position: top center;
   -webkit-background-size: contain;
@@ -63,10 +63,6 @@ $info-color: #437336;
   margin-left: 4px;
 }
 
-.btn-down {
-  position: relative;
-  top: 7px;
-}
 .big_title {
   font-family: 'old_press';
   font-size: 4em;

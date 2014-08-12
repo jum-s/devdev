@@ -1,9 +1,8 @@
-ActiveAdmin.register Autopost do
+ActiveAdmin.register Twtlink do
   index do
     selectable_column
     column :title
-    column :excerpt
     column :updated_at
     actions
-  end
+  end  
 end

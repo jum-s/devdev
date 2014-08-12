@@ -1,24 +1,12 @@
-.row-fluid
-  %span.span6.offset3
-    %br/
-    %br/
-    %br/
-    %br/
-    %br/
-    %br/
-    .row-fluid
-      .well
-        .row-fluid
-          %span.span4
-            %h4.heading.heading-1
-              %strong.alignleft
-                = @post.title
-          %p.alignright.date
-            = @post.created_at.strftime("%e %b %Y")
-        %p.p-1
-          = @post.text
-        %br/
-        %p
-          = link_to 'Retour', :controller => "welcome"
-    %br/
-    %br/
+.row
+  .jump
+  .small-7.small-centered.columns
+    .reading_box
+      %br 
+      %h3= @post.title.html_safe
+      %p.source= @post.created_at.strftime("%e %B %Y")
+      %p= @post.text.html_safe 
+      %br
+    %br
+    = link_to("Accueil", root_path, class: "small button radius")
+    = link_to("Réflexions", posts_path, class: "small button radius")

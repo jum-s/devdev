@@ -13,4 +13,6 @@
       %p
         = @autopost.text.html_safe 
       %br
-      %br
+    %br
+    = link_to("Accueil", root_path, class: "small button radius")
+    = link_to("Articles", autoposts_path, class: "small button radius")
