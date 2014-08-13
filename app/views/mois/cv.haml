@@ -31,7 +31,7 @@
         %br
         .label
           =icon 'envelope-o' 
-          vincent.jumeaux @ gmail.com
+          vincent.jumeaux at gmail.com
         %br
         .label
           =icon 'phone'
@@ -44,7 +44,7 @@
           =link_to(icon('twitter') + " Follow me on Twitter", "https://tweeter/Jumijums")
         %br
         .label 
-          =link_to(icon('file-pdf-o') + "  Download in PDF", "/resume_vincent_jumeaux.pdf") 
+          =link_to(icon('file-pdf-o') + " Download this page in PDF", "/resume_vincent_jumeaux.pdf") 
     .row.small-centered
       .columns
         %hr
@@ -52,91 +52,102 @@
           =icon 'graduation-cap'
           Education
       
-      .columns.small-12.medium-6
-        .columns.small-4=image_tag("simplon.png")
-        .columns.small-8
-          %h4
-            =link_to "Simplon.co, 1 year", "http://simplon.co"
-          %ul
-            %li Computer Science
-            %li Entrepreunarial managment
-        .columns
-          %br
-          %h4
-            =icon 'laptop'
-            Technical skills 
-            | 
-            =link_to(icon('link') + " See my webprojects", class: "button", :controller => "mois", :action => "realisation") 
-          .columns.inline
-            Programming Languages
-            %p.label Ruby
-            %p.label Javascript
-          .columns.inline
+        .columns.small-12.medium-6.bd-left
+          .columns.small-4=image_tag("simplon.png")
+          .columns.small-8
+            %h4
+              =link_to "Simplon.co, 1 year", "http://simplon.co"
+            %ul
+              %li Computer Science
+              %li Entrepreunarial managment
+          .columns
             %br
-            Web Frameworks
-            .label Rails
-            .label Sinatra
-            .label Jekyll
-            .label Meteor
-          .columns.inline
-            %br
-            Databases
-            .label PostgresSQL
-            .label MongoDB
-          .columns.inline
-            %br
-            Productivity
-            .label Git
-            .label Rspec
-          .columns.inline
-            %br
-            Frontend
-            .label Foundation
-            .label Bootstrap
-            .label Jquery
-          .columns.inline
-            %br
-            Admin System
-            .label Ubuntu server
-            .label Arch
-            .label Apache
-            .label Ngnix
+            %h4
+              =icon 'laptop'
+              Technical skills 
+              | 
+              =link_to(icon('link') + " See my webprojects", class: "button", :controller => "mois", :action => "realisation") 
+            .columns.inline
+              Programming Languages
+              %p.label Ruby
+              %p.label Javascript
+            .columns.inline
+              %br
+              Web Frameworks
+              .label Rails
+              .label Sinatra
+              .label Jekyll
+              .label Meteor
+            .columns.inline
+              %br
+              Databases
+              .label PostgresSQL
+              .label MongoDB
+            .columns.inline
+              %br
+              Productivity
+              .label Git
+              .label Rspec
+            .columns.inline
+              %br
+              Frontend
+              .label Foundation
+              .label Bootstrap
+              .label Jquery
+            .columns.inline
+              %br
+              Admin System
+              .label Ubuntu server
+              .label Arch
+              .label Apache
+              .label Ngnix
 
 
-      .columns.small-12.medium-6
-        %hr.show-for-small-only
-        .columns.small-4=image_tag 'sciencespo.jpg'
-        .columns.small-8
-          %h4
-            =link_to "Sciences Po Bordeaux, 5 years", "http://www.sciencespobordeaux.fr/en/index.html"
-          %ul
-            %li Master degree - International Relationship
-            %li Risk managment in southern countries
-        .columns
-          %br
-          %h4
-            =icon 'flask'
-            Academic Studies & Achievements
-          %ul
-            %li License degree courses : Politics, Geography, Macro-economy, Constitutional Law, Sociology 
-            %li Master degree courses : Risk managment, Cooperation and Developpement in Southern Countries, International Relationship, MENA studies, World History
-            %li Research team paper : Risk evaluation of solar panels installation project in United Arab Emirates by Abasol co
+        .columns.small-12.medium-6.bd-left
+          %hr.show-for-small-only
+          .columns.small-4=image_tag 'sciencespo.jpg'
+          .columns.small-8
+            %h4
+              =link_to "Sciences Po Bordeaux, 5 years", "http://www.sciencespobordeaux.fr/en/index.html"
+            %ul
+              %li Master degree - International Relationship
+              %li Risk managment in southern countries
+          .columns
+            %br
+            %h4
+              =icon 'flask'
+              Academic Studies & Achievements
+            %ul
+              %li License degree courses : Politics, Geography, Macro-economy, Constitutional Law, Sociology 
+              %li Master degree courses : Risk managment, Cooperation and Developpement in Southern Countries, International Relationship, MENA studies, World History
+              %li Research team paper : Risk evaluation of solar panels installation project in United Arab Emirates by Abasol co
       .columns
         %hr
         %h3
           =icon 'briefcase'
           Professional Experience
-        .columns.small-12.medium-4
+        .columns.small-12.medium-4.bd-left
           %p.source Jan. 2011 – Jul. 2012
           %h4
             Project manager at
             %a{href: "http://www.librarieswithoutborders.org/"} Library Without Borders
             \- Port-au-Prince, Haiti
           %ul
-            %li Project cycle management from end to end of the largest digital library in Haiti. 80 computers for State university students
+            %li As a project manager, I designed and implemented the construction of the largest digital library for the State University of Haiti. 80 computers for State university students
+            %li 
+              %strong
+                %a{href: "http://www.bn.ueh.edu.ht/"} bn.ueh.edu.ht
+              Currently bringing dozens of premium worldwide databases to Haitian students.
             %li Proposal redaction for mobile library in Port-au-Prince | 30k€ funded by European Union
-            %li Training of 35 librians for the State University
-        .columns.small-12.medium-4
+            %li 
+              Skills acquired : 
+              .label project cycle management
+              .label fundraising 
+              .label EU reporting 
+              .label group training  
+              .label partnership leading
+              .label ToR, convention & contract negociations
+        .columns.small-12.medium-4.bd-left
           %p.source Apr. 2010 – Sept. 2010
           %h4
             Operational project manager at
@@ -149,7 +160,7 @@
             %li
               Co-author of the annual report :
               %a{href: "ressourcesclimatdeveloppement.jimdo.com/app/download/4656496664/53cf765c%2Ff8e026d8c921140af4dcd85159736b3b5a41d479%2FCLIDEV-A.pdf?t=1289294663"} Climate  Development: local strategies and international governance
-        .columns.small-12.medium-4
+        .columns.small-12.medium-4.bd-left
           %p.source Jun. 2009 – Mar. 2010
           %h4
             Community manager at 
@@ -164,22 +175,22 @@
         %h3
           =icon 'star'
           Other skills
-      .columns.small-12.medium-6
-        %p
-          =icon 'plane'
-          Strong inter-cultural experience
-          %ul
-            %li Kyoto, Japan : 1year student at Ritsumeikan University
-            %li Lusaka, Zambia : 1year as freelance web developper
-            %li 4 months in South-East-Asia
-            %li 2 months in China
-      .columns.small-12.medium-6
-        %p
-          =icon 'youtube-play'
-          Image/Video/Document editing : Advanced Photoshop & Premiere, Publisher, advanced Scribus, GIMP  
-        %p
-          =icon 'home'
-          Construction : electricity, roofing, masonry, tiling
-        %p
-          =icon 'dribbble'
-          Sports : climbing, jujitsu, motobike (Kawasaki Er6)
+        .columns.small-12.medium-6.bd-left
+          %p
+            =icon 'plane'
+            Strong inter-cultural experience
+            %ul
+              %li Kyoto, Japan : 1year student at Ritsumeikan University
+              %li Lusaka, Zambia : 1year as freelance web developper
+              %li 4 months in South-East-Asia
+              %li 2 months in China
+        .columns.small-12.medium-6.bd-left
+          %p
+            =icon 'youtube-play'
+            Image/Video/Document editing : Advanced Photoshop & Premiere, Publisher, advanced Scribus, GIMP  
+          %p
+            =icon 'home'
+            Construction : electricity, roofing, masonry, tiling
+          %p
+            =icon 'dribbble'
+            Sports : climbing, jujitsu, motobike (Kawasaki Er6)
