@@ -3,9 +3,20 @@
 - else
   .row
     .jump
-    .columns.medium-7.medium-centered.reading_box
+    .columns.medium-8.medium-centered.reading_box
       %br 
       %h3= @twtlink.title.html_safe
+      - if @twtlink.image == nil
+        = icon('tag')
+        - @twtlink.tag.split(",").each do |tag|
+          %p.inline.label
+            = tag
+      - else
+        .columns.no-pad
+          = image_tag(@twtlink.image) if @twtlink.image != nil
+        = icon('tag')
+        - @twtlink.tag.split(",").each do |tag|
+          %p.inline.label= tag
       %p.source
         =link_to(icon('link') + " Source", @twtlink.url)
         |
@@ -15,4 +26,5 @@
       %br
     %br
     = link_to("Accueil", root_path, class: "small button radius")
-    = link_to("Articles Tweetés", twtlinkss_path, class: "small button radius")
+    = link_to("Articles Tweetés", twtlinks_path, class: "small button radius")
+    = link_to("View Source", @twtlink.url, class: "small button radius")

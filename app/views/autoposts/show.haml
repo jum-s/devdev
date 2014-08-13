@@ -3,16 +3,28 @@
 - else
   .row
     .jump
-    .small-7.small-centered.columns.reading_box
+    .small-8.small-centered.columns.reading_box
       %br 
       %h3= @autopost.title.html_safe
       %p.source
         =link_to(icon('link') + " Source", @autopost.url)
         |
         = @autopost.pocket_date.strftime("%e %B %Y")
+      - if @autopost.image == nil
+        = icon('tag')
+        - @autopost.tag.split(",").each do |tag|
+          %p.inline.label
+            = tag
+      - else
+        .columns.no-pad
+          = image_tag(@autopost.image) if @autopost.image != nil
+        = icon('tag')
+        - @autopost.tag.split(",").each do |tag|
+          %p.inline.label= tag
       %p
         = @autopost.text.html_safe 
       %br
     %br
     = link_to("Accueil", root_path, class: "small button radius")
     = link_to("Articles", autoposts_path, class: "small button radius")
+    = link_to("View Source", @autopost.url, class: "small button radius")

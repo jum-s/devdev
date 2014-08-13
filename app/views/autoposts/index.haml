@@ -1,24 +1,36 @@
 .jump
 - @autoposts.each do |auto|
-  .columns.small-12.medium-4.large-3
+  .columns.small-12.medium-4.large-4
     %hr
     = link_to auto do
       %h4.source
         = auto.pocket_date.strftime("%e %b.")
         |
         = icon('clock-o')
-        \~ #{get_reading_time(auto)}
+        #{get_reading_time(auto)}
         - if auto.sentiment == 1
           |
           = icon('smile-o')
-          |
         - elsif auto.sentiment == 2
           |
           = icon('meh-o')
         - elsif auto.sentiment == 3
+          |
           = icon('frown-o')
+        - if auto.language == "english"
+          |
+          = image_tag 'uk.png', size: '20x20'
+        - elsif auto.language == "french"
+          |
+          = image_tag 'fr.png', size: '20x20'
+        - else
+          |
+          = icon('question')
       %h4
         %strong= auto.title
+      .columns.crop.no-pad
+        = image_tag(auto.image) if auto.image != nil
+      = icon('tag')
       - auto.tag.split(",").each do |tag|
         %p.inline.label= tag
-      %p.p-1= auto.excerpt
+      %p.p-1= auto.excerpt.first(180) + "..."

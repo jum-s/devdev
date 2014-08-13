@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20140813150959) do
     t.text     "tag"
     t.integer  "sentiment"
     t.string   "image"
+    t.string   "language"
   end
 
   create_table "pensees", force: true do |t|
