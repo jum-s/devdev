@@ -5,5 +5,6 @@ class TwtlinksController < ApplicationController
 
   def show
     @twtlink = Twtlink.find(params[:id])
+    redirect_to @twtlink.url if has_video(@twtlink) == true
   end
 end
