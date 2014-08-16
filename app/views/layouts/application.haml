@@ -12,30 +12,17 @@
     %nav.top-bar{"data-topbar" => ""}
       %section.top-bar-section
         %ul.title-area
-          %li.toggle-topbar
-            %a{href: "/"} Menu
-        %ul.right
-          %li
-            %a{href: "/"}
-              = image_tag "logo.jpg", :size => "30x30", :id => "logo"
-              
-          %li
-            =link_to(icon('github'), "https://github/jum-s") 
-          %li
-            =link_to(icon('twitter'), "https://tweeter/Jumijums")
-          %li
-            =link_to(icon('rss'), "/feed")
-
-        / Left Nav Section
+          %li.toggle-topbar=link_to(image_tag("logo.jpg", :size => "30x30", :id => "logo"), root_path)
         %ul.left
-          %li
-            %a{href: "/posts"} Réflexions Courtes
-          %li
-            %a{href: "/autoposts"} Articles   A Lire d'Urgence
-          %li
-            %a{href: "/twtlinks"} Articles Tweetés
-          %li
-            %a{href: "/mois/cv"} A Mon Propos
+          %li=link_to(image_tag("logo.jpg", :size => "30x30", :id => "logo"), root_path)
+          %li=link_to("Réflexions Courtes","/posts")
+          %li=link_to("Articles A Lire d'Urgence","/autoposts")
+          %li=link_to("Articles Tweetés","/twtlinks")
+          %li=link_to("A Mon Propos","/mois/cv")
+        %ul.right
+          %li=link_to(icon('github'), "https://github/jum-s") 
+          %li=link_to(icon('twitter'), "https://tweeter/Jumijums")
+          %li=link_to(icon('rss'), "/feed")
     .jump
 
     .row
@@ -53,33 +40,22 @@
                 = icon('twitter') if next_article.class == Twtlink
       .columns.small-12.medium-4.footer
         %h3.heading Me concernant
-        %p
-          =link_to("Mon Cv", :controller => "mois", :action => "cv") 
-        %p
-          =link_to("Mes Réalisations", :controller => "mois", :action => "realisation") 
-        %p
-          =link_to("Mon Tour de France", :controller => "mois", :action => "tour") 
+        %p=link_to("Mon Cv", :controller => "mois", :action => "cv") 
+        %p=link_to("Mes Réalisations", :controller => "mois", :action => "realisation") 
+        %p=link_to("Mon Tour de France", :controller => "mois", :action => "tour") 
       .columns.small-12.medium-4.footer
         %hr.hide-for-medium.hide-for-large
         %h3.heading Mes amis
-        %p
-          =link_to "Simplon.co", "http://simplon.co"
-        %p
-          =link_to "Maxlath", "http://maxlath.eu/"
-        %p
-          =link_to "Em-hack", "http://bepos.be/"
+        %p=link_to "Simplon.co", "http://simplon.co"
+        %p=link_to "Maxlath", "http://maxlath.eu/"
+        %p=link_to "Em-hack", "http://bepos.be/"
       .columns.small-12.medium-4.footer
         %hr.hide-for-medium.hide-for-large
         %h3.heading Ces vidéos qui changent la vie
-        %p
-          %a{href: "https://www.youtube.com/watch?v=-cwdVDcm-Z0"} Le revenu de base
-        #dom-elem-98.paragraph
-        %p
-          %a{href: "http://www.youtube.com/watch?v=OwSzDZnNjUk&feature=youtu.be"} Coalition of the willing
-        %p
-          %a{href: "https://www.youtube.com/watch?v=c6Bkr_udado"} The Innovation of Loneliness
+        %p=link_to "Le revenu de base", "https://www.youtube.com/watch?v=-cwdVDcm-Z0"
+        %p=link_to "Coalition of the willing", "http://www.youtube.com/watch?v=OwSzDZnNjUk&feature=youtu.be"
+        %p=link_to "The Innovation of Loneliness", "https://www.youtube.com/watch?v=c6Bkr_udado"
       .columns.footer
         %hr.hide-for-medium.hide-for-large
-        %p
-          %small written with ♥ by Vincent Jumeaux | Data from articles are all right reserved to their compagny owners
+        %small written with ♥ by Vincent Jumeaux | Data from articles are all right reserved to their compagny owners
     = javascript_include_tag "application"

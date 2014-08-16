@@ -8,29 +8,24 @@
         |
         = icon('clock-o')
         #{get_reading_time(auto)}
-        - if auto.sentiment == 1
-          |
-          = icon('smile-o')
-        - elsif auto.sentiment == 2
-          |
-          = icon('meh-o')
-        - elsif auto.sentiment == 3
-          |
-          = icon('frown-o')
+        |
+        #{get_sentiment(auto)}
+        |
         - if auto.language == "english"
-          |
           = image_tag 'uk.png', size: '20x20'
         - elsif auto.language == "french"
-          |
           = image_tag 'fr.png', size: '20x20'
         - else
-          |
           = icon('question')
       %h4
         %strong= auto.title
-      .columns.crop.no-pad
-        = image_tag(auto.image) if auto.image != nil
-      = icon('tag')
-      - auto.tag.split(",").each do |tag|
+      - if auto.image != nil
+        .columns.crop.no-pad
+          = image_tag(auto.image)
+      - if has_video(auto) == true
+        .columns.crop.no-pad
+          .video_icon= icon('play-circle-o')
+      = icon('tag') if auto.tag != ""
+      - auto.tag.split(",").first(5).each do |tag|
         %p.inline.label= tag
       %p.p-1= auto.excerpt.first(180) + "..."

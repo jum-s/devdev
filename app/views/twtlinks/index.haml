@@ -6,28 +6,26 @@
       %h4.source
         = twt.created_at.strftime("%e %b.")
         |
-        / = icon('clock-o') + " " + get_reading_time(twt)
-        - if twt.sentiment == 1
-          |
-          = icon('smile-o')
-        - elsif twt.sentiment == 2
-          |
-          = icon('meh-o')
-        - elsif twt.sentiment == 3
-          |
-          = icon('frown-o')
-        - if twt.language == "english"
-          |
+        = icon('clock-o')
+        / #{get_reading_time(twt)}
+        |
+        #{get_sentiment(twt)}
+        |
+        - if twt.language == "english" && has_video(twt) != true
           = image_tag 'uk.png', size: '20x20'
-        - elsif twt.language == "french"
-          |
+        - elsif twt.language == "french" && has_video(twt) != true
           = image_tag 'fr.png', size: '20x20'
         - else
-          |
           = icon('question')
       %h4
         %strong= twt.title
-      .columns.crop.no-pad= image_tag(twt.image) if twt.image != nil
+      - if twt.image != nil
+        .columns.crop.no-pad
+          = image_tag(twt.image)
+      - if has_video(twt) == true
+        .columns.crop.no-pad
+          .video_icon= icon('play-circle-o')
       = icon('tag') if twt.tag != ""
-      - twt.tag.split(",").each do |tag|
+      - twt.tag.split(",").first(5).each do |tag|
         %p.inline.label= tag
+

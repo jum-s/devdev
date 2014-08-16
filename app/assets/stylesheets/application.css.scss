@@ -63,6 +63,15 @@ $info-color: #437336;
   margin-left: 4px;
 }
 
+.video_icon {
+  padding: 50px 40% 50px;
+  font-size: 3em;
+  color : #732020;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  border: 1px solid #DDD  
+}
+
+
 .bd-left {
   border-left: 1px solid #DDD
 }
@@ -116,7 +125,7 @@ $info-color: #437336;
 
 .crop {
   margin-bottom: 5px;
-  height: 150px;
+  height: 170px;
   overflow: hidden;
   float: left;
   .text {

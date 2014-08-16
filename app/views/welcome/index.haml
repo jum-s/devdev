@@ -50,9 +50,9 @@
           %h4.time_date
             = post.created_at.strftime("%e %b")
           %h3.heading
-            = post.title
+            = post.title.html_safe
           %p.p-1
-            = post.text
+            = post.text.html_safe
         %hr
   .columns.small-12.medium-4.twt_box
     %h3.heading 
