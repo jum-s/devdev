@@ -40,20 +40,7 @@
                 %p.inline.label= tag
           %br
           %hr
-    .columns.small-6.reflexion_box
-      %h2.heading= link_to 'Réflexions courtes', posts_path
-    .columns.small-6.pull-3
-      = link_to "Voir tous les textes", posts_path, :class => "button tiny alert pull-right"
-    .columns
-      - @posts.each do |post|
-        = link_to post do
-          %h4.time_date
-            = post.created_at.strftime("%e %b")
-          %h3.heading
-            = post.title.html_safe
-          %p.p-1
-            = post.text.html_safe
-        %hr
+
   .columns.small-12.medium-4.twt_box
     %h3.heading 
       Mes articles tweetés 
@@ -64,7 +51,21 @@
           = twt.created_at.strftime("%e %b.")
           |
           = icon('clock-o')
-          \~ #{get_reading_time(twt)}
+          #{get_reading_time(twt)}
         %p= twt.title
       %hr 
-          
+.row
+  %br
+  %br
+  .columns.small-6.reflexion_box
+    %h2.heading= link_to 'Réflexions courtes', posts_path
+  .columns.small-6.pull-3
+    = link_to "Voir tous les textes", posts_path, :class => "button tiny alert pull-right"
+  .columns.small-12.medium-6.bd-left
+    - @posts.each do |post|
+      %h4.time_date
+        = post.created_at.strftime("%e %b")
+      %h3.heading
+        = post.title
+      %p.p-1
+        = post.text.html_safe

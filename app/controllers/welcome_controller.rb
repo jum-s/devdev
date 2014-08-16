@@ -3,6 +3,6 @@ class WelcomeController < ApplicationController
     @pensee_random = Pensee.first.text.split("\", \"").sample
   	@posts = Post.order("created_at DESC").first(5)
     @autoposts = Autopost.order("pocket_date DESC").first(5)
-  	@twtlinks = Twtlink.order("created_at DESC").first(5)
+  	@twtlinks = Twtlink.order("created_at DESC").first(10)
   end
 end
