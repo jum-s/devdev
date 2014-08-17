@@ -1,6 +1,6 @@
 .row
   .columns.small-12.medium-6.large-4.big_title Vincent Jumeaux
-  .columns.hide-for-small.medium-6.large-8.subtitle #freelance #webdev #curration #Ruby #wikimedia #humanitaire #edtech #api #connaissance #technologie #lifehack #humanité #internet #philo
+  .columns.hide-for-small.medium-6.large-8.subtitle #freelance #webdev #curration #Ruby #wikimedia #humanitaire #edtech #api #education #technologie #lifehack #humanité #internet #philo
   .jump
   %br
   %br
@@ -22,7 +22,7 @@
               = auto.pocket_date.strftime("%e %b.")
               |
               = icon('clock-o')
-              \~ #{get_reading_time(auto)}
+              #{get_reading_time(auto)}
             %h3= auto.title
             - if auto.image == nil
               %p= auto.excerpt.first(155) + "..."
@@ -51,21 +51,16 @@
           = twt.created_at.strftime("%e %b.")
           |
           = icon('clock-o')
-          #{get_reading_time(twt)}
+          /#{get_reading_time(twt)}
         %p= twt.title
       %hr 
 .row
-  %br
-  %br
-  .columns.small-6.reflexion_box
+  .columns.medium-6.reflexion_box
     %h2.heading= link_to 'Réflexions courtes', posts_path
   .columns.small-6.pull-3
     = link_to "Voir tous les textes", posts_path, :class => "button tiny alert pull-right"
-  .columns.small-12.medium-6.bd-left
-    - @posts.each do |post|
-      %h4.time_date
-        = post.created_at.strftime("%e %b")
-      %h3.heading
-        = post.title
-      %p.p-1
-        = post.text.html_safe
+  - @posts.each do |post|
+    .columns.bd-left
+      %h4.time_date= post.created_at.strftime("%e %b")
+      %h3.heading= post.title
+      %p.p-1= post.text.html_safe

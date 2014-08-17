@@ -14,7 +14,7 @@
         %ul.title-area
           %li.toggle-topbar=link_to(image_tag("logo.jpg", :size => "30x30", :id => "logo"), root_path)
         %ul.left
-          %li=link_to(image_tag("logo.jpg", :size => "30x30", :id => "logo"), root_path)
+          %li.hide-for-small=link_to(image_tag("logo.jpg", :size => "30x30", :id => "logo"), root_path)
           %li=link_to("Réflexions Courtes","/posts")
           %li=link_to("Articles A Lire d'Urgence","/autoposts")
           %li=link_to("Articles Tweetés","/twtlinks")
@@ -24,7 +24,6 @@
           %li=link_to(icon('twitter'), "https://tweeter/Jumijums")
           %li=link_to(icon('rss'), "/feed")
     .jump
-
     .row
       .columns
         = yield
