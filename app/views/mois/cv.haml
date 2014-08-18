@@ -1,7 +1,7 @@
 !!!
 %html{lang: "en"}
   %head
-    %title Vincent Jumeaux
+    %title Vincent Jumeaux Resume
     %meta{charset: "utf-8"}/
     %meta{content: "width=device-width, initial-scale=1, maximum-scale=1", name: "viewport"}/
     = stylesheet_link_tag "application"
@@ -15,18 +15,18 @@
           %br
         .columns.hide-for-small
           %ul.no-bullet
-            %li 
-              Freelance web developper at 
+            %li
+              =t('intro1')
               =link_to("chopsticks.io", "https://www.chopsticks.io")
-            %li Project manager in humanitarian education
-            %li Consultant in political risk management 
+            %li= t('intro2')
+            %li= t('intro3')
       .columns.show-for-small-only
         %ul.no-bullet
-          %li 
-            Freelance web developper at 
+          %li
+            = t('intro1')
             =link_to("chopsticks.io", "https://www.chopsticks.io")
-          %li Project manager in humanitarian education
-          %li Consultant in political risk management 
+          %li= t('intro2')
+          %li= t('intro3')
       .columns.small-12.medium-3.resume_contact_box
         %br
         .label
@@ -38,13 +38,13 @@
           +260 (0) 096-446-1904
         %br
         .label 
-          =link_to(icon('github') + " My github account", "https://github/jum-s") 
+          =link_to(icon('github') + t('github'), "https://github/jum-s") 
         %br
         .label 
-          =link_to(icon('twitter') + " Follow me on Twitter", "https://tweeter/Jumijums")
+          =link_to(icon('twitter') + t('tweeter'), "https://tweeter/Jumijums")
         %br
         .label 
-          =link_to(icon('file-pdf-o') + " Download this page in PDF", "/resume_vincent_jumeaux.pdf") 
+          =link_to(icon('file-pdf-o') + t('dlresume'), "/resume_vincent_jumeaux.pdf") 
     .row.small-centered
       .columns
         %hr
@@ -56,47 +56,46 @@
           .columns.small-4=image_tag("simplon.png")
           .columns.small-8
             %h4
-              =link_to "Simplon.co, 1 year", "http://simplon.co"
+              =link_to t('education1'), "http://simplon.co"
             %ul
-              %li Computer Science
-              %li Entrepreunarial managment
+              %li= t('education2')
+              %li= t('education3')
           .columns
             %br
             %h4
               =icon 'laptop'
-              Technical skills 
+              = t('education4')
               | 
-              =link_to(icon('link') + " See my webprojects", class: "button", :controller => "mois", :action => "realisation") 
             .columns.inline
-              Programming Languages
+              = t('education6')
               %p.label Ruby
               %p.label Javascript
             .columns.inline
               %br
-              Web Frameworks
+              = t('education7')
               .label Rails
               .label Sinatra
               .label Jekyll
               .label Meteor
             .columns.inline
               %br
-              Databases
+              = t('education8')
               .label PostgresSQL
               .label MongoDB
             .columns.inline
               %br
-              Productivity
+              = t('education9')
               .label Git
               .label Rspec
             .columns.inline
               %br
-              Frontend
+              = t('education10')
               .label Foundation
               .label Bootstrap
               .label Jquery
             .columns.inline
               %br
-              Admin System
+              = t('education11')
               .label Ubuntu server
               .label Arch
               .label Apache
@@ -110,37 +109,36 @@
             %h4
               =link_to "Sciences Po Bordeaux, 5 years", "http://www.sciencespobordeaux.fr/en/index.html"
             %ul
-              %li Master degree - International Relationship
-              %li Risk managment in southern countries
-          .columns
+              %li= t('education12')
+              %li= t('education13')
             %br
             %h4
               =icon 'flask'
-              Academic Studies & Achievements
+              = t('education14')
             %ul
-              %li License degree courses : Politics, Geography, Macro-economy, Constitutional Law, Sociology 
-              %li Master degree courses : Risk managment, Cooperation and Developpement in Southern Countries, International Relationship, MENA studies, World History
-              %li Research team paper : Risk evaluation of solar panels installation project in United Arab Emirates by Abasol co
+              %li= t('education15')
+              %li= t('education16')
+              %li= t('education17')
       .columns
         %hr
         %h3
           =icon 'briefcase'
-          Professional Experience
+          =t('pro1')
         .columns.small-12.medium-4.bd-left
           %p.source Jan. 2011 – Jul. 2012
           %h4
-            Project manager at
-            %a{href: "http://www.librarieswithoutborders.org/"} Library Without Borders
-            \- Port-au-Prince, Haiti
+            =t('pro2')
+            = link_to t('prolink0'), "http://www.librarieswithoutborders.org/"
+            =t('pro3')
           %ul
-            %li As a project manager, I designed and implemented the construction of the largest digital library for the State University of Haiti. 80 computers for State university students
+            %li=t('pro4')
             %li 
               %strong
-                %a{href: "http://www.bn.ueh.edu.ht/"} bn.ueh.edu.ht
-              Currently bringing dozens of premium worldwide databases to Haitian students.
-            %li Proposal redaction for mobile library in Port-au-Prince | 30k€ funded by European Union
+                =link_to t('prolink1'), "http://www.bn.ueh.edu.ht/"
+                =t('pro5')
+            %li=t('pro6')
             %li 
-              Skills acquired : 
+              =t('pro7')
               .label project cycle management
               .label fundraising 
               .label EU reporting 
@@ -150,47 +148,47 @@
         .columns.small-12.medium-4.bd-left
           %p.source Apr. 2010 – Sept. 2010
           %h4
-            Operational project manager at
-            %a{href: "rac-f.org/Who-are-we"} Climate Action Network
+            =t('pro8')
+            =link_to t('prolink2'), "http://rac-f.org/Who-are-we"
             \- Paris
           %ul
             %li
-              Operational manager of workshop in Saly, Senegal for the
-              %a{href: "http://ressourcesclimatdeveloppement.jimdo.com/"} Climate  Development Network
+              =t('pro9')
+              =link_to t('prolink3'), "http://ressourcesclimatdeveloppement.jimdo.com/"
             %li
-              Co-author of the annual report :
-              %a{href: "ressourcesclimatdeveloppement.jimdo.com/app/download/4656496664/53cf765c%2Ff8e026d8c921140af4dcd85159736b3b5a41d479%2FCLIDEV-A.pdf?t=1289294663"} Climate  Development: local strategies and international governance
+              =t('pro10')
+              =link_to t('prolink4'), "http://ressourcesclimatdeveloppement.jimdo.com/app/download/4656496664/53cf765c%2Ff8e026d8c921140af4dcd85159736b3b5a41d479%2FCLIDEV-A.pdf?t=1289294663"
         .columns.small-12.medium-4.bd-left
           %p.source Jun. 2009 – Mar. 2010
           %h4
-            Community manager at 
-            %a{href: "http://www.cleanwateraction.org/"} Clean Water Action
-            Hartford, CT - United States
+            =t('pro11')
+            =link_to  "Clean Water Action", "http://www.cleanwateraction.org/"
+            =t('pro12')
           %ul
-            %li Grassroot community manager of 35 Clean Energy Task Forces, aiming to empower citizen on the revendication to their local governement to demand clean energy
-            %li Author of a comprehensive guidebook for clean energy in Connecticut.
+            %li=t('pro13')
+            %li=t('pro14')
     .row.small-centered
       .columns
         %hr
         %h3
           =icon 'star'
-          Other skills
+          =t('autre1')
         .columns.small-12.medium-6.bd-left
           %p
             =icon 'plane'
-            Strong inter-cultural experience
+            =t('autre2')
             %ul
-              %li Kyoto, Japan : 1year student at Ritsumeikan University
-              %li Lusaka, Zambia : 1year as freelance web developper
-              %li 4 months in South-East-Asia
-              %li 2 months in China
+              %li=t('autre3')
+              %li=t('autre4')
+              %li=t('autre5')
+              %li=t('autre6')
         .columns.small-12.medium-6.bd-left
           %p
             =icon 'youtube-play'
-            Image/Video/Document editing : Advanced Photoshop & Premiere, Publisher, advanced Scribus, GIMP  
+            =t('autre7')
           %p
             =icon 'home'
-            Construction : electricity, roofing, masonry, tiling
+            =t('autre8')
           %p
             =icon 'dribbble'
-            Sports : climbing, jujitsu, motobike (Kawasaki Er6)
+            =t('autre9')

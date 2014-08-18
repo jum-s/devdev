@@ -1,8 +1,7 @@
 .jump
 %h1.heading Toutes les réflexions
 - Post.all.each do |post|
-  .columns.medium-6
-    %hr
+  .columns.medium-6.bd-left
     = link_to post do
       %h4.source 
         = post.created_at.strftime("%e %b.")
