@@ -13,7 +13,7 @@
           #{icon('quote-left')} #{@pensee_random} #{icon('quote-right')}
     %hr
     .columns
-      %h2.heading= link_to "Article à Lire", :controller => "autoposts"
+      %h2.heading= link_to "Article à Lire", autoposts_path
       %small posté par l'outil du diable getpocket.com
       .text_box
         - @autoposts.each do |auto|

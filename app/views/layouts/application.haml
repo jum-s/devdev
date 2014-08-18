@@ -15,11 +15,13 @@
           %li.toggle-topbar=link_to(image_tag("logo.jpg", :size => "30x30", :id => "logo"), root_path)
         %ul.left
           %li.hide-for-small=link_to(image_tag("logo.jpg", :size => "30x30", :id => "logo"), root_path)
-          %li=link_to("Réflexions Courtes","/posts")
+          %li=link_to(t('food'), posts_path)
           %li=link_to("Articles A Lire d'Urgence","/autoposts")
           %li=link_to("Articles Tweetés","/twtlinks")
           %li=link_to("A Mon Propos","/mois/cv")
         %ul.right
+          %li=link_to(image_tag('fr.png', size: '20x20'), "http://localhost:3000/fr")
+          %li=link_to(image_tag('uk.png', size: '20x20'), "http://localhost:3000/en")
           %li=link_to(icon('github'), "https://github/jum-s") 
           %li=link_to(icon('twitter'), "https://tweeter/Jumijums")
           %li=link_to(icon('rss'), "/feed")
