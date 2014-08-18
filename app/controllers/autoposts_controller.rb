@@ -5,6 +5,6 @@ class AutopostsController < ApplicationController
 
   def show
     @autopost = Autopost.find(params[:id])
-    redirect_to @autopost.url if has_video(@twtlink) == true
+    redirect_to @autopost.url if has_video(@autopost) == true
   end
 end

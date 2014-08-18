@@ -23,13 +23,23 @@
               |
               = icon('clock-o')
               #{get_reading_time(auto)}
+              |
+              #{get_sentiment(auto)}
+              |
+              - if auto.language == "english" && has_video(auto) != true
+                = image_tag 'uk.png', size: '20x20'
+              - elsif auto.language == "french" && has_video(auto) != true
+                = image_tag 'fr.png', size: '20x20'
+              - elsif has_video(auto) == true
+                =icon 'youtube-play'
+              - else
+                = icon('question')
             %h3= auto.title
             - if auto.image == nil
               %p= auto.excerpt.first(155) + "..."
               = icon('tag')
               - auto.tag.split(",").each do |tag|
-                %p.inline.label
-                  = tag
+                %p.inline.label= tag
             - else
               .columns.crop.no-pad
                 = image_tag(auto.image) if auto.image != nil
@@ -52,7 +62,21 @@
           |
           = icon('clock-o')
           /#{get_reading_time(twt)}
-        %p= twt.title
+          |
+          #{get_sentiment(twt)}
+          |
+          - if twt.language == "english" && has_video(twt) != true
+            = image_tag 'uk.png', size: '20x20'
+          - elsif twt.language == "french" && has_video(twt) != true
+            = image_tag 'fr.png', size: '20x20'
+          - elsif has_video(twt) == true
+            =icon 'youtube-play'  
+          - else
+            = icon('question')
+        %h4= twt.title
+        = icon('tag')
+        - twt.tag.split(",").first(4).each do |tag|
+          %p.inline.label= tag
       %hr 
 .row
   .columns.medium-6.reflexion_box
