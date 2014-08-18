@@ -8,5 +8,5 @@
       %p= @post.text.html_safe 
       %br
     %br
-    = link_to("Accueil", root_path, class: "small button radius")
-    = link_to("Réflexions", posts_path, class: "small button radius")
+    = link_to(t('home'), root_path, class: "small button radius")
+    = link_to(t('food'), posts_path, class: "small button radius")
