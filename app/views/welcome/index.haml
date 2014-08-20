@@ -14,7 +14,6 @@
     %hr
     .columns
       %h2.heading= link_to t('toread'), autoposts_path
-      %small= t('pocket')
       .text_box
         - @autoposts.each do |auto|
           = link_to auto do
