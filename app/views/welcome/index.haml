@@ -24,29 +24,27 @@
               /#{get_reading_time(auto)}
               |
               #{get_sentiment(auto)}
-              |
               - if auto.language == "english" && has_video(auto) != true
-                = image_tag 'uk.png', size: '20x20'
+                = image_tag 'uk.png', size: '20x20', class: 'flag'
               - elsif auto.language == "french" && has_video(auto) != true
-                = image_tag 'fr.png', size: '20x20'
+                = image_tag 'fr.png', size: '20x20', class: 'flag'
               - elsif has_video(auto) == true
                 =icon 'youtube-play'
               - else
                 = icon('question')
             %h3= auto.title
             - if auto.image == nil
-              %p= auto.excerpt.first(155) + "..."
+              %p= auto.text.html_safe.first(155) + "..."
               = icon('tag')
               - auto.tag.split(",").each do |tag|
                 %p.inline.label= tag
             - else
               .columns.crop.no-pad
                 = image_tag(auto.image) if auto.image != nil
-                .text.show-for-small-only= auto.excerpt.first(55) + "..." if auto.excerpt != nil
-                .text.show-for-medium-up= auto.excerpt.first(155) + "..." if auto.excerpt != nil
-              = icon('tag')
-              - auto.tag.split(",").each do |tag|
-                %p.inline.label= tag
+                .text
+                  = icon('tag')
+                  - auto.tag.split(",").each do |tag|
+                    %p.inline.label= tag
           %br
           %hr
 
@@ -58,17 +56,17 @@
     - @twtlinks.each do |twt|
       = link_to twt do
         .time_date
+          %br
           = twt.created_at.strftime("%e %b.")
           |
           = icon('clock-o')
           /#{get_reading_time(twt)}
           |
           #{get_sentiment(twt)}
-          |
           - if twt.language == "english" && has_video(twt) != true
-            = image_tag 'uk.png', size: '20x20'
+            = image_tag 'uk.png', size: '20x20', class: 'flag'
           - elsif twt.language == "french" && has_video(twt) != true
-            = image_tag 'fr.png', size: '20x20'
+            = image_tag 'fr.png', size: '20x20', class: 'flag'
           - elsif has_video(twt) == true
             =icon 'youtube-play'  
           - else
