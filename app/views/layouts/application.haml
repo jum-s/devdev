@@ -20,8 +20,8 @@
           %li=link_to(t('twtlinks'), twtlinks_path)
           %li=link_to(t('about_me'), mois_cv_path)
         %ul.right
-          %li=link_to(image_tag('fr.png', size: '20x20'), root_path + "fr")
-          %li=link_to(image_tag('uk.png', size: '20x20'), root_path + "en")
+          %li=link_to(image_tag('fr.png', size: '20x20', class: 'flag'), root_path + "fr")
+          %li=link_to(image_tag('uk.png', size: '20x20', class: 'flag'), root_path + "en")
           %li=link_to(icon('github'), "https://github/jum-s") 
           %li=link_to(icon('twitter'), "https://tweeter/Jumijums")
           %li=link_to(icon('rss'), "/feed")
@@ -46,13 +46,13 @@
         %p=link_to  t('tour_fr'), mois_tour_path
       .columns.small-12.medium-4.footer
         %hr.hide-for-medium.hide-for-large
-        %h3.heading t('friends')
+        %h3.heading= t('friends')
         %p=link_to "Simplon.co", "http://simplon.co"
         %p=link_to "Maxlath", "http://maxlath.eu/"
         %p=link_to "Em-hack", "http://bepos.be/"
       .columns.small-12.medium-4.footer
         %hr.hide-for-medium.hide-for-large
-        %h3.heading t('lifechangevid')
+        %h3.heading= t('lifechangevid')
         %p=link_to t('basicincome'), "https://www.youtube.com/watch?v=-cwdVDcm-Z0"
         %p=link_to "Coalition of the willing", "http://www.youtube.com/watch?v=OwSzDZnNjUk&feature=youtu.be"
         %p=link_to "The Innovation of Loneliness", "https://www.youtube.com/watch?v=c6Bkr_udado"
