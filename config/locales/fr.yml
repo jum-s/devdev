@@ -8,13 +8,13 @@ fr:
   resume: "Mon Cv"
   realisations: "Mes Réalisations"
   tour_fr: "Mon Tour de France"
-  friends: "Mes aMis"
+  friends: "Mes Amis"
   lifechangevid: "Ces Vidéos qui Changent la Vie"
   basicincome: "Le Revenu de Base"
   tags: "#freelance #webdev #curration #Ruby #wikimedia #humanitaire #edtech #api #education #technologie #lifehack #humanité #internet #philo"
   thought: "Pensée Aléatoire"
   seeall: "Voir tous les Textes"
-
+  tocontinue: "Continuer avec"
   # CV
   intro1: "Développeur Web Freelance chez"
   intro2: "Gestion de projet humanitaire dans l'éducation"

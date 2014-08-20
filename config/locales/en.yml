@@ -1,6 +1,6 @@
 en:
   home: "Home"
-  links_to_read: "Press"
+  toread: "Press"
   food: "Food for Thoughts"
   twtlinks: "Tweet Read"
   about_me: "About Me"
@@ -14,6 +14,7 @@ en:
   tags: "#freelance #webdev #curration #Ruby #wikimedia #humanitaire #edtech #api #education #technologie #lifehack #humanité #internet #philo"
   thought: "Random Thought"
   seeall: "See All"
+  tocontinue: "To continue"
 
   #CV
   intro1: "Freelance web developper at "

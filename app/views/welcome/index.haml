@@ -21,7 +21,7 @@
               = auto.pocket_date.strftime("%e %b.")
               |
               = icon('clock-o')
-              #{get_reading_time(auto)}
+              /#{get_reading_time(auto)}
               |
               #{get_sentiment(auto)}
               |
@@ -42,8 +42,8 @@
             - else
               .columns.crop.no-pad
                 = image_tag(auto.image) if auto.image != nil
-                .text.show-for-small-only= auto.excerpt.first(55) + "..."
-                .text.show-for-medium-up= auto.excerpt.first(155) + "..."
+                .text.show-for-small-only= auto.excerpt.first(55) + "..." if auto.excerpt != nil
+                .text.show-for-medium-up= auto.excerpt.first(155) + "..." if auto.excerpt != nil
               = icon('tag')
               - auto.tag.split(",").each do |tag|
                 %p.inline.label= tag
@@ -54,6 +54,7 @@
     %h3.heading 
       = t('twtlinks') 
       = icon('twitter')
+    %small= link_to "Posted by @jumijums", "https://tweeter/Jumijums"
     - @twtlinks.each do |twt|
       = link_to twt do
         .time_date
@@ -79,7 +80,7 @@
       %hr 
 .row
   .columns.medium-6.reflexion_box
-    %h2.heading= link_to t('toread'), posts_path
+    %h2.heading= link_to t('food'), posts_path
   .columns.small-6.pull-3
     = link_to t('seeall'), posts_path, :class => "button tiny alert pull-right"
   - @posts.each do |post|

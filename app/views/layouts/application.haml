@@ -20,8 +20,8 @@
           %li=link_to(t('twtlinks'), twtlinks_path)
           %li=link_to(t('about_me'), mois_cv_path)
         %ul.right
-          %li=link_to(image_tag('fr.png', size: '20x20'), "http://localhost:3000/fr")
-          %li=link_to(image_tag('uk.png', size: '20x20'), "http://localhost:3000/en")
+          %li=link_to(image_tag('fr.png', size: '20x20'), root_path + "fr")
+          %li=link_to(image_tag('uk.png', size: '20x20'), root_path + "en")
           %li=link_to(icon('github'), "https://github/jum-s") 
           %li=link_to(icon('twitter'), "https://tweeter/Jumijums")
           %li=link_to(icon('rss'), "/feed")
@@ -33,7 +33,7 @@
       .columns
         %hr
         .next_article_box
-          %h4 t('tocontinue')
+          %h4= t('tocontinue')
           - @next_articles.each do |next_article|
             = link_to next_article do
               %h3
