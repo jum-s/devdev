@@ -15,8 +15,8 @@
           %li.toggle-topbar=link_to(image_tag("logo.jpg", :size => "30x30", :id => "logo"), root_path)
         %ul.left
           %li.hide-for-small=link_to(image_tag("logo.jpg", :size => "30x30", :id => "logo"), root_path)
-          %li=link_to(t('food'), posts_path)
           %li=link_to(t('toread'), autoposts_path)
+          %li=link_to(t('food'), posts_path)
           %li=link_to(t('twtlinks'), twtlinks_path)
           %li=link_to(t('about_me'), mois_cv_path)
         %ul.right

@@ -24,6 +24,7 @@
               /#{get_reading_time(auto)}
               |
               #{get_sentiment(auto)}
+              |
               - if auto.language == "english" && has_video(auto) != true
                 = image_tag 'uk.png', size: '20x20', class: 'flag'
               - elsif auto.language == "french" && has_video(auto) != true
@@ -33,21 +34,24 @@
               - else
                 = icon('question')
             %h3= auto.title
-            - if auto.image == nil
-              %p= auto.text.html_safe.first(155) + "..."
+            - if auto.image == nil 
               = icon('tag')
               - auto.tag.split(",").each do |tag|
                 %p.inline.label= tag
             - else
               .columns.crop.no-pad
-                = image_tag(auto.image) if auto.image != nil
+                = image_tag(auto.image)
                 .text
                   = icon('tag')
                   - auto.tag.split(",").each do |tag|
                     %p.inline.label= tag
-          %br
+            - if has_video(auto) == true
+              .columns.medium-7
+                .video_icon= icon('play-circle-o')
+              %br
+            - else
+              %p= strip_tags(auto.text.first(250)).html_safe
           %hr
-
   .columns.small-12.medium-4.twt_box
     %h3.heading 
       = t('twtlinks') 
@@ -72,9 +76,12 @@
           - else
             = icon('question')
         %h4= twt.title
-        = icon('tag')
+        = icon('tag') if twt.tag != ""
         - twt.tag.split(",").first(4).each do |tag|
           %p.inline.label= tag
+        - if has_video(twt) == true
+          .columns
+            .video_icon= icon('play-circle-o')
       %hr 
 .row
   .columns.medium-6.reflexion_box

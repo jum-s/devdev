@@ -12,17 +12,21 @@
  *= require font-awesome
  */
 
-/*
-$primary-color: #244028;
-$secondary-color: #BF9D36;
-$alert-color: #732020;
-$success-color: #7DA63F;
-$warning-color: #732020;
-$info-color: #437336;
-*/
+$green: #244028;
+$red : #732020 ;
 
 @import 'foundation_and_overrides';
 
+
+@font-face {
+  font-family: "nunito";
+  src: url('nunito.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'old_press';
+  src: font-url('old_press.ttf') format('truetype');
+}
 
 .background_image {
   background-image: asset-url('background2.jpg');
@@ -35,42 +39,23 @@ $info-color: #437336;
   padding-right: 0;
 }
 
-@font-face {
-  font-family: "nunito";
-  src: url('nunito.ttf') format('truetype');
-}
+.jump { margin-bottom: 8em }
 
-@font-face {
-  font-family: 'old_press';
-  src: font-url('old_press.ttf') format('truetype');
-}
+.heading-1, .heading, .subtitle { font-family: "nunito" }
 
-.jump {
-  margin-bottom: 8em;
-}
+.fa { font-size: 1.3em; }
 
-.heading-1, .heading, .subtitle {
-  font-family: "nunito";
-}
+.fa-quote-left { margin-right: 4px }
 
-.fa {
-  font-size: 1.3em;
-}
-.fa-quote-left {
-  margin-right: 4px;
-}
-.fa-quote-right {
-  margin-left: 4px;
-}
+.fa-quote-right { margin-left: 4px }
 
-.flag {
-  margin-bottom: 7px
-}
+.flag { margin-bottom: 7 }
 
 .video_icon {
   padding: 50px 40% 50px;
+  margin-bottom: 10px;
   font-size: 3em;
-  color : #732020;
+  color : $red;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   border: 1px solid #DDD  
 }
@@ -93,13 +78,9 @@ $info-color: #437336;
   color: #DDD ;
 }
 
-.label {
-  margin-bottom: 3px;
-}
+.label { margin-bottom: 3px }
 
-.reading_box {
-  background-color: #FAFAFA;
-}
+.reading_box { background-color: #FAFAFA }
 
 .twt_box {
   padding : 5px 0px 5px 15px;
@@ -143,15 +124,10 @@ $info-color: #437336;
     padding:0.625rem 0.875rem;
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);
   }
+  img { width: 100% }
 }
 
-.crop img {
-   width: 100%;
-}
-
-.no-pad {
-  padding: 0;
-}
+.no-pad { padding: 0 }
 
 .well_title {
   padding: 30px 0px 1px 0px;
@@ -166,26 +142,20 @@ $info-color: #437336;
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 
-.with_margin {
-  margin-right: 10px;
-}
+.with_margin { margin-right: 10px; }
 
 .resume_contact_box .label {
   margin-bottom: 5px;
   padding: 6px;
-  a {color: #FFF;}
+  a {color: #FFF }
 }
 
-.reflexion_box {
-  margin-bottom: 28px;
-}
+.reflexion_box { margin-bottom: 28px }
 
-.photo_cv {
-  border-radius: 3px;
-}
+.photo_cv { border-radius: 3px }
 
 .footer {
-  background: #244028;
+  background: $green;
   border-radius: 0px;
   color: #E5E5E5;
   border-left: 3px solid #E5E5E5; 
@@ -193,19 +163,14 @@ $info-color: #437336;
   p{
     margin-bottom: 5px;
   }
-  h3 {
-      color: #dbdbdb;
-      margin-bottom: 10px;
-      font-weight: bold;
-    }
+  h3 {  color: #dbdbdb;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
 
-  a {
-      color: #E5E5E5;
-    }
+  a { color: #E5E5E5 }
 
-  a:hover, a:focus {
-      color: #CCCCCC; 
-    }
+  a:hover, a:focus {color: #CCCCCC}
 }
 
 
