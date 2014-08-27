@@ -50,7 +50,9 @@
                 .video_icon= icon('play-circle-o')
               %br
             - else
-              %p= strip_tags(auto.text.first(250)).html_safe
+              %p
+                = strip_tags(auto.text.first(250)).html_safe
+                [...]
           %hr
   .columns.small-12.medium-4.twt_box
     %h3.heading 

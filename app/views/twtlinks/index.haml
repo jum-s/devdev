@@ -6,7 +6,7 @@
         = twt.created_at.strftime("%e %b.")
         |
         = icon('clock-o')
-        /#{get_reading_time(twt)}
+        #{get_reading_time(twt)}
         |
         #{get_sentiment(twt)}
         |
@@ -16,8 +16,7 @@
           = image_tag 'fr.png', size: '20x20'
         - else
           = icon('question')
-      %h4
-        %strong= twt.title
+      %h4= twt.title
       - if twt.image != nil
         .columns.crop.no-pad
           = image_tag(twt.image)
@@ -27,3 +26,6 @@
       = icon('tag') if twt.tag != ""
       - twt.tag.split(",").first(5).each do |tag|
         %p.inline.label= tag
+      %p
+        = strip_tags(auto.text.first(250)).html_safe
+        [...]
