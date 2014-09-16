@@ -5,6 +5,9 @@
       %h4.source
         = twt.created_at.strftime("%e %b.")
         |
+        = icon('clock-o')
+        #{get_reading_time(auto)}
+        |
         #{get_sentiment(twt)}
         |
         - if twt.language == "english" && has_video(twt) != true
