@@ -17,15 +17,16 @@
         - else
           = icon('question')
       %h4= twt.title
-      - if twt.image != nil
+      - if twt.image =~ /\A#{URI::regexp(['http', 'https'])}\z/
         .columns.crop.no-pad
           = image_tag(twt.image)
       - if has_video(twt) == true
-        .columns.crop.no-pad
-          .video_icon= icon('play-circle-o')
+          .video_icon.button.radius.alert
+            = icon('play-circle-o')
+            = t('watchvideo')
       = icon('tag') if twt.tag != ""
       - twt.tag.split(",").first(5).each do |tag|
         %p.inline.label= tag
       %p
-        = strip_tags(auto.text.first(250)).html_safe
+        = strip_tags(twt.text.first(250)).html_safe
         [...]

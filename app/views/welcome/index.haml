@@ -6,11 +6,10 @@
   %br
 .row
   .columns.small-12.medium-8
-    .columns.quote_box
-      %blockquote
-        .columns
-          %h3.heading= t('thought')
-          #{icon('quote-left')} #{@pensee_random} #{icon('quote-right')}
+    .quote_box
+      %h3.heading= t('thought')
+      %p
+        #{icon('quote-left')} #{@pensee_random} #{icon('quote-right')}
     %hr
     .columns
       %h2.heading= link_to t('toread'), autoposts_path
@@ -21,7 +20,7 @@
               = auto.pocket_date.strftime("%e %b.")
               |
               = icon('clock-o')
-              /#{get_reading_time(auto)}
+              #{get_reading_time(auto)}
               |
               #{get_sentiment(auto)}
               |
@@ -47,44 +46,50 @@
                     %p.inline.label= tag
             - if has_video(auto) == true
               .columns.medium-7
-                .video_icon= icon('play-circle-o')
+                .video_icon.button.radius.alert
+                  = icon('play-circle-o')
+                  = t('watchvideo')
               %br
             - else
               %p
                 = strip_tags(auto.text.first(250)).html_safe
                 [...]
           %hr
+        .button.radius= t('moreautopost')
   .columns.small-12.medium-4.twt_box
-    %h3.heading 
-      = t('twtlinks') 
-      = icon('twitter')
-    %small= link_to "Posted by @jumijums", "https://tweeter/Jumijums"
-    - @twtlinks.each do |twt|
-      = link_to twt do
-        .time_date
-          %br
-          = twt.created_at.strftime("%e %b.")
-          |
-          = icon('clock-o')
-          /#{get_reading_time(twt)}
-          |
-          #{get_sentiment(twt)}
-          - if twt.language == "english" && has_video(twt) != true
-            = image_tag 'uk.png', size: '20x20', class: 'flag'
-          - elsif twt.language == "french" && has_video(twt) != true
-            = image_tag 'fr.png', size: '20x20', class: 'flag'
-          - elsif has_video(twt) == true
-            =icon 'youtube-play'  
-          - else
-            = icon('question')
-        %h4= twt.title
-        = icon('tag') if twt.tag != ""
-        - twt.tag.split(",").first(4).each do |tag|
+    .columns
+      %h3.heading 
+        = t('twtlinks') 
+        = icon('twitter')
+      %small= link_to "Posted by @jumijums", "https://tweeter/Jumijums"
+      - @twtlinks.each do |twt|
+        = link_to twt do
+          .time_date
+            %br
+            = twt.created_at.strftime("%e %b.")
+            |
+            = icon('clock-o')
+            #{get_reading_time(twt)}
+            |
+            #{get_sentiment(twt)}
+            - if twt.language == "english" && has_video(twt) != true
+              = image_tag 'uk.png', size: '20x20', class: 'flag'
+            - elsif twt.language == "french" && has_video(twt) != true
+              = image_tag 'fr.png', size: '20x20', class: 'flag'
+            - elsif has_video(twt) == true
+              =icon 'youtube-play'  
+            - else
+              = icon('question')
+          %h4= twt.title
+          = icon('tag') if twt.tag != ""
+          - twt.tag.split(/,/).first(4).each do |tag|
           %p.inline.label= tag
-        - if has_video(twt) == true
-          .columns
-            .video_icon= icon('play-circle-o')
-      %hr 
+          - if has_video(twt) == true
+            .columns
+              .video_icon.button.radius.small
+                = icon('play-circle-o')
+                = t('watchvideo')
+        %hr 
 .row
   .columns.medium-6.reflexion_box
     %h2.heading= link_to t('food'), posts_path
