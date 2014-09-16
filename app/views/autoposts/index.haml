@@ -5,9 +5,6 @@
       %h4.source
         = auto.pocket_date.strftime("%e %b.")
         |
-        = icon('clock-o')
-        #{get_reading_time(auto)}
-        |
         #{get_sentiment(auto)}
         |
         - if auto.language == "english"
