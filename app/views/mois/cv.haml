@@ -32,26 +32,19 @@
         .label
           =icon 'envelope-o' 
           vincent.jumeaux at gmail.com
-        %br
         .label
           =icon 'phone'
           +260 (0) 096-446-1904
-        %br
-        .label 
-          =link_to(icon('github') + t('github'), "https://github/jum-s") 
-        %br
-        .label 
-          =link_to(icon('twitter') + t('tweeter'), "https://tweeter/Jumijums")
-        %br
-        .label 
-          =link_to(icon('file-pdf-o') + t('dlresume'), "/resume_vincent_jumeaux.pdf") 
+        .label= link_to(icon('github') + t('github'), "https://github/jum-s") 
+        .label= link_to(icon('twitter') + t('tweeter'), "https://tweeter/Jumijums")
+        .label.alert= link_to(icon('file-pdf-o') + t('dlresume'), "/resume_vincent_jumeaux.pdf") 
     .row.small-centered
       .columns
         %hr
         %h3
           =icon 'graduation-cap'
           Education
-      
+        %br
         .columns.small-12.medium-6.bd-left
           .columns.small-4=image_tag("simplon.png")
           .columns.small-8
@@ -65,7 +58,6 @@
             %h4
               =icon 'laptop'
               = t('education4')
-              | 
             .columns.inline
               = t('education6')
               %p.label Ruby
@@ -111,7 +103,7 @@
             %ul
               %li= t('education12')
               %li= t('education13')
-            %br
+          .columns
             %h4
               =icon 'flask'
               = t('education14')
