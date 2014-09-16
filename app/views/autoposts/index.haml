@@ -22,8 +22,9 @@
         .columns.crop.no-pad
           = image_tag(auto.image)
       - if has_video(auto) == true
-        .columns.crop.no-pad
-          .video_icon= icon('play-circle-o')
+        .video_icon.button.radius.alert
+          = icon('play-circle-o')
+          = t('watchvideo')
       = icon('tag') if auto.tag != ""
       - auto.tag.split(",").first(5).each do |tag|
         %p.inline.label= tag

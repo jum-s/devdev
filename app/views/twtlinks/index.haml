@@ -6,7 +6,7 @@
         = twt.created_at.strftime("%e %b.")
         |
         = icon('clock-o')
-        #{get_reading_time(auto)}
+        #{get_reading_time(twt)}
         |
         #{get_sentiment(twt)}
         |
@@ -24,4 +24,3 @@
         .video_icon.button.radius.alert
           = icon('play-circle-o')
           = t('watchvideo')
-      
