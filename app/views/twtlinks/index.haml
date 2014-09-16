@@ -21,10 +21,6 @@
         .video_icon.button.radius.alert
           = icon('play-circle-o')
           = t('watchvideo')
-      / - if twt.tag != ""
-      /   = icon('tag')
-      /   - twt.tag.split(",").first(5).each do |tag|
-      /     %p.inline.label= tag
       %p
         = strip_tags(twt.text.first(250)).html_safe
         [...]
