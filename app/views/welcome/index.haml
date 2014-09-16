@@ -68,9 +68,6 @@
             %br
             = twt.created_at.strftime("%e %b.")
             |
-            = icon('clock-o')
-            #{get_reading_time(twt)}
-            |
             #{get_sentiment(twt)}
             - if twt.language == "english" && has_video(twt) != true
               = image_tag 'uk.png', size: '20x20', class: 'flag'
