@@ -75,14 +75,15 @@
             - else
               = icon('question')
           %h4= twt.title
-          = icon('tag') if twt.tag != ""
-          - twt.tag.split(/,/).first(4).each do |tag|
-            %p.inline.label= tag
-            - if has_video(twt) == true
-              .columns
-                .video_icon.button.radius.small
-                  = icon('play-circle-o')
-                  = t('watchvideo')
+          - if twt.tag != ""
+            = icon('tag') 
+            - twt.tag.split(/,/).first(4).each do |tag|
+              %p.inline.label= tag
+              - if has_video(twt) == true
+                .columns
+                  .video_icon.button.radius.small
+                    = icon('play-circle-o')
+                    = t('watchvideo')
         %hr 
 .row
   .columns.medium-6.reflexion_box
