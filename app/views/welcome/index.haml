@@ -79,11 +79,10 @@
             = icon('tag') 
             - twt.tag.split(/,/).first(4).each do |tag|
               %p.inline.label= tag
-              - if has_video(twt) == true
-                .columns
-                  .video_icon.button.radius.small
-                    = icon('play-circle-o')
-                    = t('watchvideo')
+          - if has_video(twt) == true
+            .video_icon.button.radius.small
+              = icon('play-circle-o')
+              = t('watchvideo')
         %hr 
 .row
   .columns.medium-6.reflexion_box
