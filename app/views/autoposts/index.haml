@@ -27,6 +27,6 @@
       = icon('tag') if auto.tag != ""
       - auto.tag.split(",").first(5).each do |tag|
         %p.inline.label= tag
-        %p
-          = strip_tags(auto.text.first(250)).html_safe
-          [...]
+      %p
+        = strip_tags(auto.text.first(250)).html_safe
+        [...]

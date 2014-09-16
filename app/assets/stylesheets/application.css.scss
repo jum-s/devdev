@@ -28,6 +28,8 @@ $red : #732020 ;
   src: font-url('old_press.ttf') format('truetype');
 }
 
+h1,h2,h3,h4,h5,h6 { font-weight: normal;}
+
 .background_image {
   background-image: asset-url('background2.jpg');
   background-repeat: no-repeat ;
@@ -52,12 +54,10 @@ $red : #732020 ;
 .flag { margin-bottom: 7 }
 
 .video_icon {
-  padding: 50px 40% 50px;
-  margin-bottom: 10px;
-  font-size: 3em;
-  color : $red;
+  margin: 10px;
+  font-size: 1.5em;
+  color : white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  border: 1px solid #DDD  
 }
 
 .bd-left {
@@ -78,7 +78,7 @@ $red : #732020 ;
   color: #DDD ;
 }
 
-.label { margin-bottom: 3px }
+.label { margin-bottom: 5px }
 
 .reading_box { background-color: #FAFAFA }
 
@@ -91,10 +91,11 @@ $red : #732020 ;
 .quote_box {
   position :relative;
   top : -25px;
-  padding : 0 0 20px 0;
+  padding : 20px;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
   background-color: #F6F6F6;
   border-radius : 3px;
+  line-height: 1.2em;
 }
 
 .time_date {
