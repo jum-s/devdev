@@ -21,9 +21,9 @@
         .columns.crop.no-pad
           = image_tag(twt.image)
       - if has_video(twt) == true
-          .video_icon.button.radius.alert
-            = icon('play-circle-o')
-            = t('watchvideo')
+        .video_icon.button.radius.alert
+          = icon('play-circle-o')
+          = t('watchvideo')
       = icon('tag') if twt.tag != ""
       - twt.tag.split(",").first(5).each do |tag|
         %p.inline.label= tag
