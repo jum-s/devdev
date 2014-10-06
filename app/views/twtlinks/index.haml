@@ -1,7 +1,7 @@
 .jump
 - @twtlinks.each do |twt|
   .columns.small-12.medium-4.bd-left
-    = link_to twt do
+    = link_to twt.url do
       %h4.source
         = twt.created_at.strftime("%e %b.")
         |

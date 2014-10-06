@@ -1,7 +1,7 @@
 .jump
 - @autoposts.each do |auto|
   .columns.small-12.medium-4.large-4.bd-left
-    = link_to auto do
+    = link_to auto.url do
       %h4.source
         = auto.pocket_date.strftime("%e %b.")
         |
