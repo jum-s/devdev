@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class TwtlinkTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "have a valid factory" do
+    assert FactoryGirl.build(:twtlink).valid?
+  end
+
 end
