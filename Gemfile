@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
+gem 'factory_girl'
 gem 'newrelic_rpm'
 gem 'fastimage'
 gem 'rails-clean-logs'
