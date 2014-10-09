@@ -8,6 +8,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
+gem 'dotenv-rails', :groups => [:development, :test]
+
 gem 'factory_girl'
 gem 'newrelic_rpm'
 gem 'fastimage'
