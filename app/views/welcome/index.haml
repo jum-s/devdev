@@ -53,7 +53,7 @@
               %br
             - else
               %p
-                = strip_tags(auto.text.first(250)).html_safe
+                = strip_tags(auto.text.first(250)).html_safe if auto.text
                 [...]
           %hr
         .button.radius= t('moreautopost')
