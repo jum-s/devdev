@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140813150959) do
+ActiveRecord::Schema.define(version: 20141010093343) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -53,8 +53,7 @@ ActiveRecord::Schema.define(version: 20140813150959) do
     t.integer  "word_count"
     t.string   "pid"
     t.text     "url"
-    t.datetime "pocket_date"
-    t.integer  "has_video",   default: 0
+    t.integer  "has_video",  default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "tag"
@@ -87,6 +86,7 @@ ActiveRecord::Schema.define(version: 20140813150959) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "language"
+    t.integer  "has_video",  default: 0
   end
 
 end

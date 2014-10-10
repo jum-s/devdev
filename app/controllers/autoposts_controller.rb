@@ -1,5 +1,5 @@
 class AutopostsController < ApplicationController
   def index
-    @autoposts = Autopost.order("pocket_date DESC").all
+    @autoposts = Autopost.order("created_at DESC").all
   end
 end
