@@ -1,15 +1,18 @@
 class Autopost < ActiveRecord::Base
-	validates_uniqueness_of :url
-	attr_accessible :url, :title, :word_count, :has_video, :text, :tag, :sentiment, :image, :language
+  validates_uniqueness_of :url
+  attr_accessible :url, :title, :word_count, :has_video, :text, :tag, :sentiment, :image, :language
 
   def self.add_new
+    puts "starting"
     auto = Autopost.new
     entries = auto.get_entries(entries)
     entries.each do |entry|
+      puts "loop on #{entry}"
       aut = Autopost.new
       aut.title = entry[:title]
       aut.clean_url(entry[:url])
-      aut.text_content(aut.url)
+      aut.has_a_video(aut.url)
+      aut.text_content(aut.url) if aut.has_video == 0
       aut.text_analysis(aut.text) if aut.text != nil
       aut.save
     end
@@ -25,14 +28,19 @@ class Autopost < ActiveRecord::Base
   end
 
   def clean_url(url)
-    begin
-      uri = URI.parse(url)
-      http = Net::HTTP.new(uri.host)
-      response = http.get(uri.path)
-      url = response.fetch('location') if response.code != "200"
-    rescue
+    uri = URI.parse(url)
+    http = Net::HTTP.new(uri.host)
+    response = http.get(uri.path)
+    if response.code != "200"
+      self.url = response.fetch('location') 
+    else
       self.url = url
     end   
+  end
+
+  def has_a_video(url)
+    self.has_video = 1 if url.include?("dailymo") || url.include?("youtu")|| url.include?("vimeo")
+    puts "video ? #{self.has_video}"
   end
 
   def text_content(url)
@@ -40,12 +48,24 @@ class Autopost < ActiveRecord::Base
       read_connect = Readability::Document.new(open(url).read)
       text_content = read_connect.content.force_encoding("UTF-8")
       self.word_count = text_content.split.count
+      self.reading_time = get_reading_time(self.word_count)
       self.image = read_connect.images[0]
       self.text = text_content
     rescue
-      text_content = nil
+      puts "rescue text content"
     end
-    self.text = text_content
+  end
+
+  def get_reading_time(word_count)
+    words_per_minute = 170.0
+    time = word_count / words_per_minute
+    reading_time = "#{time.round} min"
+    if time < 1
+            reading_time = "< 1 min"
+    elsif time >= 1 && time < 1.6
+            reading_time = "1 min"
+    end
+    reading_time
   end
 
   def text_analysis(text)

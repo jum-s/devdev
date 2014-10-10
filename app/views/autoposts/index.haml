@@ -6,9 +6,9 @@
         = auto.created_at.strftime("%e %b.")
         |
         = icon('clock-o')
-        #{get_reading_time(auto)}
+        = auto.reading_time
         |
-        #{get_sentiment(auto)}
+        = auto.sentiment
         |
         - if auto.language == "english"
           = image_tag 'uk.png', size: '20x20'

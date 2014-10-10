@@ -53,13 +53,14 @@ ActiveRecord::Schema.define(version: 20141010093343) do
     t.integer  "word_count"
     t.string   "pid"
     t.text     "url"
-    t.integer  "has_video",  default: 0
+    t.integer  "has_video",    default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "tag"
     t.integer  "sentiment"
     t.string   "image"
     t.string   "language"
+    t.string   "reading_time"
   end
 
   create_table "pensees", force: true do |t|
@@ -86,7 +87,8 @@ ActiveRecord::Schema.define(version: 20141010093343) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "language"
-    t.integer  "has_video",  default: 0
+    t.integer  "has_video",    default: 0
+    t.string   "reading_time"
   end
 
 end
