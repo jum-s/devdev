@@ -26,7 +26,7 @@ gem 'feedjira'
 gem 'devise'
 gem 'protected_attributes'
 gem "ruby-readability", :require => 'readability'
-gem 'thin'
+gem 'puma'
 
 group :development do
   gem 'spring'
