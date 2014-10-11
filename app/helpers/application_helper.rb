@@ -16,13 +16,20 @@ module ApplicationHelper
     post.created_at.strftime("%e %b.")
   end
 
+  def get_language(post)
+    case post.language 
+      when "english" then " | #{image_tag 'uk.png', size: '20x20'}".html_safe
+      when "french" then " | #{image_tag 'fr.png', size: '20x20'}".html_safe
+      else
+    end
+  end
+
   def get_sentiment(post)
-    if post.sentiment == 1
-      icon('smile-o')
-    elsif post.sentiment == 2
-      icon('meh-o')
-    elsif post.sentiment == 3
-      icon('frown-o')
+    case post.sentiment 
+      when 1 then " | #{icon('smile-o')}".html_safe
+      when 2 then " | #{icon('meh-o')}".html_safe
+      when 3 then " | #{icon('frown-o')}".html_safe
+      else
     end
   end
 

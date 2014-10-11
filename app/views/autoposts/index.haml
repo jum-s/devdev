@@ -5,22 +5,17 @@
       %h4.source
         = auto.created_at.strftime("%e %b.")
         |
-        = icon('clock-o')
+        = icon 'clock-o'
         = auto.reading_time
-        |
-        = auto.sentiment
-        |
-        - if auto.language == "english"
-          = image_tag 'uk.png', size: '20x20'
-        - elsif auto.language == "french"
-          = image_tag 'fr.png', size: '20x20'
-        - else
-          = icon('question')
+        #{get_sentiment(auto)}
+        #{get_language(auto)}
       %h4
         %strong= auto.title
-      - if auto.image != nil
+      - if auto.image =~ /\A#{URI::regexp(['http', 'https'])}\z/
         .columns.crop.no-pad
           = image_tag(auto.image)
+      - else 
+        .columns.crop.no-pad
       - if has_video(auto) == true
         .video_icon.button.radius.alert
           = icon('play-circle-o')

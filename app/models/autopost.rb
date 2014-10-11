@@ -3,11 +3,9 @@ class Autopost < ActiveRecord::Base
   attr_accessible :url, :title, :word_count, :has_video, :text, :tag, :sentiment, :image, :language
 
   def self.add_new
-    puts "starting"
     auto = Autopost.new
     entries = auto.get_entries(entries)
     entries.each do |entry|
-      puts "loop on #{entry}"
       aut = Autopost.new
       aut.title = entry[:title]
       aut.clean_url(entry[:url])
@@ -40,19 +38,18 @@ class Autopost < ActiveRecord::Base
 
   def has_a_video(url)
     self.has_video = 1 if url.include?("dailymo") || url.include?("youtu")|| url.include?("vimeo")
-    puts "video ? #{self.has_video}"
   end
 
   def text_content(url)
     begin
       read_connect = Readability::Document.new(open(url).read)
       text_content = read_connect.content.force_encoding("UTF-8")
-      self.word_count = text_content.split.count
+      self.word_count = strip_tags(text_content).split(' ').count
+      binding.pry
       self.reading_time = get_reading_time(self.word_count)
       self.image = read_connect.images[0]
       self.text = text_content
     rescue
-      puts "rescue text content"
     end
   end
 

@@ -5,14 +5,10 @@
       %h4.source
         = twt.created_at.strftime("%e %b.")
         |
+        = icon 'clock-o'
+        = twt.reading_time
         #{get_sentiment(twt)}
-        |
-        - if twt.language == "english" && has_video(twt) != true
-          = image_tag 'uk.png', size: '20x20'
-        - elsif twt.language == "french" && has_video(twt) != true
-          = image_tag 'fr.png', size: '20x20'
-        - else
-          = icon('question')
+        #{get_language(twt)}
       %h4= twt.title
       - if twt.image =~ /\A#{URI::regexp(['http', 'https'])}\z/
         .columns.crop.no-pad
