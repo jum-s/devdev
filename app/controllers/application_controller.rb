@@ -12,7 +12,7 @@ before_action :set_locale
     video = true if post.url.include?("dailymo") || post.url.include?("youtu")
     video
   end
-
+  
   def url_options
     { locale: I18n.locale }.merge(super)
   end

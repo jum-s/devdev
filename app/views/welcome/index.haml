@@ -18,17 +18,8 @@
               |
               = icon 'clock-o'
               = auto.reading_time
-              |
-              = auto.sentiment
-              |
-              - if auto.language == "english" && auto.has_video == 0
-                = image_tag 'uk.png', size: '20x20', class: 'flag'
-              - elsif auto.language == "french" && auto.has_video == 0
-                = image_tag 'fr.png', size: '20x20', class: 'flag'
-              - elsif auto.has_video == 1
-                = icon 'youtube-play'
-              - else
-                = icon 'question'
+              #{get_sentiment(auto)}
+              #{get_language(auto)}
             %h3= auto.title
             - if auto.image == nil && auto.tag
               = icon('tag')
@@ -66,15 +57,9 @@
             %br
             = twt.created_at.strftime("%e %b.")
             |
+            = twt.reading_time
             #{get_sentiment(twt)}
-            - if twt.language == "english" && twt.has_video == 0
-              = image_tag 'uk.png', size: '20x20', class: 'flag'
-            - elsif twt.language == "french" && twt.has_video == 0
-              = image_tag 'fr.png', size: '20x20', class: 'flag'
-            - elsif twt.has_video == 1
-              =icon 'youtube-play'  
-            - else
-              = icon('question')
+            #{get_language(twt)}
           %h4= twt.title
           - if twt.tag != ""
             = icon('tag') 
