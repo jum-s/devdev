@@ -43,7 +43,9 @@ h1,h2,h3,h4,h5,h6 { font-weight: normal;}
 
 .jump { margin-bottom: 8em }
 
-.heading-1, .heading, .subtitle { font-family: "nunito" }
+.heading-1, .heading {
+  font-family: "nunito" ;
+}
 
 .fa { font-size: 1.3em; }
 
@@ -52,6 +54,11 @@ h1,h2,h3,h4,h5,h6 { font-weight: normal;}
 .fa-quote-right { margin-left: 4px }
 
 .flag { margin-bottom: 7 }
+
+.button {
+
+  a {color: #FFF;}
+}
 
 .video_icon {
   margin: 10px;
@@ -72,6 +79,7 @@ h1,h2,h3,h4,h5,h6 { font-weight: normal;}
   text-shadow: 4px 4px 6px rgba(0, 0, 0, 1);
 }
 .subtitle {
+  margin-bottom: 3em;
   text-shadow: 4px 4px 6px rgba(0, 0, 0, 1);
   font-size: 1.3em;
   font-weight: lighter;
@@ -91,7 +99,7 @@ h1,h2,h3,h4,h5,h6 { font-weight: normal;}
 .quote_box {
   position :relative;
   top : -25px;
-  padding : 20px;
+  padding : 10px 20px 1px;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
   background-color: #F6F6F6;
   border-radius : 3px;

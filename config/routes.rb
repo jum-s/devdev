@@ -5,7 +5,8 @@ Devdev::Application.routes.draw do
   get '/feed', :controller => 'posts', :action => :feed, :defaults => { :format => 'atom' }
 
   root to: 'welcome#index'
-  get '/:locale' => 'welcome#index'
+  get '/fr' => 'welcome#index_fr'
+  get '/en' => 'welcome#index_en'
   scope "/:locale" do
     resources :posts
     resources :autoposts
