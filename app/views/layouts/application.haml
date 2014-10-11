@@ -35,7 +35,7 @@
         .next_article_box
           %h4= t('tocontinue')
           - @next_articles.each do |next_article|
-            = link_to next_article do
+            = link_to next_article.url do
               %h3
                 = next_article.title
                 = icon('twitter') if next_article.class == Twtlink
