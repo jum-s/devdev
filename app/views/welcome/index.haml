@@ -21,13 +21,9 @@
               #{get_sentiment(auto)}
               #{get_language(auto)}
             %h3= auto.title
-            - if auto.image == nil && auto.tag
-              = icon('tag')
-              - auto.tag.split(",").each do |tag|
-                %p.inline.label= tag
-            - else
-              .columns.crop.no-pad
-                = image_tag(auto.image)
+            %span.columns.crop.no-pad{:style => "background-color: #{random_color}"}
+              = image_tag(auto.image) if auto.image
+              - if auto.tag
                 .text
                   = icon('tag')
                   - if auto.tag

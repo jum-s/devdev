@@ -33,6 +33,18 @@ module ApplicationHelper
     end
   end
 
+  def random_color
+    color_array = [
+      "rgba(232, 202, 179, 0.6)", 
+      "rgba(225, 226, 117, 0.6)", 
+      "rgba(255, 125, 132, 0.6)", 
+      "rgba(190, 102, 232, 0.6)", 
+      "rgba(112, 134, 255, 0.6)", 
+      "rgba(247, 122, 82, 0.6)", 
+      "rgba(255, 151, 79, 0.6)"]
+    color_array.sample
+  end
+  
   def has_video(post)
     video = true if post.url.include?("dailymo") || post.url.include?("youtu")
     video

@@ -13,6 +13,8 @@
       - if twt.image =~ /\A#{URI::regexp(['http', 'https'])}\z/
         .columns.crop.no-pad
           = image_tag(twt.image)
+      - else 
+        %span.columns.crop.no-pad{:style => "background-color: #{random_color}"}
       - if has_video(twt) == true
         .video_icon.button.radius.alert
           = icon('play-circle-o')

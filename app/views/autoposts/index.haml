@@ -15,12 +15,12 @@
         .columns.crop.no-pad
           = image_tag(auto.image)
       - else 
-        .columns.crop.no-pad
+        %span.columns.crop.no-pad{:style => "background-color: #{random_color}"}
       - if has_video(auto) == true
         .video_icon.button.radius.alert
           = icon('play-circle-o')
           = t('watchvideo')
-      = icon('tag') if auto.tag != ""
+      = icon('tag') if auto.tag
       - auto.tag.split(",").first(5).each do |tag|
         %p.inline.label= tag
       %p
