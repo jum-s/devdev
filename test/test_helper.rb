@@ -10,3 +10,11 @@ FactoryGirl.find_definitions
 class ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods
 end
+
+require 'vcr'
+
+VCR.configure do |c|
+  c.hook_into :webmock
+
+  c.cassette_library_dir = 'test/vcr'
+end

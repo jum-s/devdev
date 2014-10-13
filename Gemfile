@@ -9,6 +9,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
 gem 'dotenv-rails', :groups => [:development, :test]
+gem 'vcr'
+gem 'webmock', :groups => [:test]
 
 gem 'factory_girl'
 gem 'newrelic_rpm'
