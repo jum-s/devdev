@@ -2,7 +2,7 @@ class Twtlink < ActiveRecord::Base
   validates_uniqueness_of :url
   attr_accessible :url, :title, :word_count, :text, :tag, :sentiment, :image, :language
 
-  def self.twitter_connect
+  def twitter_connect
     baseurl = "https://api.twitter.com"
     path    = "/1.1/statuses/user_timeline.json"
     query   = URI.encode_www_form("screen_name" => "Jumijums")
@@ -18,17 +18,48 @@ class Twtlink < ActiveRecord::Base
     http.request request
   end
 
-  def self.fetch_new_urls
+  def fetch_new_urls
     tweets_ary = JSON.parse(twitter_connect.body) if twitter_connect.code == '200'
     all_urls = tweets_ary.map{ |t| t["entities"]["urls"][0]}
                          .compact
                          .map { |p| p["expanded_url"]}
-    clean_urls = clean_urls(all_urls)
+                         .compact
     old_urls = Twtlink.all.map(&:url)
     new_urls = old_urls - all_urls
   end
 
-  def self.clean_urls(all_urls)
-    ["http://ow.ly/CBhWO"]
+  def create_with_url
+    fetch_new_urls.each do |url|
+      new_twt = Twtlink.new
+      new_twt.url = url
+      new_twt.get_title
+      new_twt.get_image
+      new_twt.get_text
+      new_twt.save
+    end
   end
+
+  def get_title
+    connect_alchemy = AlchemyAPI::Client.new(ENV['ALCHEMY_CONNECT'])
+    alchemy_title = connect_alchemy.URLGetTitle(url: url)
+    self.title = alchemy_title["title"] if alchemy_title["status"] == "OK"
+  end
+
+  def connect_readability(url)
+    begin
+      read_connect = Readability::Document.new(open(self.url).read)
+    rescue
+      nil
+    end
+  end
+
+  def get_image
+    self.image = connect_readability(self.url).images[0]
+  end
+
+  def get_text
+    self.text = connect_readability(self.url).content
+    # word_count = text_content.split.count
+  end
+
 end

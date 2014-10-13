@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :twtlink do
-    url "foo"
+    url "http://techcrunch.com/2014/10/11/the-internet-of-someone-elses-things/"
   end
 
   factory :post do

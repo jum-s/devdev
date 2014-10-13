@@ -1,7 +1,7 @@
 desc "Retrieve Jumijums tweet & store links"
 
 task gettwt: :environment do
-  Twtlink.new.fetch_new_urls
+  Twtlink.new.create_with_url
   # #TWEETER
   # baseurl = "https://api.twitter.com"
   # path    = "/1.1/statuses/user_timeline.json"
