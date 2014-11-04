@@ -45,7 +45,6 @@ class Autopost < ActiveRecord::Base
       read_connect = Readability::Document.new(open(url).read)
       text_content = read_connect.content.force_encoding("UTF-8")
       self.word_count = strip_tags(text_content).split(' ').count
-      binding.pry
       self.reading_time = get_reading_time(self.word_count)
       self.image = read_connect.images[0]
       self.text = text_content

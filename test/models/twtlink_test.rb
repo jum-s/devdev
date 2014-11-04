@@ -9,40 +9,25 @@ class TwtlinkTest < ActiveSupport::TestCase
   test "jumijums twitter connect API" do
     VCR.use_cassette('twitter_connect') do
       twtlink = FactoryGirl.build(:twtlink)
-      tweet = JSON.parse(twtlink.twitter_connect.body)
-      assert_equal twtlink.twitter_connect.code, "200"
+      assert twtlink.fetch_new_urls.include? "http" 
       assert_equal 1721885928, tweet.first["user"]["id"]
-    end
-  end
-
-  test "fetch new urls" do
-    VCR.use_cassette('fetch_all_urls') do
-      twtlink = FactoryGirl.build(:twtlink)
       assert_not twtlink.fetch_new_urls.include?("http://techcrunch.com/2014/10/11/the-internet-of-someone-elses-things/")
     end
   end
 
-  test "get url title" do
-    VCR.use_cassette('url_title') do
+  test "create twtlink" do
+    VCR.use_cassette('create_twtlink') do
       twtlink = FactoryGirl.build(:twtlink)
-      twtlink.get_title
-      assert_equal "The Internet Of Someone Else’s Things | TechCrunch", twtlink.title
-    end
-  end
-
-  test "get image" do
-    VCR.use_cassette('url_image') do
-      twtlink = FactoryGirl.build(:twtlink)
-      twtlink.get_image
-      assert_equal "http://tctechcrunch2011.files.wordpress.com/2014/10/trojan-horse.jpg?w=738", twtlink.image
-    end
-  end
-
-  test "get text" do
-    VCR.use_cassette('get_text') do
-      twtlink = FactoryGirl.build(:twtlink)
-      twtlink.get_text
-      assert twtlink.text.include?('The Internet Of Things is coming. Rejoice! …Mostly')
+      twtlink.create_with_url
+      assert_equal "http://techcrunch.com/2014/10/11/the-internet-of-someone-elses-things/", Twtlink.offset(1).last.url 
+      # assert_equal "The Internet Of Someone Else’s Things | TechCrunch", Twtlink.offset(1).last.title
+      assert_equal 2, Twtlink.offset(1).last.sentiment
+      # assert_equal "http://tctechcrunch2011.files.wordpress.com/2014/10/trojan-horse.jpg?w=738", Twtlink.offset(1).last.image
+      # assert_equal 735, Twtlink.offset(1).last.word_count
+      # assert_equal "4 min", Twtlink.offset(1).last.reading_time
+      # assert Twtlink.offset(1).last.text.include?('The Internet Of Things is coming. Rejoice! …Mostly')
+      assert_equal "forfait logement", Twtlink.offset(1).last.tag
+      assert_equal "french", Twtlink.offset(1).last.language
     end
   end
 

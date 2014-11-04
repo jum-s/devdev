@@ -1,65 +1,44 @@
 class Twtlink < ActiveRecord::Base
+  include ApplicationHelper 
   validates_uniqueness_of :url
   attr_accessible :url, :title, :word_count, :text, :tag, :sentiment, :image, :language
 
-  def twitter_connect
-    baseurl = "https://api.twitter.com"
-    path    = "/1.1/statuses/user_timeline.json"
-    query   = URI.encode_www_form("screen_name" => "Jumijums")
-    address = URI("#{baseurl}#{path}?#{query}")
-    request = Net::HTTP::Get.new address.request_uri
-    http             = Net::HTTP.new address.host, address.port
-    http.use_ssl     = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_PEER
-    consumer_key ||= OAuth::Consumer.new(ENV['TWTSECRET1'], ENV['TWTSECRET2'])
-    access_token ||= OAuth::Token.new(ENV['TWTSECRET4'], ENV['TWTSECRET3'])
-    request.oauth! http, consumer_key, access_token
-    http.start
-    http.request request
-  end
-
-  def fetch_new_urls
-    tweets_ary = JSON.parse(twitter_connect.body) if twitter_connect.code == '200'
-    all_urls = tweets_ary.map{ |t| t["entities"]["urls"][0]}
-                         .compact
-                         .map { |p| p["expanded_url"]}
-                         .compact
-    old_urls = Twtlink.all.map(&:url)
-    new_urls = old_urls - all_urls
-  end
-
   def create_with_url
     fetch_new_urls.each do |url|
-      new_twt = Twtlink.new
-      new_twt.url = url
-      new_twt.get_title
-      new_twt.get_image
-      new_twt.get_text
-      new_twt.save
+      twt = Twtlink.new
+      twt.url = url
+      begin
+        twt.title = connect_alchemy.URLGetTitle(url: url)["title"]
+        twt.text = connect_readability(url).content
+        twt.image = connect_readability(url).images[0]
+        twt.word_count = twt.text.split(' ').count
+        twt.reading_time = get_reading_time(twt)
+        twt.sentiment = get_sentiment(twt.text)
+        twt.tag = get_tags
+        twt.language = get_language
+      rescue
+      end
+      twt.save
     end
   end
 
-  def get_title
-    connect_alchemy = AlchemyAPI::Client.new(ENV['ALCHEMY_CONNECT'])
-    alchemy_title = connect_alchemy.URLGetTitle(url: url)
-    self.title = alchemy_title["title"] if alchemy_title["status"] == "OK"
-  end
-
-  def connect_readability(url)
-    begin
-      read_connect = Readability::Document.new(open(self.url).read)
-    rescue
-      nil
+  def get_sentiment(text)
+    sentiment_response = connect_alchemy.HTMLGetTextSentiment(html: text)
+    sentiment_score = sentiment_response["docSentiment"]["score"] if sentiment_response["status"] == "OK"
+    case sentiment_score
+      when 0.1..1 then 1
+      when -0.1..-1 then 3
+      else 2
     end
   end
 
-  def get_image
-    self.image = connect_readability(self.url).images[0]
+  def get_language
+    text_analysis = connect_alchemy.HTMLGetRankedKeywords(html: self.text)
+    text_analysis["language"]
   end
 
-  def get_text
-    self.text = connect_readability(self.url).content
-    # word_count = text_content.split.count
+  def get_tags
+    text_analysis = connect_alchemy.HTMLGetRankedKeywords(html: self.text)
+    text_analysis["keywords"].first(10).map {|v| v["text"]}.join(",")
   end
-
 end
