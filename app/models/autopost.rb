@@ -20,8 +20,8 @@ class Autopost < ActiveRecord::Base
     auto.only_new_entries.each do |entry|
       aut = Autopost.new
       aut.title = entry[:title]
-      aut.clean_url(entry[:url])
       aut.has_a_video(aut.url)
+      aut.clean_url(entry[:url])
       aut.text_content(aut.url) if aut.has_video == 0
       aut.text_analysis(aut.text) if aut.text != nil
       aut.save
@@ -35,14 +35,15 @@ class Autopost < ActiveRecord::Base
     response = http.get(uri.path)
     begin
       self.url = uri.to_s
-      self.url = response.fetch('location') if response.code != "200"
+      unless has_a_video(self.url)
+        self.url = response.fetch('location') if response.code != "200" 
+      end
     rescue
-      binding.pry
     end
   end
 
   def has_a_video(url)
-    self.has_video = 1 if url.include?("dailymo") || url.include?("youtu")|| url.include?("vimeo")
+    self.has_video = 1 if url.include?("dailymo") || url.include?("youtu") || url.include?("vimeo")
   end
 
   def text_content(url)
@@ -66,7 +67,6 @@ class Autopost < ActiveRecord::Base
     elsif time >= 1 && time < 1.6
             reading_time = "1 min"
     end
-    reading_time
   end
 
   def text_analysis(text)
