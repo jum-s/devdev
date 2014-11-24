@@ -30,6 +30,8 @@ $red : #732020 ;
 
 h1,h2,h3,h4,h5,h6 { font-weight: normal;}
 
+a p {color: #333;}
+
 .background_image {
   background-image: asset-url('background2.jpg');
   background-repeat: no-repeat ;
@@ -58,10 +60,8 @@ h1,h2,h3,h4,h5,h6 { font-weight: normal;}
 .button { a {color: #FFF;} }
 
 .video_icon {
-  margin: 10px;
-  font-size: 1.5em;
   color : white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 1em;
 }
 
 .bd-left {
