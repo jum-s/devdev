@@ -1,11 +1,23 @@
 class Autopost < ActiveRecord::Base
   validates_uniqueness_of :url
   attr_accessible :url, :title, :word_count, :has_video, :text, :tag, :sentiment, :image, :language
+ 
+  def get_all_entries
+    feeds = Feedjira::Feed.fetch_and_parse("https://www.framabag.org/u/jumijums/?feed&type=home&user_id=1&token=" + ENV['SECRET_KEY']).entries
+    raw_entries = feeds.map do |raw_entry| 
+      {title: raw_entry['title'], url: raw_entry['url']}
+    end
+  end
+
+  def only_new_entries
+    actual_entries = Autopost.all.map(&:url)
+    binding.pry
+    new_entries = get_all_entries.reject { |entry| entry if actual_entries.include? entry[:url] || entry[:title] == "Untitled" }
+  end
 
   def self.add_new
     auto = Autopost.new
-    entries = auto.get_entries(entries)
-    entries.each do |entry|
+    auto.only_new_entries.each do |entry|
       aut = Autopost.new
       aut.title = entry[:title]
       aut.clean_url(entry[:url])
@@ -15,23 +27,18 @@ class Autopost < ActiveRecord::Base
       aut.save
     end
   end
-
-  def get_entries(new_entries)
-    feeds = Feedjira::Feed.fetch_and_parse("https://www.framabag.org/u/jumijums/?feed&type=home&user_id=1&token=" + ENV['SECRET_KEY']).entries
-    raw_entries = feeds.map do |raw_entry| 
-      {title: raw_entry['title'], url: raw_entry['url']}
-    end
-    auto_urls = Autopost.all.map(&:url)
-    new_entries = raw_entries.reject { |entry| entry if auto_urls.include? entry[:url] }
-  end
+  
 
   def clean_url(url)
     uri = URI.parse(url)
     http = Net::HTTP.new(uri.host)
     response = http.get(uri.path)
-    self.url = uri.to_s
-    self.url = response.fetch('location') if response.code != "200"
-    self.url = uri.to_s if uri.to_s.include?("youtube.com/watch")
+    begin
+      self.url = uri.to_s
+      self.url = response.fetch('location') if response.code != "200"
+    rescue
+      binding.pry
+    end
   end
 
   def has_a_video(url)
