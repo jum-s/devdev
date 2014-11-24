@@ -9,10 +9,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
 gem 'dotenv-rails', :groups => [:development, :test]
-gem 'vcr'
+gem 'vcr', :groups => [:test]
 gem 'webmock', :groups => [:test]
+gem 'factory_girl', :groups => [:test]
 
-gem 'factory_girl'
 gem 'newrelic_rpm'
 gem 'fastimage'
 gem 'rails-clean-logs'
@@ -37,9 +37,8 @@ group :development do
   gem 'rack-livereload'
   gem 'guard-bundler', require: false
   gem 'guard-rails'
-  gem 'jazz_hands'
   gem 'sqlite3'
-  gem 'pry-rescue'
+  gem 'pry'
 end
 
 group :doc do
