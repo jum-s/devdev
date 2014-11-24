@@ -55,10 +55,7 @@ h1,h2,h3,h4,h5,h6 { font-weight: normal;}
 
 .flag { margin-bottom: 7 }
 
-.button {
-
-  a {color: #FFF;}
-}
+.button { a {color: #FFF;} }
 
 .video_icon {
   margin: 10px;
@@ -73,13 +70,16 @@ h1,h2,h3,h4,h5,h6 { font-weight: normal;}
 }
 
 .big_title {
+  margin-top: 145px;
   font-family: 'old_press';
-  font-size: 4em;
+  font-size: 4.2em;
   color: #EEE ;
+  padding-left: 33px;
   text-shadow: 4px 4px 6px rgba(0, 0, 0, 1);
 }
+
 .subtitle {
-  margin-bottom: 3em;
+  margin-top: 162px;
   text-shadow: 4px 4px 6px rgba(0, 0, 0, 1);
   font-size: 1.3em;
   font-weight: lighter;

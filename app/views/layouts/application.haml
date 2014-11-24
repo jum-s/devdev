@@ -15,10 +15,10 @@
           %li.toggle-topbar=link_to(image_tag("logo.jpg", :size => "30x30", :id => "logo"), root_path)
         %ul.left
           %li.hide-for-small=link_to(image_tag("logo.jpg", :size => "30x30", :id => "logo"), root_path)
+          %li=link_to(t('about_me'), mois_cv_path)
           %li=link_to(t('toread'), autoposts_path)
           %li=link_to(t('food'), posts_path)
           %li=link_to(t('twtlinks'), twtlinks_path)
-          %li=link_to(t('about_me'), mois_cv_path)
         %ul.right
           %li=link_to(image_tag('fr.png', size: '20x20', class: 'flag'), root_path + "fr")
           %li=link_to(image_tag('uk.png', size: '20x20', class: 'flag'), root_path + "en")
@@ -53,8 +53,8 @@
         %hr.hide-for-medium.hide-for-large
         %h3.heading= t('lifechangevid')
         %p=link_to t('basicincome'), "https://www.youtube.com/watch?v=-cwdVDcm-Z0"
-        %p=link_to "Coalition of the willing", "http://www.youtube.com/watch?v=OwSzDZnNjUk&feature=youtu.be"
-        %p=link_to "The Innovation of Loneliness", "https://www.youtube.com/watch?v=c6Bkr_udado"
+        %p=link_to "Humans Need Not Apply","https://vimeo.com/105406386"
+        %p=link_to "The Innovation of Loneliness", "https://vimeo.com/70534716"
       .columns.footer
         %hr.hide-for-medium.hide-for-large
         %small written with ♥ by Vincent Jumeaux | Data from articles are all right reserved to their compagny owners
