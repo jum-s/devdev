@@ -1,3 +1,12 @@
+.panel
+  %h4= t('watchvideo')
+  - @autopost_videos.each do |vid|
+    .inline.video_icon.label.alert
+      = icon('play-circle-o')
+      = vid.title.truncate(60, separator: ' ')
+  
+
+
 - @autoposts.each do |auto|
   .columns.small-12.medium-4.large-4.bd-left
     = link_to auto.url do
@@ -15,13 +24,8 @@
           = image_tag(auto.image)
       - else 
         %span.columns.crop.no-pad{:style => "background-color: #{random_color}"}
-      - if auto.has_video
-        .video_icon.button.radius.alert
-          = icon('play-circle-o')
-          = t('watchvideo')
       = icon('tag') if auto.tag
       - auto.tag.split(",").first(5).each do |tag|
         %p.inline.label= tag
-      %p
-        = strip_tags(auto.text.first(250)).html_safe
-        [...]
+      %br
+      %p= strip_tags(auto.text.truncate(250, separator: ' ')).html_safe

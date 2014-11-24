@@ -1,5 +1,12 @@
+/ .panel
+/   %h4= t('watchvideo')
+/   - @twtlink_videos.each do |vid|
+/     .inline.video_icon.label.alert
+/       = icon('play-circle-o')
+/       = vid.title.truncate(60, separator: ' ')
+
 - @twtlinks.each do |twt|
-  .columns.small-12.medium-4.bd-left
+  .columns.small-12.medium-4.large-4.bd-left
     = link_to twt.url do
       %h4.source
         = twt.created_at.strftime("%e %b.")
@@ -8,13 +15,11 @@
         = twt.reading_time
         #{get_sentiment(twt)}
         #{get_language(twt)}
-      %h4= twt.title
+      %h4
+        %strong= twt.title
       - if twt.image =~ /\A#{URI::regexp(['http', 'https'])}\z/
         .columns.crop.no-pad
           = image_tag(twt.image)
       - else 
         %span.columns.crop.no-pad{:style => "background-color: #{random_color}"}
-      - if twt.has_video
-        .video_icon.button.radius.alert
-          = icon('play-circle-o')
-          = t('watchvideo')
+      %p= strip_tags(twt.text.truncate(250, separator: ' ')).html_safe

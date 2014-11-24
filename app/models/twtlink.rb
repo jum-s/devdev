@@ -14,6 +14,7 @@ class Twtlink < ActiveRecord::Base
         twt.word_count = twt.text.split(' ').count
         twt.reading_time = get_reading_time(twt)
         twt.sentiment = get_sentiment(twt.text)
+        twt.has_a_video(twt.url)
         twt.tag = get_tags
         twt.language = get_language
       rescue
@@ -41,4 +42,9 @@ class Twtlink < ActiveRecord::Base
     text_analysis = connect_alchemy.HTMLGetRankedKeywords(html: self.text)
     text_analysis["keywords"].first(10).map {|v| v["text"]}.join(",")
   end
+
+  def has_a_video(url)
+    self.has_video = 1 if url.include?("dailymo") || url.include?("youtu")|| url.include?("vimeo")
+  end
+
 end
