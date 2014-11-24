@@ -29,11 +29,9 @@ class Autopost < ActiveRecord::Base
     uri = URI.parse(url)
     http = Net::HTTP.new(uri.host)
     response = http.get(uri.path)
-    if response.code != "200"
-      self.url = response.fetch('location') 
-    else
-      self.url = url
-    end   
+    self.url = uri.to_s
+    self.url = response.fetch('location') if response.code != "200"
+    self.url = uri.to_s if uri.to_s.include?("youtube.com/watch")
   end
 
   def has_a_video(url)
