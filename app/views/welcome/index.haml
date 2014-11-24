@@ -33,7 +33,7 @@
                   = t('watchvideo')
               %br
             - else
-              %p= strip_tags(auto.truncate(250, separator: ' ')).html_safe if auto.text
+              %p= strip_tags(auto.text.truncate(250, separator: ' ')).html_safe if auto.text
           %hr
         .button.radius= link_to t('moreautopost'), autoposts_path
   .columns.small-12.medium-4.twt_box
