@@ -12,12 +12,12 @@ class PostsController < ApplicationController
   end
 
   def create
-  	  @post = Post.new(post_params)
-  	if @post.save && user_signed_in?
-  		redirect_to '/'
-  	else
-  		render 'new'
-  	end
+    @post = Post.new(post_params)
+    if @post.save && user_signed_in?
+      redirect_to '/'
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -26,7 +26,7 @@ class PostsController < ApplicationController
 
 
   def update
-  	@post = Post.find(params[:id])
+    @post = Post.find(params[:id])
     if @post.update(post_params)
   	redirect_to :post
     else
@@ -35,20 +35,20 @@ class PostsController < ApplicationController
   end
 
   def destroy
-  	@post = Post.find(params[:id])
-  	@post.destroy
-  	redirect_to '/'
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to '/'
   end
 
   def feed
-  	@title = "MyPosts"
+    @title = "MyPosts"
     @post = Post.order("updated_at desc")
-  	@updated = @post.first.updated_at unless @post.empty?
-  	
-  	respond_to do |format|
+    @updated = @post.first.updated_at unless @post.empty?
+
+    respond_to do |format|
       format.atom { render :layout => false }
-  		format.rss { redirect_to feed_path(:format => :atom), :status => :moved_permanently }
-  	end
+      format.rss { redirect_to feed_path(:format => :atom), :status => :moved_permanently }
+    end
   end
 
 end
