@@ -11,7 +11,6 @@ class Autopost < ActiveRecord::Base
 
   def only_new_entries
     actual_entries = Autopost.all.map(&:url)
-    binding.pry
     new_entries = get_all_entries.reject { |entry| entry if actual_entries.include? entry[:url] || entry[:title] == "Untitled" }
   end
 
@@ -20,7 +19,6 @@ class Autopost < ActiveRecord::Base
     auto.only_new_entries.each do |entry|
       aut = Autopost.new
       aut.title = entry[:title]
-      aut.has_a_video(aut.url)
       aut.clean_url(entry[:url])
       aut.text_content(aut.url) if aut.has_video == 0
       aut.text_analysis(aut.text) if aut.text != nil
@@ -40,10 +38,6 @@ class Autopost < ActiveRecord::Base
       end
     rescue
     end
-  end
-
-  def has_a_video(url)
-    self.has_video = 1 if url.include?("dailymo") || url.include?("youtu") || url.include?("vimeo")
   end
 
   def text_content(url)
