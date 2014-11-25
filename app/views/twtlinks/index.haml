@@ -1,9 +1,9 @@
-/ .panel
-/   %h4= t('watchvideo')
-/   - @twtlink_videos.each do |vid|
-/     .inline.video_icon.label.alert
-/       = icon('play-circle-o')
-/       = vid.title.truncate(60, separator: ' ')
+.panel
+  %h4= t('watchvideo')
+  - @twtlink_videos.each do |vid|
+    .inline.video_icon.label.alert
+      = icon('play-circle-o')
+      = vid.title.truncate(60, separator: ' ')
 
 - @twtlinks.each do |twt|
   .columns.small-12.medium-4.large-4.bd-left
