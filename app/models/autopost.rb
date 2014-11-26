@@ -2,19 +2,8 @@ class Autopost < ActiveRecord::Base
   validates_uniqueness_of :url
   attr_accessible :url, :title, :word_count, :has_video, :text, :tag, :sentiment, :image, :language
  
-  def get_all_entries
-    feeds = Feedjira::Feed.fetch_and_parse("https://www.framabag.org/u/jumijums/?feed&type=home&user_id=1&token=" + ENV['SECRET_KEY']).entries
-    raw_entries = feeds.map do |raw_entry| 
-      {title: raw_entry['title'], url: raw_entry['url']}
-    end
-  end
-
-  def only_new_entries
-    actual_entries = Autopost.all.map(&:url)
-    new_entries = get_all_entries.reject { |entry| entry if actual_entries.include? entry[:url] || entry[:title] == "Untitled" }
-  end
-
   def self.add_new
+    puts "Starting..."
     auto = Autopost.new
     auto.only_new_entries.each do |entry|
       aut = Autopost.new
@@ -22,16 +11,28 @@ class Autopost < ActiveRecord::Base
       aut.clean_url(entry[:url])
       aut.text_content(aut.url) if aut.has_video == 0
       aut.text_analysis(aut.text) if aut.text != nil
+      puts "Saving #{aut.url} ..."
       aut.save
     end
   end
-  
+
+  def get_all_entries
+    feeds = Feedjira::Feed.fetch_and_parse("https://www.framabag.org/u/jumijums/?feed&type=home&user_id=1&token=" + ENV['SECRET_KEY']).entries
+    feeds.map do |raw_entry| 
+      {title: raw_entry['title'], url: raw_entry['url']}
+    end
+  end
+
+  def only_new_entries
+    actual_entries = Autopost.all.map(&:url)
+    get_all_entries.reject { |entry| entry if actual_entries.include? entry[:url] || entry[:title] == "Untitled" }
+  end  
 
   def clean_url(url)
+    begin
     uri = URI.parse(url)
     http = Net::HTTP.new(uri.host)
     response = http.get(uri.path)
-    begin
       self.url = uri.to_s
       unless has_a_video(self.url)
         self.url = response.fetch('location') if response.code != "200" 
@@ -65,7 +66,6 @@ class Autopost < ActiveRecord::Base
 
   def text_analysis(text)
     alchemy = AlchemyAPI::Client.new(ENV['ALCHEMY_CONNECT'])
-    
     begin
       sentiment_score = (alchemy.TextGetTextSentiment(text: text)["docSentiment"]["score"].to_f * 100).round if language == "english"
     rescue      
