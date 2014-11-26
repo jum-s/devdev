@@ -18,21 +18,21 @@
               #{get_sentiment(auto)}
               #{get_language(auto)}
             %h3= auto.title
-            %span.columns.crop.no-pad{:style => "background-color: #{random_color}"}
-              = image_tag(auto.image) if auto.image
-              - if auto.tag
-                .text
-                  = icon('tag')
-                  - if auto.tag
-                    - auto.tag.split(",").each do |tag|
-                      %p.inline.label= tag
-            - if auto.has_video == 1
+            - if auto.url.include?("youtub" || "vimeo" || "dailymotion")
               .columns.medium-7
                 .video_icon.button.radius.alert
                   = icon('play-circle-o')
                   = t('watchvideo')
               %br
             - else
+              %span.columns.crop.no-pad{:style => "background-color: #{random_color}"}
+                = image_tag(auto.image) if auto.image
+                - if auto.tag
+                  .text
+                    = icon('tag')
+                    - if auto.tag
+                      - auto.tag.split(",").each do |tag|
+                        %p.inline.label= tag
               %p= strip_tags(auto.text.truncate(250, separator: ' ')).html_safe if auto.text
           %hr
         .button.radius= link_to t('moreautopost'), autoposts_path

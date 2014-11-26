@@ -9,7 +9,7 @@
       |
   %br
   
-- @autoposts.each do |auto|
+- @autoposts.select(&:text).each do |auto|
   .columns.small-12.medium-4.large-4.bd-left
     = link_to auto.url do
       %h4.source
@@ -31,3 +31,6 @@
         %p.inline.label= tag
       %br
       %p= strip_tags(auto.text.truncate(250, separator: ' ')).html_safe
+.columns.medium-3
+  .label.alert
+    = paginate @autoposts
