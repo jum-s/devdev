@@ -85,3 +85,12 @@ fr:
   time:
     formats:
       long: "%d/%m/%Y"
+
+  #Kaminari
+  views:
+    pagination:
+      first: "&laquo; Première"
+      last: "Dernière &raquo;"
+      previous: "&lsaquo; Préc"
+      next: "Suiv &rsaquo;"
+      truncate: "&hellip;"

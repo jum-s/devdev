@@ -1,3 +1,4 @@
+
 .columns
   %br
   .panel
@@ -27,3 +28,6 @@
       - else 
         %span.columns.crop.no-pad{:style => "background-color: #{random_color}"}
       %p= strip_tags(twt.text.truncate(250, separator: ' ')).html_safe
+.columns
+  .label.alert
+    = paginate @twtlinks

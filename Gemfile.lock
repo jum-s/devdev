@@ -294,7 +294,7 @@ DEPENDENCIES
   factory_girl
   fastimage
   feedjira
-  font-awesome-sass
+  font-awesome-sass (~> 4.2.0)
   foundation-rails
   guard
   guard-bundler
@@ -303,6 +303,7 @@ DEPENDENCIES
   haml
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   newrelic_rpm
   oauth
   pg

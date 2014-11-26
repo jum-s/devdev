@@ -5,3 +5,4 @@
 /tmp
 /.env
 /test/vcr/
+/public/assets/

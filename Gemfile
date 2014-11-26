@@ -13,6 +13,7 @@ gem 'vcr', :groups => [:test]
 gem 'webmock', :groups => [:test]
 gem 'factory_girl', :groups => [:test]
 
+gem 'kaminari'
 gem 'newrelic_rpm'
 gem 'fastimage'
 gem 'rails-clean-logs'
@@ -21,7 +22,7 @@ gem 'oauth'
 gem 'alchemy-api'
 gem 'active_admin_editor'
 gem 'foundation-rails'
-gem 'font-awesome-sass'
+gem 'font-awesome-sass', '~> 4.2.0'
 gem 'haml'
 gem 'activerecord-session_store'
 gem 'feedjira'
