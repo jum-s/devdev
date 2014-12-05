@@ -7,7 +7,7 @@ FactoryGirl.define do
   end
 
   factory :autopost do
-    url "http://techcrunch.com/2014/10/11/the-internet-of-someone-elses-things/"
+    url "https://xkcd.com/1312/"
   end
 
   factory :pensee do
