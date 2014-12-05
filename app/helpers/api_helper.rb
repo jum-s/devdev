@@ -56,7 +56,12 @@ module ApiHelper
   
   def get_image(url)
     begin
-      connect_readability(url).images[0] if connect_readability(url) != nil
+      image = connect_readability(url).images[0]
+      if image =~ /\A#{URI::regexp(['http', 'https'])}\z/
+        return image
+      else
+        ''
+      end
     rescue
       ""
     end

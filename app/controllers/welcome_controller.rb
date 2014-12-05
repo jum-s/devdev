@@ -24,8 +24,7 @@ private
     @pensee_random = Pensee.first.text.split("\", \"").sample
     @posts = Post.order("created_at DESC").first(5)
     @find_auto = Autopost.has_text
-    @find_twt = Twtlink.order("created_at DESC").select(&:text)
-
+    @find_twt = Twtlink.has_text
   end
 
 end

@@ -14,9 +14,9 @@
               = auto.created_at.strftime("%e %b.")
               |
               = icon 'clock-o'
-              = get_reading_time(auto)
-              #{get_sentiment(auto)}
-              #{get_language(auto)}
+              = display_reading_time(auto)
+              #{display_sentiment(auto)}
+              #{display_language(auto)}
             %h3= auto.title
             - if auto.url.include?("youtub" || "vimeo" || "dailymotion")
               .columns.medium-7
@@ -47,9 +47,10 @@
           .time_date
             = twt.created_at.strftime("%e %b.")
             |
-            = twt.reading_time
-            #{get_sentiment(twt)}
-            #{get_language(twt)}
+            = icon 'clock-o'
+            = display_reading_time(twt)
+            #{display_sentiment(twt)}
+            #{display_language(twt)}
           %h4= twt.title
           - if twt.tag != ""
             = icon('tag') 

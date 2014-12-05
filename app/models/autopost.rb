@@ -4,8 +4,8 @@ class Autopost < ActiveRecord::Base
   validates_uniqueness_of :url
   attr_accessible :url, :title, :word_count, :has_video, :text, :tag, :sentiment, :image, :language
   
-  scope :has_video, ->  { where("url like ?", "%youtu%" || "%vimeo%" || "%dailymo%").order(:created_at) }
-  scope :has_text, ->  { where.not(text: nil).order(:created_at) }
+  scope :has_video, ->  { where("url like ?", "%youtu%" || "%vimeo%" || "%dailymo%").order(created_at: :desc) }
+  scope :has_text, ->  { where.not(text: nil).order(created_at: :desc)}
 
   def new_urls
     actual_urls = Autopost.all.map(&:url)
@@ -26,6 +26,5 @@ class Autopost < ActiveRecord::Base
       aut.image = get_image(url)
       aut.save
     end unless Autopost.new.new_urls.empty?
-  binding.pry
   end
 end

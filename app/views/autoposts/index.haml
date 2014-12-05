@@ -17,9 +17,9 @@
         = auto.created_at.strftime("%e %b.")
         |
         = icon 'clock-o'
-        = get_reading_time(auto)
-        #{get_sentiment(auto)}
-        #{get_language(auto)}
+        = display_reading_time(auto)
+        #{display_sentiment(auto)}
+        #{display_language(auto)}
       %h4
         %strong= auto.title
       - if auto.image =~ /\A#{URI::regexp(['http', 'https'])}\z/

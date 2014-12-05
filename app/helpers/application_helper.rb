@@ -1,7 +1,7 @@
 module ApplicationHelper
  
   # Estimation of the time to read a post, Merci Em-AK !
-  def get_reading_time(post)
+  def display_reading_time(post)
     words_per_minute = 170.0
     time = post.word_count / words_per_minute
     reading_time = "#{time.round} min"

@@ -16,9 +16,9 @@
         = twt.created_at.strftime("%e %b.")
         |
         = icon 'clock-o'
-        = twt.reading_time
-        #{get_sentiment(twt)}
-        #{get_language(twt)}
+        = display_reading_time(twt)
+        #{display_sentiment(twt)}
+        #{display_language(twt)}
       %h4
         %strong= twt.title
       - if twt.image =~ /\A#{URI::regexp(['http', 'https'])}\z/
