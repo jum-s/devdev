@@ -14,7 +14,7 @@
               = auto.created_at.strftime("%e %b.")
               |
               = icon 'clock-o'
-              = auto.reading_time
+              = get_reading_time(auto)
               #{get_sentiment(auto)}
               #{get_language(auto)}
             %h3= auto.title
@@ -45,7 +45,6 @@
       - @twtlinks.each do |twt|
         = link_to twt.url do
           .time_date
-            %br
             = twt.created_at.strftime("%e %b.")
             |
             = twt.reading_time
