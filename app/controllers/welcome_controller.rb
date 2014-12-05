@@ -23,7 +23,7 @@ private
   def pensees_and_posts
     @pensee_random = Pensee.first.text.split("\", \"").sample
     @posts = Post.order("created_at DESC").first(5)
-    @find_auto = Autopost.order("created_at DESC").select(&:text)
+    @find_auto = Autopost.has_text
     @find_twt = Twtlink.order("created_at DESC").select(&:text)
 
   end
