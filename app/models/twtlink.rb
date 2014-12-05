@@ -1,50 +1,35 @@
 class Twtlink < ActiveRecord::Base
-  include ApplicationHelper 
+  include ApplicationHelper
+  include ApiHelper 
   validates_uniqueness_of :url
   attr_accessible :url, :title, :word_count, :text, :tag, :sentiment, :image, :language
 
-  def create_with_url
-    fetch_new_urls.each do |url|
+  scope :has_video, ->  { where("url like ?", "%youtu%" || "%vimeo%" || "%dailymo%").order(:created_at) }
+  scope :has_text, ->  { where.not(text: nil).order(:created_at) }
+
+  def new_urls
+    json_response = JSON.parse(twitter_connect.body) if twitter_connect.code == '200'
+    all_urls = json_response.map{ |t| t["entities"]["urls"][0]}.compact.map { |p| p["expanded_url"]}.compact
+    actual_urls = Twtlink.all.map(&:url)
+    all_urls - actual_urls
+  end
+
+  def create_twtlinks
+    new_urls.each do |url|
       twt = Twtlink.new
       twt.url = url
+        twt.title = get_title(url)
+        twt.sentiment = get_sentiment(url)
+        twt.tag = get_tags(url)
+        twt.language = get_language(url)
+        twt.has_video = 1 if has_a_video(url)
       begin
-        twt.title = connect_alchemy.URLGetTitle(url: url)["title"]
-        twt.text = connect_readability(url).content
-        twt.image = connect_readability(url).images[0]
-        twt.word_count = twt.text.split(' ').count
-        twt.reading_time = get_reading_time(twt)
-        twt.sentiment = get_sentiment(twt.text)
-        twt.has_a_video(twt.url)
-        twt.tag = get_tags
-        twt.language = get_language
+        twt.text = get_text(url)
+        twt.word_count = get_word_count(twt.text)
+        twt.image = get_image(url)
       rescue
       end
       twt.save
     end
   end
-
-  def get_sentiment(text)
-    sentiment_response = connect_alchemy.HTMLGetTextSentiment(html: text)
-    sentiment_score = sentiment_response["docSentiment"]["score"] if sentiment_response["status"] == "OK"
-    case sentiment_score
-      when 0.1..1 then 1
-      when -0.1..-1 then 3
-      else 2
-    end
-  end
-
-  def get_language
-    text_analysis = connect_alchemy.HTMLGetRankedKeywords(html: self.text)
-    text_analysis["language"]
-  end
-
-  def get_tags
-    text_analysis = connect_alchemy.HTMLGetRankedKeywords(html: self.text)
-    text_analysis["keywords"].first(10).map {|v| v["text"]}.join(",")
-  end
-
-  def has_a_video(url)
-    self.has_video = 1 if url.include?("dailymo") || url.include?("youtu")|| url.include?("vimeo")
-  end
-
 end
