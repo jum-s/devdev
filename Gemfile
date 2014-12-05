@@ -29,9 +29,9 @@ gem 'feedjira'
 gem 'devise'
 gem 'protected_attributes'
 gem "ruby-readability", :require => 'readability'
-gem 'puma'
 
 group :development do
+  gem 'webrick'
   gem 'spring'
   gem 'guard'
   gem 'guard-livereload', require: false
@@ -47,6 +47,7 @@ group :doc do
 end
   
 group :production do
+  gem 'puma'
   gem 'unicorn'
   gem 'pg'
   gem 'rails_12factor', '0.0.2'
