@@ -21,5 +21,4 @@ private
     @pensee_random = Pensee.first.text.split("\", \"").sample
     @posts = Post.order("created_at DESC").first(5)
   end
-
 end
