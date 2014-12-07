@@ -3,7 +3,7 @@ fr:
   toread: "Articles De Presse"
   food: "Réflexions Courtes"
   twtlinks: "Articles Tweetés"
-  about_me: "Vincent Jumeaux"
+  about_me: "A Mon Propos"
   tocontinue: "Pour Continuer"
   resume: "Mon Cv"
   realisations: "Mes Réalisations"
@@ -16,8 +16,9 @@ fr:
   thought: "Pensée Aléatoire"
   seeall: "Voir tous les Textes"
   tocontinue: "Continuer avec"
-  watchvideo: "Juste envie d'une vidéo ?"
-  moreautopost: "Voir plus d'articles"
+  watchvideo: "Envie d'une vidéo ?"
+  moreautopost: "Voir plus d'articles"  
+
   # CV
   intro1: "Développeur Web Freelance chez"
   intro2: "Gestion de projet humanitaire dans l'éducation"
