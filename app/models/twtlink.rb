@@ -1,5 +1,4 @@
 class Twtlink < ActiveRecord::Base
-  include ApplicationHelper
   include ApiHelper 
   validates_uniqueness_of :url
   attr_accessible :url, :title, :word_count, :text, :tag, :sentiment, :image, :language

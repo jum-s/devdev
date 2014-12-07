@@ -8,5 +8,4 @@ class TwtlinksController < ApplicationController
       @twtlink_videos = Twtlink.has_video.in_english.last 15
     end
   end
-  end
 end
