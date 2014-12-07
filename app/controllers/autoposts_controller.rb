@@ -1,6 +1,11 @@
 class AutopostsController < ApplicationController
   def index
-    @autoposts = Autopost.has_text.page(params[:page]).per(30)
-    @autopost_videos = Autopost.has_video.last 15
+    if params[:locale] == 'fr'
+      @autoposts = Autopost.has_text.in_french.page(params[:page]).per(30)
+      @autopost_videos = Autopost.has_video.in_french.last 15
+    else
+      @autoposts = Autopost.has_text.in_english.page(params[:page]).per(30)
+      @autopost_videos = Autopost.has_video.in_english.last 15
+    end
   end
 end

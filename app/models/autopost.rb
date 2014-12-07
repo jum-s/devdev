@@ -6,6 +6,8 @@ class Autopost < ActiveRecord::Base
   
   scope :has_video, ->  { where("url like ?", "%youtu%" || "%vimeo%" || "%dailymo%").order(created_at: :desc) }
   scope :has_text, ->  { where.not(text: nil).order(created_at: :desc)}
+  scope :in_french, ->  { where(language: "french").order(created_at: :desc)}
+  scope :in_english, ->  { where.not(language: "french").order(created_at: :desc)}
 
   def new_urls
     actual_urls = Autopost.all.map(&:url)

@@ -6,8 +6,7 @@ Devdev::Application.routes.draw do
 
   root to: 'welcome#index'
   scope "/:locale" do
-    get '/' => 'welcome#index_fr'
-    get '/' => 'welcome#index_en'
+    get '/' => 'welcome#index'
     resources :posts
     resources :autoposts
     resources :twtlinks
