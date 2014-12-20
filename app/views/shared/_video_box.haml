@@ -1,0 +1,10 @@
+%br
+.panel
+  %h3= t('watchvideo')
+  - videos.each do |vid|
+    = link_to vid.url do
+      .inline.label.secondary.radius.video_icon
+        = icon('play-circle-o')
+        = vid.title.truncate(60, separator: ' ')
+    |
+%br

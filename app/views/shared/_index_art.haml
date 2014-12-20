@@ -1,0 +1,13 @@
+.columns
+  = render "shared/video_box", videos: videos
+  
+- articles.each do |auto|
+  .columns.small-12.medium-4.bd-left.article_box
+    = link_to auto.url do
+      %h4.source
+        = render "shared/meta_bar", obj: auto
+      %h4= auto.title
+      = render "shared/image_box", obj: auto
+.columns.medium-3
+  .label.alert
+    = paginate articles

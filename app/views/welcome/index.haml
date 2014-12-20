@@ -1,5 +1,5 @@
 .row
-  .columns.small-12.medium-8
+  .columns.small-12.medium-9
     .quote_box
       %h3.heading= t('thought')
       %p
@@ -9,34 +9,16 @@
       %h2.heading= link_to t('toread'), autoposts_path
       .text_box
         - @autoposts.each do |auto|
-          = link_to auto.url do
-            %h4.time_date
-              = auto.created_at.strftime("%e %b.")
-              |
-              = icon 'clock-o'
-              = display_reading_time(auto)
-              #{display_sentiment(auto)}
-              #{display_language(auto)}
-            %h3= auto.title
-            - if auto.url.include?("youtub" || "vimeo" || "dailymotion")
-              .columns.medium-7
-                .video_icon.button.radius.alert
-                  = icon('play-circle-o')
-                  = t('watchvideo')
-              %br
-            - else
-              %span.columns.crop.no-pad{:style => "background-color: #{random_color}"}
-                = image_tag(auto.image) if auto.image
-                - if auto.tag
-                  .text
-                    = icon('tag')
-                    - if auto.tag
-                      - auto.tag.split(",").each do |tag|
-                        %p.inline.label= tag
-              %p= strip_tags(auto.text.truncate(250, separator: ' ')).html_safe if auto.text
-          %hr
+          .columns.medium-6.article_box
+            %hr
+            = link_to auto.url do
+              %h4.time_date
+                = render "shared/meta_bar", obj: auto
+              %h3= auto.title
+              = render "shared/image_box", obj: auto
+              
         .button.radius= link_to t('moreautopost'), autoposts_path
-  .columns.small-12.medium-4.twt_box
+  .columns.small-12.medium-3.twt_box
     .columns
       %h3.heading 
         = t('twtlinks') 
@@ -45,26 +27,13 @@
       - @twtlinks.each do |twt|
         = link_to twt.url do
           .time_date
-            = twt.created_at.strftime("%e %b.")
-            |
-            = icon 'clock-o'
-            = display_reading_time(twt)
-            #{display_sentiment(twt)}
-            #{display_language(twt)}
+            = render "shared/meta_bar", obj: twt
           %h4= twt.title
-          - if twt.tag != ""
-            = icon('tag') 
-            - twt.tag.split(/,/).first(4).each do |tag|
-              %p.inline.label= tag
-          - if twt.has_video == 1
-            .video_icon.button.radius.small
-              = icon('play-circle-o')
-              = t('watchvideo')
         %hr 
 .row
   .columns.medium-6.reflexion_box
     %h2.heading= link_to t('food'), posts_path
-  .columns.small-6.pull-3
+  .columns.small-6.pull-6
     = link_to t('seeall'), posts_path, :class => "button tiny alert pull-right"
   - @posts.each do |post|
     .columns.bd-left
