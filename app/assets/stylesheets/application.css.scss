@@ -56,6 +56,10 @@ a p {color: #333;}
   padding-right: 0;
 }
 
+.article_box {
+  min-height: 33em;
+}
+
 .jump { margin-bottom: 8em }
 
 .heading-1, .heading {
@@ -121,7 +125,6 @@ a p {color: #333;}
 
 .time_date {
   color: #999;
-  font-size: 1.1em;
   padding: 5px 0;
 }
 

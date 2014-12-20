@@ -13,10 +13,6 @@ module ApplicationHelper
     reading_time
   end
 
-  def display_date(post)
-    post.created_at.strftime("%e %b.")
-  end
-
   def display_language(post)
     case post.language 
       when "english" then " | #{image_tag 'uk.png', size: '20x20'}".html_safe
