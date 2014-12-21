@@ -1,8 +1,8 @@
 module ApiHelper
- def twitter_connect
-    baseurl = "https://api.twitter.com"
-    path    = "/1.1/statuses/user_timeline.json"
-    query   = URI.encode_www_form("screen_name" => "Jumijums")
+  def twitter_connect
+    baseurl = 'https://api.twitter.com'
+    path    = '/1.1/statuses/user_timeline.json'
+    query   = URI.encode_www_form('screen_name' => 'Jumijums')
     address = URI("#{baseurl}#{path}?#{query}")
     request = Net::HTTP::Get.new address.request_uri
     http             = Net::HTTP.new address.host, address.port
@@ -16,38 +16,28 @@ module ApiHelper
   end
 
   def framabag_connect
-    feeds = Feedjira::Feed.fetch_and_parse("https://www.framabag.org/u/jumijums/?feed&type=home&user_id=1&token=" + ENV['SECRET_KEY']).entries
+    feeds = Feedjira::Feed.fetch_and_parse('https://www.framabag.org/u/jumijums/?feed&type=home&user_id=1&token=' + ENV['SECRET_KEY']).entries
     feeds.map { |feed| feed['url'] }
   end
 
-####Shared btw Autopost & Twtlink####
+# Shared btw Autopost & Twtlink #
 
   def connect_alchemy
-     AlchemyAPI::Client.new(ENV['ALCHEMY_CONNECT'])
+    AlchemyAPI::Client.new(ENV['ALCHEMY_CONNECT'])
   end
 
   def connect_readability(url)
-    begin
-      Readability::Document.new(open(url).read)
-    rescue
-      nil
-    end
+    Readability::Document.new(open(url).read)
+    rescue nil
   end
 
   def get_title(url)
-     connect_alchemy.URLGetTitle(url: url)["title"]
+    connect_alchemy.URLGetTitle(url: url)['title']
   end
   
   def get_text(url)
-    begin
-      if connect_readability(url) != nil
-        connect_readability(url).content 
-      else
-        ""
-      end
-    rescue
-      ""
-    end
+    connect_readability(url).content unless connect_readability(url).nil? 
+    rescue ''
   end
   
   def get_word_count(text)
@@ -55,65 +45,47 @@ module ApiHelper
   end
   
   def get_image(url)
-    begin
-      image = connect_readability(url).images[0]
-      if image =~ /\A#{URI::regexp(['http', 'https'])}\z/
-        return image
-      else
-        ''
-      end
-    rescue
-      ""
-    end
+    image = connect_readability(url).images[0]
+    return image if image =~ /\A#{URI.regexp(['http', 'https'])}\z/
+    rescue ''
   end
   
   def get_sentiment(url)
-    begin
-      sentiment_response = connect_alchemy.URLGetTextSentiment(url: url)
-      sentiment_score = sentiment_response["docSentiment"]["score"] if sentiment_response["status"] == "OK"
-      case sentiment_score
-        when 0.05..1 then 1
-        when -0.05..-1 then 3
-        else 2
-      end
-    rescue
-      2
+    sentiment_response = connect_alchemy.URLGetTextSentiment(url: url)
+    sentiment_score = sentiment_response['docSentiment']['score'] if sentiment_response['status'] == 'OK'
+    case sentiment_score
+    when 0.05..1 then 1
+    when -0.05..-1 then 3
+    else 2
     end
+    rescue 2
   end
 
   def get_tags(url)
-    begin
-      text_analysis = connect_alchemy.URLGetRankedKeywords(url: url)
-      text_analysis["keywords"].first(10).map {|v| v["text"]}.join(",")
-    rescue
-      ""
-    end
+    text_analysis = connect_alchemy.URLGetRankedKeywords(url: url)
+    text_analysis['keywords'].first(10).map {|v| v['text']}.join(',')
+    rescue ''
   end
 
   def get_language(url)
-    begin
-      text_analysis = connect_alchemy.URLGetRankedKeywords(url: url)
-      text_analysis["language"]
-    rescue
-      ""
-    end
+    text_analysis = connect_alchemy.URLGetRankedKeywords(url: url)
+    text_analysis['language']
+    rescue ''
   end
 
-  def has_a_video(url)
-    url.include?("dailymo") || url.include?("youtu")|| url.include?("vimeo")
+  def a_video?(url)
+    url.include?('dailymo') || url.include?('youtu')|| url.include?('vimeo')
   end
 
   def clean_url(url)
-    begin
-      uri = URI.parse(url)
-      http = Net::HTTP.new(uri.host)
-      unless url.include? "youtub"
-        response = http.get(uri.path)
-        self.url = response.fetch('location') if response.code != "200" 
-      else
-        self.url = uri.to_s
-      end
-    rescue
+    uri = URI.parse(url)
+    http = Net::HTTP.new(uri.host)
+    if url.include? 'youtub'
+      self.url = uri.to_s
+    else
+      response = http.get(uri.path)
+      self.url = response.fetch('location') if response.code != '200'
     end
+    rescue
   end
 end

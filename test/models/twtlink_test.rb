@@ -31,7 +31,7 @@ class TwtlinkTest < ActiveSupport::TestCase
       assert_match "The Internet Of Things is coming. Rejoice!" , twtlink.get_text(url)
       assert_equal 2, twtlink.get_sentiment(url)
       assert_match "handwavey vaporware notion,smart things", twtlink.get_tags(url)
-      assert_not twtlink.has_a_video(url)
+      assert_not twtlink.a_video?(url)
     end
   end
 
@@ -48,5 +48,4 @@ class TwtlinkTest < ActiveSupport::TestCase
       assert_equal "english", Twtlink.offset(1).last.language
     end
   end
-
 end

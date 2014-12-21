@@ -22,7 +22,7 @@ class AutopostTest < ActiveSupport::TestCase
       assert_match "The Internet Of Things is coming. Rejoice!" , autopost.get_text(url)
       assert_equal 2, autopost.get_sentiment(url)
       assert_match "handwavey vaporware notion,smart things", autopost.get_tags(url)
-      assert_not autopost.has_a_video(url)
+      assert_not autopost.a_video?(url)
     end
   end
 

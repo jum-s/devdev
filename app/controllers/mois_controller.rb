@@ -4,7 +4,7 @@ class MoisController < ApplicationController
   end
 
   def realisation
-  end  
+  end
 
   def tour
   end
