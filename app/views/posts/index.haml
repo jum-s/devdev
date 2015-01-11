@@ -1,10 +1,13 @@
-%h1.heading Toutes les réflexions
-- Post.all.each do |post|
-  .columns.medium-6.bd-left
-    = link_to post do
-      %h4.source 
-        = post.created_at.strftime("%e %b.")
-      %h3
-        %strong= post.title
-      %p.p-1
-        = post.text.html_safe
+.row
+  .columns
+    %br
+    %h1.heading Toutes les réflexions
+    - Post.all.each do |post|
+      .columns.medium-6.bd-left
+        = link_to post do
+          %h4.source 
+            = post.created_at.strftime("%e %b.")
+          %h3
+            %strong= post.title
+          %p.p-1
+            = post.text.html_safe

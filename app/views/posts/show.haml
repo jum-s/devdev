@@ -1,8 +1,7 @@
 .row
-  .jump
-  .medium-7.medium-centered.columns
+  .medium-8.push-2.columns
+    %br
     .reading_box
-      %br 
       %h3= @post.title.html_safe
       %p.source= @post.created_at.strftime("%e %B %Y")
       %p= @post.text.html_safe 
