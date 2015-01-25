@@ -2,8 +2,8 @@
 module ApplicationHelper
   def display_reading_time(post)
     words_per_minute = 170.0
-    time = post.word_count / words_per_minute
-    reading_time = '#{time.round} min'
+    time = post.word_count / words_per_minute unless post.word_count.nil?
+    reading_time = time.round.to_s + ' min'
     if time < 1
       reading_time = '< 1 min'
     elsif time >= 1 && time < 1.6
