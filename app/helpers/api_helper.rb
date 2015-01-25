@@ -1,9 +1,8 @@
 module ApiHelper
   def twitter_connect
-    baseurl = 'https://api.twitter.com'
-    path    = '/1.1/statuses/user_timeline.json'
+    baseurl = 'https://api.twitter.com/1.1/statuses/user_timeline.json'
     query   = URI.encode_www_form('screen_name' => 'Jumijums')
-    address = URI("#{baseurl}#{path}?#{query}")
+    address = URI("#{baseurl}?#{query}&count=50")
     request = Net::HTTP::Get.new address.request_uri
     http             = Net::HTTP.new address.host, address.port
     http.use_ssl     = true
