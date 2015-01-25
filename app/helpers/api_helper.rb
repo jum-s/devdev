@@ -36,8 +36,11 @@ module ApiHelper
   end
   
   def get_text(url)
-    connect_readability(url).content unless connect_readability(url).nil? 
-    rescue ''
+    begin
+      connect_readability(url).content 
+    rescue 
+      ''
+    end
   end
   
   def get_word_count(text)
@@ -45,32 +48,44 @@ module ApiHelper
   end
   
   def get_image(url)
-    image = connect_readability(url).images[0]
-    return image if image =~ /\A#{URI.regexp(['http', 'https'])}\z/
-    rescue ''
+    begin
+      image = connect_readability(url).images[0]
+      return image if image =~ /\A#{URI.regexp(['http', 'https'])}\z/
+    rescue 
+      ''
+    end
   end
   
   def get_sentiment(url)
-    sentiment_response = connect_alchemy.URLGetTextSentiment(url: url)
-    sentiment_score = sentiment_response['docSentiment']['score'] if sentiment_response['status'] == 'OK'
-    case sentiment_score
-    when 0.05..1 then 1
-    when -0.05..-1 then 3
-    else 2
+    begin
+      sentiment_response = connect_alchemy.URLGetTextSentiment(url: url)
+      sentiment_score = sentiment_response['docSentiment']['score'] if sentiment_response['status'] == 'OK'
+      case sentiment_score
+      when 0.05..1 then 1
+      when -0.05..-1 then 3
+      else 2
+      end
+    rescue
+      2
     end
-    rescue 2
   end
 
   def get_tags(url)
-    text_analysis = connect_alchemy.URLGetRankedKeywords(url: url)
-    text_analysis['keywords'].first(10).map {|v| v['text']}.join(',')
-    rescue ''
+    begin
+      text_analysis = connect_alchemy.URLGetRankedKeywords(url: url)
+      text_analysis['keywords'].first(10).map {|v| v['text']}.join(',')
+    rescue 
+      ''
+    end
   end
 
   def get_language(url)
-    text_analysis = connect_alchemy.URLGetRankedKeywords(url: url)
-    text_analysis['language']
-    rescue ''
+    begin
+      text_analysis = connect_alchemy.URLGetRankedKeywords(url: url)
+      text_analysis['language']
+    rescue 
+      ''
+    end
   end
 
   def a_video?(url)
@@ -78,14 +93,16 @@ module ApiHelper
   end
 
   def clean_url(url)
-    uri = URI.parse(url)
-    http = Net::HTTP.new(uri.host)
-    if url.include? 'youtub'
-      self.url = uri.to_s
-    else
-      response = http.get(uri.path)
-      self.url = response.fetch('location') if response.code != '200'
-    end
+    begin
+      uri = URI.parse(url)
+      http = Net::HTTP.new(uri.host)
+      if url.include? 'youtub'
+        self.url = uri.to_s
+      else
+        response = http.get(uri.path)
+        self.url = response.fetch('location') if response.code != '200'
+      end
     rescue
+    end
   end
 end
