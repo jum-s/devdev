@@ -74,7 +74,12 @@ a p {color: #333;}
 
 .flag { margin-bottom: 7 }
 
-.button { a {color: #FFF;} }
+.button { 
+  a:hover {color: white;}
+  color: $green;
+  background-color: white;
+  border: solid 2px $green;
+}
 
 .video_icon {
   color : white;
