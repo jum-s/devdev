@@ -1,12 +1,19 @@
 class Twtlink < ActiveRecord::Base
   include ApiHelper
+  include Scopes
   validates_uniqueness_of :url
   attr_accessible :url, :title, :word_count, :text, :tag, :sentiment, :image, :language
 
-  scope :has_video, ->  { where('url like ?', '%youtu%' || '%vimeo%' || '%dailymo%').order(created_at: :desc) }
-  scope :has_text, ->  { where.not(text: nil).order(created_at: :desc) }
-  scope :in_french, ->  { where(language: 'french').order(created_at: :desc) }
-  scope :in_english, ->  { where.not(language: 'french').order(created_at: :desc) }
+  def self.language(locale)
+    case locale
+    when 'fr'
+      has_title.where(language: 'french') 
+    when 'en'
+      has_title.where(language: 'english')
+    else 
+      has_title
+    end
+  end
 
   def new_urls
     json_response = JSON.parse(twitter_connect.body) if twitter_connect.code == '200'
