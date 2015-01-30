@@ -25,8 +25,9 @@
           %li.divider
           %li=link_to(t('twtlinks'), twtlinks_path)
         %ul.right.show-for-medium-up
-          %li=link_to(image_tag('fr.png', size: '20x20', class: 'flag'), root_path + "fr")
-          %li=link_to(image_tag('uk.png', size: '20x20', class: 'flag'), root_path + "en")
+          %li=link_to(image_tag('fr.png', size: '20x20', class: 'flag'), url_for( :locale => 'fr'))
+          %li=link_to(image_tag('uk.png', size: '20x20', class: 'flag'), url_for( :locale => 'en' ))
+          %li=link_to(image_tag('fruk.png', size: '20x20', class: 'flag'), url_for(:locale => nil))
           %li=link_to(icon('github'), "https://github/jum-s") 
           %li=link_to(icon('twitter'), "https://tweeter/Jumijums")
           %li=link_to(icon('rss'), "/feed")
