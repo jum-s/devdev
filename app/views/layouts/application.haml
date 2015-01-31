@@ -34,8 +34,9 @@
         %ul.right.show-for-small
           %li
             %p.small-screen-icons
-              =link_to(image_tag('fr.png', size: '20x20', class: 'flag'), root_path + "fr")
-              =link_to(image_tag('uk.png', size: '20x20', class: 'flag'), root_path + "en")
+              =link_to(image_tag('fr.png', size: '20x20', class: 'flag'), url_for( :locale => 'en' ))
+              =link_to(image_tag('uk.png', size: '20x20', class: 'flag'), url_for( :locale => 'en' ))
+              =link_to(image_tag('fruk.png', size: '20x20', class: 'flag'), url_for(:locale => nil))
               =link_to(icon('github'), "https://github/jum-s") 
               =link_to(icon('twitter'), "https://tweeter/Jumijums")
               =link_to(icon('rss'), "/feed")
