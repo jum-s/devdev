@@ -6,3 +6,4 @@
 /.env
 /test/vcr/
 /public/assets/
+/db/dump
