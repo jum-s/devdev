@@ -14,7 +14,7 @@ module ApiHelper
     http.request request
   end
 
-  def framabag_connect
+  def framabag_urls
     feeds = Feedjira::Feed.fetch_and_parse('https://www.framabag.org/u/jumijums/?feed&type=home&user_id=1&token=' + ENV['SECRET_KEY']).entries
     feeds.map { |feed| feed['url'] }
   end

@@ -16,22 +16,22 @@ class Autopost < ActiveRecord::Base
   end
 
   def new_urls
-    Autopost.all.map(&:url)
-    framabag_connect
+    autopost_urls = Autopost.all.map(&:url)
+    framabag_urls - autopost_urls
   end
 
   def create_autoposts
-    Autopost.new.new_urls.each do |url|
+    new_urls.each do |url|
       aut = Autopost.new
-      aut.url = url
-      aut.title = get_title(url)
-      aut.sentiment = get_sentiment(url)
-      aut.tag = get_tags(url)
-      aut.language = get_language(url)
-      aut.has_video = 1 if a_video?(url)
-      aut.text = get_text(url)
+      aut.url        = url
+      aut.title      = get_title(url)
+      aut.sentiment  = get_sentiment(url)
+      aut.tag        = get_tags(url)
+      aut.language   = get_language(url)
+      aut.has_video  = 1 if a_video?(url)
+      aut.text       = get_text(url)
       aut.word_count = get_word_count(aut.text) if aut.text
-      aut.image = get_image(url)
+      aut.image      = get_image(url)
       aut.save
     end unless Autopost.new.new_urls.empty?
   end
