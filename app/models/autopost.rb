@@ -4,6 +4,24 @@ class Autopost < ActiveRecord::Base
   validates_uniqueness_of :url
   attr_accessible :url, :title, :word_count, :has_video, :text, :tag, :sentiment, :image, :language
 
+  def self.create_with_url(url)
+    Autopost.new.create_autopost(url)
+  end
+
+  def create_autopost(url)
+    aut = Autopost.new
+    aut.url        = url
+    aut.title      = get_title(url)
+    aut.sentiment  = get_sentiment(url)
+    aut.tag        = get_tags(url)
+    aut.language   = get_language(url)
+    aut.has_video  = 1 if a_video?(url)
+    aut.text       = get_text(url)
+    aut.word_count = get_word_count(aut.text) if aut.text
+    aut.image      = get_image(url)
+    aut.save
+  end
+
   def self.language(locale)
     case locale
     when 'fr'
@@ -15,24 +33,11 @@ class Autopost < ActiveRecord::Base
     end
   end
 
-  def new_urls
-    autopost_urls = Autopost.all.map(&:url)
-    framabag_urls - autopost_urls
-  end
-
-  def create_autoposts
-    new_urls.each do |url|
-      aut = Autopost.new
-      aut.url        = url
-      aut.title      = get_title(url)
-      aut.sentiment  = get_sentiment(url)
-      aut.tag        = get_tags(url)
-      aut.language   = get_language(url)
-      aut.has_video  = 1 if a_video?(url)
-      aut.text       = get_text(url)
-      aut.word_count = get_word_count(aut.text) if aut.text
-      aut.image      = get_image(url)
-      aut.save
-    end unless Autopost.new.new_urls.empty?
-  end
+  # def create_autoposts
+  #   autopost_urls = Autopost.all.map(&:url)
+  #   new_urls = framabag_urls - autopost_urls
+  #   new_urls.each do |url|
+  #     create_autopost(url)
+  #   end unless Autopost.new.new_urls.empty?
+  # end
 end
