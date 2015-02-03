@@ -8,7 +8,16 @@ class Autopost < ActiveRecord::Base
     Autopost.new.create_autopost(url)
   end
 
+  def framabag_filter
+    autopost_urls = Autopost.all.map(&:url)
+    new_urls = framabag_urls - autopost_urls
+    new_urls.each do |url|
+      Autopost.new.create_autopost(url)
+    end unless new_urls.empty?
+  end
+
   def create_autopost(url)
+    puts "k"
     aut = Autopost.new
     aut.url        = url
     aut.title      = get_title(url)
@@ -32,12 +41,4 @@ class Autopost < ActiveRecord::Base
       has_title
     end
   end
-
-  # def create_autoposts
-  #   autopost_urls = Autopost.all.map(&:url)
-  #   new_urls = framabag_urls - autopost_urls
-  #   new_urls.each do |url|
-  #     create_autopost(url)
-  #   end unless Autopost.new.new_urls.empty?
-  # end
 end

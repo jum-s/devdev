@@ -6,11 +6,15 @@ class AutopostsController < ApplicationController
 
   def create
     token_check
-    Autopost.create_with_url(params.require(:url))
+    Autopost.create_with_url(auto_params)
   end
 
   private
  
+  def auto_params
+    params.require(:url)
+  end
+
   def token_check
     redirect_to root_url unless request.env["HTTP_TOKEN"] == ENV['LOCAL_TOKEN']
   end
