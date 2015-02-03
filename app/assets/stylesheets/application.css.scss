@@ -57,7 +57,7 @@ a p {color: #333;}
 }
 
 .article_box {
-  min-height: 35em;
+  min-height: 30em;
 }
 
 .jump { margin-bottom: 8em }
@@ -106,6 +106,13 @@ a p {color: #333;}
   font-size: 1.3em;
   font-weight: lighter;
   color: #DDD ;
+}
+
+.dark_header {
+  h2, p {color:$green;}
+  border-top: 2px solid $green;
+  border-bottom: 2px solid $green;
+  margin-top: 20px
 }
 
 .label { margin-bottom: 5px }
