@@ -1,7 +1,8 @@
 .row
+  .columns.dark_header
+    %h2.heading Toutes les réflexions
   .columns
     %br
-    %h1.heading Toutes les réflexions
     - Post.all.each do |post|
       .columns.medium-6.bd-left
         = link_to post do
