@@ -1,6 +1,6 @@
 fr:
   home: "Accueil"
-  toread: "Articles De Presse"
+  toread: "Articles 'golden'"
   food: "Réflexions Courtes"
   twtlinks: "Articles Tweetés"
   about_me: "A Mon Propos"
@@ -17,7 +17,7 @@ fr:
   seeall: "Voir tous les Textes"
   tocontinue: "Continuer avec"
   watchvideo: "Envie d'une vidéo ?"
-  moreautopost: "Voir plus d'articles"  
+  moreautopost: "Voir plus d'articles golden"  
   moretweets: "Voir plus de tweets"  
 
   # CV

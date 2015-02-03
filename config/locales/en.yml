@@ -1,6 +1,6 @@
 en:
   home: "Home"
-  toread: "Press"
+  toread: "Golden articles"
   food: "Food for Thoughts"
   twtlinks: "Tweet Read"
   about_me: "About Me"
@@ -17,7 +17,7 @@ en:
   seeall: "See All"
   tocontinue: "To continue"
   watchvideo: "Watch a video"
-  moreautopost: "See more articles"
+  moreautopost: "See more golden articles"
   moretweets: "See more tweets"
   #CV
   intro1: "Freelance web developper at "
