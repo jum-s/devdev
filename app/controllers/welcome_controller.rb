@@ -2,8 +2,8 @@ class WelcomeController < ApplicationController
   before_action :pensees_and_posts
 
   def index
-    @twtlinks = Twtlink.language(params[:locale]).first(10)
-    @autoposts = Autopost.language(params[:locale]).first(6)
+    @twtlinks = Twtlink.language(params[:locale]).first(8)
+    @autoposts = Autopost.language(params[:locale]).first(4)
   end
 
   def pensees_and_posts

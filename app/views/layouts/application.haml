@@ -21,9 +21,9 @@
           %li.divider
           %li=link_to(t('toread'), autoposts_path)
           %li.divider
-          %li=link_to(t('food'), posts_path)
-          %li.divider
           %li=link_to(t('twtlinks'), twtlinks_path)
+          %li.divider
+          %li=link_to(t('food'), posts_path)
         %ul.right.show-for-medium-up
           %li=link_to(image_tag('fr.png', size: '20x20', class: 'flag'), url_for( :locale => 'fr'))
           %li=link_to(image_tag('uk.png', size: '20x20', class: 'flag'), url_for( :locale => 'en' ))

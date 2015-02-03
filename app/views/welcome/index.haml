@@ -1,46 +1,41 @@
 .row
-  .columns.small-12.medium-9
+  .columns
     .quote_box
       %h3.heading= t('thought')
       %p
         #{icon('quote-left')} #{@pensee_random} #{icon('quote-right')}
     %hr
-    .columns
-      %h2.heading
-        = link_to t('toread'), autoposts_path
-        .button.tiny.radius.pull-right.hide-for-small-only
-          = link_to t('moretweets'), twtlinks_path
-        .button.tiny.radius.pull-right.pull-1.hide-for-small-only
-          = link_to t('moreautopost'), autoposts_path
-      .text_box
-        - @autoposts.each do |auto|
-          .columns.medium-6.article_box
-            %hr
-            = link_to auto.url do
-              %h4.time_date
-                = render "shared/meta_bar", obj: auto
-              %h3= auto.title
-              = render "shared/image_box", obj: auto
-              
-  .columns.small-12.medium-3.twt_box
-    .columns
-      %h3.heading 
+  .columns.dark_header
+    = link_to autoposts_path do
+      %h2.heading= t('toread')
+  .columns
+    - @autoposts.each do |auto|
+      .columns.medium-6.article_box
+        = render "shared/article_box", obj: auto
+    .button.tiny.radius.pull-left
+      = link_to t('moreautopost'), autoposts_path
+.row
+  .columns.dark_header
+    = link_to twtlinks_path do
+      %h2.heading 
         = t('twtlinks') 
         = icon('twitter')
-      %small= link_to "Posted by @jumijums", "https://tweeter/Jumijums"
-      - @twtlinks.each do |twt|
-        = link_to twt.url do
-          .time_date
-            = render "shared/meta_bar", obj: twt
-          %h4= twt.title
-        %hr 
+    %p=link_to "Posted by @jumijums", "https://twitter.com/jumijums"
+  .columns
+    - @twtlinks.each do |twt|
+      .columns.medium-6.article_box
+        = render "shared/article_box", obj: twt
+    .button.tiny.radius.pull-left
+      = link_to t('moretweets'), twtlinks_path
 .row
-  .columns.medium-6.reflexion_box
+  .columns.dark_header
     %h2.heading= link_to t('food'), posts_path
-  .columns.small-6.pull-6
-    = link_to t('seeall'), posts_path, :class => "tiny button radius pull-right"
-  - @posts.each do |post|
-    .columns.bd-left
-      %h4.time_date= post.created_at.strftime("%e %b")
-      %h3.heading= post.title
-      %p.p-1= post.text.html_safe
+  .columns
+    %br
+    - @posts.each do |post|
+      .columns.medium-6.bd-left
+        %h4.time_date= post.created_at.strftime("%e %b")
+        %h3.heading= post.title
+        %p.p-1= post.text.html_safe
+    .button.tiny.radius.pull-left
+      = link_to t('seeall'), posts_path

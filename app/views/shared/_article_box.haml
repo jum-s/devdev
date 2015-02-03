@@ -1,0 +1,23 @@
+%hr
+= link_to obj.url do
+  %h4.time_date
+    = obj.created_at.strftime("%e %b.")
+    |
+    = icon 'clock-o'
+    #{display_reading_time(obj) if obj.word_count}
+    #{display_sentiment(obj)}
+    #{display_language(obj)}
+  %h3= obj.title
+  - if obj.url.include?("youtub" || "vimeo" || "dailymotion")
+    .columns.medium-7
+      .video_icon.button.radius.alert
+        = icon('play-circle-o')
+        = t('watchvideo')
+    %br
+  - else
+    - if obj.image =~ /\A#{URI::regexp(['http', 'https'])}\z/
+      .columns.crop.no-pad
+        = image_tag(obj.image)
+    - else 
+      %span.columns.crop.no-pad{:style => "background-color: #{random_color}"}
+  %p= strip_tags(obj.text.truncate(250, separator: ' ')).html_safe if obj.text
