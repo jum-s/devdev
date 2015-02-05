@@ -3,6 +3,6 @@
 - articles.each do |art|
   .columns.small-12.medium-4.article_box
     = render "shared/article_box", obj: art
-.columns.medium-3
+.columns
   .label.alert
     = paginate articles
