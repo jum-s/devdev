@@ -2,6 +2,7 @@ require 'test_helper'
 
 class TwtlinkTest < ActiveSupport::TestCase
   include ApplicationHelper 
+  include AttributeHelper 
 
   test "have a valid factory" do
     assert FactoryGirl.build(:twtlink).valid?
@@ -14,12 +15,13 @@ class TwtlinkTest < ActiveSupport::TestCase
     end
   end
 
-  test "fetch new urls" do
+  test "create twtlinks" do
     VCR.use_cassette('new_twt_urls') do
       twtlink = FactoryGirl.build(:twtlink)
-      assert twtlink.new_urls.first.include? "http"
-      old_urls = Twtlink.all.map(&:url)
-      assert_not old_urls.include? twtlink.new_urls.first
+      new_url = twtlink.new_urls.last
+      assert_not Twtlink.all.map(&:url).include?(new_url)
+      Twtlink.new.create([new_url])
+      assert_equal Twtlink.last.title, get_title(new_url) 
     end
   end
 end
