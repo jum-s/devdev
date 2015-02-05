@@ -1,7 +1,9 @@
 class AutopostsController < ApplicationController
+  include LanguageHelper
+
   def index
-      @autoposts = Autopost.language(params[:locale]).page(params[:page]).per(30)
-      @autopost_videos = Autopost.has_video.language(params[:locale]).last 15
+    @autoposts = serve_by_language(Autopost.all, params[:locale]).page(params[:page]).per(30)
+    @autopost_videos = serve_by_language(Autopost.all, params[:locale]).has_video.last 15
   end
 
   def create
