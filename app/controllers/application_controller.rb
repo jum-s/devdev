@@ -3,13 +3,9 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
 
   def next_links
-    twtlinks = Twtlink.select(&:text)
-    autoposts = Autopost.select(&:text)
+    twtlinks = serve_by_language(Twtlink.all, params[:locale])
+    autoposts = serve_by_language(Autopost.all, params[:locale])
     @next_articles = (twtlinks.last(6) + autoposts.last(4)).sample(5)
-  end
-
-  def url_options
-    { locale: I18n.locale }.merge(super)
   end
 
   def set_locale
