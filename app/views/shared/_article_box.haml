@@ -17,7 +17,7 @@
   - else
     - if obj.image && obj.image.include?('http')
       .columns.crop.no-pad
-        = image_tag(obj.image)
+        = image_tag obj.image, "data" => {"url" => obj.image}, class: "lazy-load"
     - else 
-      %span.columns.crop.no-pad{:style => "background-color: #{random_color}"}
+      %span.columns.crop.no-pad{style: "background-color: #{random_color}"}
   %p= strip_tags(obj.text.truncate(250, separator: ' ')).html_safe if obj.text

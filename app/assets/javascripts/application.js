@@ -12,4 +12,12 @@
 //
 //= require turbolinks
 //= require_tree .
-$(function(){ $(document).foundation(); });
+$(function(){ 
+  $(document).foundation(); 
+  $(document).ready(function(){
+    $('.lazy-load').each(function(){
+      $(this).text('');
+      $(this).append('<img src="' + $(this).data("url") + '"/>')
+    })
+  })
+})
