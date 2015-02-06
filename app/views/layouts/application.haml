@@ -8,74 +8,12 @@
     = auto_discovery_link_tag :atom, "/feed"
     = auto_discovery_link_tag :rss, "/feed.rss"
   %body.background_image
-    %nav.top-bar{"data-topbar" => "", :role => "navigation"}
-      %ul.title-area
-        %li.name=link_to(image_tag("logo.jpg", :size => "30x30", :id => "logo"), root_path)
-        %li.toggle-topbar.menu-icon
-          %a{:href => "#"}
-            %span Menu
-      %section.top-bar-section
-        %ul.left
-          %li.divider
-          %li=link_to(t('about_me'), mois_cv_path)
-          %li.divider
-          %li=link_to(t('toread'), autoposts_path)
-          %li.divider
-          %li=link_to(t('twtlinks'), twtlinks_path)
-          %li.divider
-          %li=link_to(t('food'), posts_path)
-        %ul.right.show-for-medium-up
-          %li=link_to(image_tag('fr.png', size: '20x20', class: 'flag'), url_for( :locale => 'fr'))
-          %li=link_to(image_tag('uk.png', size: '20x20', class: 'flag'), url_for( :locale => 'en' ))
-          %li=link_to(image_tag('fruk.png', size: '20x20', class: 'flag'), url_for(:locale => nil))
-          %li=link_to(icon('github'), "https://github/jum-s") 
-          %li=link_to(icon('twitter'), "https://tweeter/Jumijums")
-          %li=link_to(icon('rss'), "/feed")
-        %ul.right.show-for-small
-          %li
-            %p.small-screen-icons
-              =link_to(image_tag('fr.png', size: '20x20', class: 'flag'), url_for( :locale => 'en' ))
-              =link_to(image_tag('uk.png', size: '20x20', class: 'flag'), url_for( :locale => 'en' ))
-              =link_to(image_tag('fruk.png', size: '20x20', class: 'flag'), url_for(:locale => nil))
-              =link_to(icon('github'), "https://github/jum-s") 
-              =link_to(icon('twitter'), "https://tweeter/Jumijums")
-              =link_to(icon('rss'), "/feed")
+    = render "layouts/menu_bar"
     .row
-      .columns
-        .row
-          .columns
-          .columns.small-12.medium-4.large-3.big_title=t('title')
-          .columns.hide-for-small.medium-8.large-9.subtitle= t('tags')
-          .columns
-          = yield
+      .columns.small-12.medium-4.big_title=t('title')
+      .columns.hide-for-small.medium-8.subtitle= t('tags')
+      = yield
     .row-fluid
-      .columns
-        %hr
-        .next_article_box
-          %h4= t('tocontinue')
-          - @next_articles.each do |next_article|
-            = link_to next_article.url do
-              %h3
-                = next_article.title
-                = icon('twitter') if next_article.class == Twtlink
-      .columns.small-12.medium-4.footer
-        %h3.heading Me concernant
-        %p=link_to t('resume'), mois_cv_path
-        %p=link_to t('realisations'), mois_realisation_path
-        %p=link_to  t('tour_fr'), mois_tour_path
-      .columns.small-12.medium-4.footer
-        %hr.hide-for-medium.hide-for-large
-        %h3.heading= t('friends')
-        %p=link_to "Simplon.co", "http://simplon.co"
-        %p=link_to "Maxlath", "http://maxlath.eu/"
-        %p=link_to "Em-hack", "http://bepos.be/"
-      .columns.small-12.medium-4.footer
-        %hr.hide-for-medium.hide-for-large
-        %h3.heading= t('lifechangevid')
-        %p=link_to t('basicincome'), "https://www.youtube.com/watch?v=-cwdVDcm-Z0"
-        %p=link_to "Humans Need Not Apply","https://vimeo.com/105406386"
-        %p=link_to "The Innovation of Loneliness", "https://vimeo.com/70534716"
-      .columns.footer
-        %hr.hide-for-medium.hide-for-large
-        %small written with ♥ by Vincent Jumeaux | Data from articles are all right reserved to their compagny owners
+      = render "layouts/next_articles"
+      = render "layouts/footer"
     = javascript_include_tag "application"
