@@ -2,7 +2,7 @@ atom_feed :language => 'fr-FR' do |feed|
   feed.title @title
   feed.updated @updated
 
-  @post.each do |item|
+  @posts.each do |item|
     next if item.updated_at.blank?
 
     feed.entry( item ) do |entry|

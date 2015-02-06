@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  include LanguageHelper
+
   def show
     @post = Post.find(params[:id])
   end
@@ -8,9 +10,13 @@ class PostsController < ApplicationController
   end
 
   def feed
+    twtlinks = serve_by_language(Twtlink.all, params[:locale]).last(10)
+    autoposts = serve_by_language(Autopost.all, params[:locale]).last(4)
+    autoposts_golden = autoposts.each{|f| f.title.prepend("[Golden] ")}
+    
     @title = 'MyPosts'
-    @post = Post.order('updated_at desc')
-    @updated = @post.first.updated_at unless @post.empty?
+    @posts = autoposts_golden + twtlinks
+    @updated = @posts.first.updated_at unless @posts.empty?
 
     respond_to do |format|
       format.atom { render layout: false }
