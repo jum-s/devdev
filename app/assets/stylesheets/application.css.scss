@@ -23,11 +23,6 @@ $red : #732020 ;
   src: url('nunito.ttf') format('truetype');
 }
 
-@font-face {
-  font-family: 'old_press';
-  src: font-url('old_press.ttf') format('truetype');
-}
-
 h1,h2,h3,h4,h5,h6 { font-weight: normal;}
 
 a p {color: #333;}
@@ -93,11 +88,10 @@ a p {color: #333;}
 
 .big_title {
   margin-top: 145px;
-  font-family: 'old_press';
-  font-size: 4.2em;
+  font-family: 'nunito';
+  font-weight: 100;
+  font-size: 4em;
   color: #EEE ;
-  padding-left: 33px;
-  text-shadow: 4px 4px 6px rgba(0, 0, 0, 1);
 }
 
 .subtitle {
