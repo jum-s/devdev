@@ -7,18 +7,19 @@ class Twtlink < ActiveRecord::Base
   
   def new_urls
     json_response = JSON.parse(twitter_connect.body) if twitter_connect.code == '200'
-    all_urls = json_response.map{ |t| t['entities']['urls'][0]}.compact.map { |p| p['expanded_url']}.compact
+    extended_urls = json_response.map do |t|
+      t['entities']['urls'][0]
+    end
+    all_urls = extended_urls.compact.map { |p| p['expanded_url']}.compact
     actual_urls = Twtlink.all.map(&:url)
     all_urls - actual_urls
   end
 
   def create(new_urls)
     new_urls.each do |url|
-      puts 'ok'
       twt = Twtlink.new(url: url)
       get_attr(twt, url)
       twt.save
-      puts '#{twt.title}'
     end
   end
 end
