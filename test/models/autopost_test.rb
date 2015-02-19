@@ -7,7 +7,7 @@ class AutopostTest < ActiveSupport::TestCase
   test "create new autopost framabag url" do
     VCR.use_cassette('create autopost from last framabag url') do
       auto = FactoryGirl.create(:autopost)
-      feeds = Feedjira::Feed.fetch_and_parse('https://www.framabag.org/u/jumijums/?feed&type=home&user_id=1&token=' + ENV['SECRET_KEY']).entries
+      feeds = Feedjira::Feed.fetch_and_parse('https://www.framabag.org/u/jumijums/?feed&type=home&user_id=1&token=' + ENV['SECRET_KEY'], {:ssl_verify_peer => false}).entries
       new_url = feeds.map(&:url).last
 
       assert_not Autopost.all.map(&:url).include?(new_url)
