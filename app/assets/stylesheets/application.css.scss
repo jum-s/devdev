@@ -76,9 +76,19 @@ a p {color: #333;}
   border: solid 2px $green;
 }
 
-.video_icon {
+
+.video_large {
   color : white;
   font-size: 1em;
+  font-weight: 100;
+  width: 100%;
+  background-color: black;
+  color : white;
+  padding-top: 2.5em;
+  height: 11em;
+}
+
+.video_mini{
 }
 
 .bd-left {
@@ -142,7 +152,6 @@ a p {color: #333;}
 
 .crop {
   margin-bottom: 5px;
-  height: 170px;
   overflow: hidden;
   float: left;
   .text {

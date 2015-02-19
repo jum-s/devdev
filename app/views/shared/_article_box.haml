@@ -9,10 +9,9 @@
     #{display_language(obj)}
   %h3= obj.title
   - if obj.has_video == 1
-    .columns.medium-7
-      .video_icon.button.radius.alert
-        = icon('play-circle-o')
-        = t('watchvideo')
+    .video_large.image.button
+      .fa-3x= icon('play-circle-o')
+      = t('watchthevideo')
     %br
   - else
     - if obj.image && obj.image.include?('http')
