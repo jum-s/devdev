@@ -1,3 +1,5 @@
+include LanguageHelper
+
 class ApplicationController < ActionController::Base
   before_filter :next_links
   before_action :set_locale
