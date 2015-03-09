@@ -8,7 +8,7 @@ Devdev::Application.routes.draw do
   resources :autoposts
   resources :twtlinks
   resources :posts
-  get 'mois/cv'
+  # get 'mois/cv'
   get 'mois/realisation'
   get 'mois/tour'
   scope "/:locale" do
@@ -16,7 +16,7 @@ Devdev::Application.routes.draw do
     resources :posts
     resources :autoposts
     resources :twtlinks
-    get 'mois/cv'
+    # get 'mois/cv'
     get 'mois/realisation'
     get 'mois/tour'
   end
