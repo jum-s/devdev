@@ -4,28 +4,20 @@ class AutopostTest < ActiveSupport::TestCase
   include ApiHelper 
   include AttributeHelper
 
-  test "create new autopost framabag url" do
+  test "create autopost from url " do
     VCR.use_cassette('create autopost from last framabag url') do
-      auto = FactoryGirl.create(:autopost)
-      feeds = Feedjira::Feed.fetch_and_parse('https://www.framabag.org/u/jumijums/?feed&type=home&user_id=1&token=' + ENV['SECRET_KEY'], {:ssl_verify_peer => false}).entries
-      new_url = feeds.map(&:url).last
+      url = "http://www.mobilemoneyasia.org/2015/01/is-it-ok-to-make-profit-serving-extreme.html"
 
-      assert_not Autopost.all.map(&:url).include?(new_url)
-      Autopost.new.create_with_url(new_url)
-      assert_equal Autopost.last.url, new_url
-      assert_equal Autopost.last.title, get_title(new_url)
+      assert_not Autopost.all.map(&:url).include?(url)
+
+      Autopost.new.create_with_url(url)
+      assert_equal url, Autopost.last.url
+      assert_equal get_title(url), Autopost.last.title
     end
   end
   
-  # test "LONG TEST create new autoposts from framabag" do
-  #   VCR.use_cassette('create autopost from framabag') do
-  #     auto = FactoryGirl.create(:autopost)
-  #     feeds = Feedjira::Feed.fetch_and_parse('https://www.framabag.org/u/jumijums/?feed&type=home&user_id=1&token=' + ENV['SECRET_KEY']).entries
-  #     new_url = feeds.map(&:url).last
-
-  #     assert_not Autopost.all.map(&:url).include?(new_url)
-  #     Autopost.new.create_from_framabag_urls
-  #     assert_equal Autopost.last.url, new_url
-  #   end
-  # end
+  test "framabag entries" do
+    feeds = Feedjira::Feed.fetch_and_parse('https://www.framabag.org/u/jumijums/?feed&type=home&user_id=1&token=' + ENV['SECRET_KEY'], {:ssl_verify_peer => false}).entries
+    assert feeds.count > 1
+  end
 end
