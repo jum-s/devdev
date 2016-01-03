@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
-ruby '2.1.4'
+ruby '2.2.1'
 
-gem 'rails', '4.1.1'
-gem 'sass-rails', '~> 4.0.3'
+gem 'rails', '4.2.1'
+gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
@@ -17,7 +17,6 @@ gem 'factory_girl', :groups => [:test]
 gem 'kaminari'
 gem 'newrelic_rpm'
 gem 'fastimage'
-gem 'rails-clean-logs'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'oauth'
 gem 'alchemy-api'
@@ -46,7 +45,7 @@ end
 group :doc do
   gem 'sdoc', require: false
 end
-  
+
 group :production do
   gem 'puma'
   gem 'unicorn'
