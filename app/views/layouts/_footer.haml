@@ -1,20 +1,6 @@
-.columns.small-12.medium-4.footer
-    %h3.heading Me concernant
-    / %p=link_to t('resume'), mois_cv_path
-    %p=link_to t('realisations'), mois_realisation_path
-    %p=link_to  t('tour_fr'), mois_tour_path
-.columns.small-12.medium-4.footer
-    %hr.hide-for-medium.hide-for-large
-    %h3.heading= t('friends')
-    %p=link_to "Simplon.co", "http://simplon.co"
-    %p=link_to "Maxlath", "http://maxlath.eu/"
-    %p=link_to "Em-hack", "http://bepos.be/"
-.columns.small-12.medium-4.footer
-    %hr.hide-for-medium.hide-for-large
-    %h3.heading= t('lifechangevid')
-    %p=link_to t('basicincome'), "https://www.youtube.com/watch?v=-cwdVDcm-Z0"
-    %p=link_to "Humans Need Not Apply","https://vimeo.com/105406386"
-    %p=link_to "The Innovation of Loneliness", "https://vimeo.com/70534716"
 .columns.footer
-    %hr.hide-for-medium.hide-for-large
-    %small written with ♥ by Vincent Jumeaux | Data from articles are all right reserved to their compagny owners
+  %p=link_to 'What I do', mois_realisation_path
+  %p=link_to 'Fun', mois_tour_path
+  %p=link_to 'Basic Income', "https://www.youtube.com/watch?v=-cwdVDcm-Z0"
+  %p=link_to "Humans Need Not Apply","https://vimeo.com/105406386"
+  %small written with ♥ by Vincent Jumeaux

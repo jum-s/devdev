@@ -5,12 +5,6 @@ fr:
   twtlinks: "Articles Tweetés"
   about_me: "A Mon Propos"
   tocontinue: "Pour Continuer"
-  resume: "Mon Cv"
-  realisations: "Mes Réalisations"
-  tour_fr: "Mon Tour de France"
-  friends: "Mes Amis"
-  lifechangevid: "Ces Vidéos qui Changent la Vie"
-  basicincome: "Le Revenu de Base"
   title: "Dev4Dev"
   tags: "#edtech_for_southern_worlds #webdev #rubyism #wikidata #devschool #lifehacking #basicincome #philo"
   thought: "Pensée Aléatoire"
@@ -18,16 +12,16 @@ fr:
   tocontinue: "Continuer avec"
   watchvideo: "Envie d'une vidéo ?"
   watchthevideo: "Regarder la vidéo"
-  moreautopost: "Voir plus d'articles golden"  
-  moretweets: "Voir plus de tweets"  
+  moreautopost: "Voir plus d'articles golden"
+  moretweets: "Voir plus de tweets"
 
   # CV
   intro1: "Développeur Web Freelance chez"
   intro2: "Gestion de projet humanitaire dans l'éducation"
-  intro3: "Consultant en gestion des risques"  
+  intro3: "Consultant en gestion des risques"
   github: " Mon ocmpte Github"
   tweeter: "Suivez sur Twitter"
-  dlresume: " Télécharger en PDF" 
+  dlresume: " Télécharger en PDF"
 
   education1: "Simplon.co, 1 année"
   education2: "Informatique et web dévelopement"
@@ -75,7 +69,6 @@ fr:
   autre7: "Visuel Image/Vidéo/Document : Photoshop & Premiere niveau avancé, Publisher, GIMP, Scribus niveau avancé"
   autre8: "Bricoleur : électricité, toiture, carrelage"
   autre9: "Sports : escalade, jujitsu, moto (Kawasaki Er6)"
-
 
   #Activeadmin
   active_admin:
