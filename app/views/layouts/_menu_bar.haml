@@ -7,18 +7,14 @@
   %section.top-bar-section
     %ul.left
       %li.divider
-      / %li=link_to(t('about_me'), mois_cv_path)
-      %li.divider
       %li=link_to(t('toread'), autoposts_path)
       %li.divider
       %li=link_to(t('twtlinks'), twtlinks_path)
-      %li.divider
-      %li=link_to(t('food'), posts_path)
     %ul.right.show-for-medium-up
       %li=link_to(image_tag('fr.png', size: '20x20', class: 'flag'), url_for( :locale => 'fr'))
       %li=link_to(image_tag('uk.png', size: '20x20', class: 'flag'), url_for( :locale => 'en' ))
       %li=link_to(image_tag('fruk.png', size: '20x20', class: 'flag'), url_for(:locale => nil))
-      %li=link_to(icon('github'), "https://github/jum-s") 
+      %li=link_to(icon('github'), "https://github/jum-s")
       %li=link_to(icon('twitter'), "https://tweeter/Jumijums")
       %li=link_to(icon('rss'), "/feed")
     %ul.right.show-for-small
@@ -27,6 +23,6 @@
           =link_to(image_tag('fr.png', size: '20x20', class: 'flag'), url_for( :locale => 'en' ))
           =link_to(image_tag('uk.png', size: '20x20', class: 'flag'), url_for( :locale => 'en' ))
           =link_to(image_tag('fruk.png', size: '20x20', class: 'flag'), url_for(:locale => nil))
-          =link_to(icon('github'), "https://github/jum-s") 
+          =link_to(icon('github'), "https://github/jum-s")
           =link_to(icon('twitter'), "https://tweeter/Jumijums")
           =link_to(icon('rss'), "/feed")

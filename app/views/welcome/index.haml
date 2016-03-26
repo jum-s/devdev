@@ -1,41 +1,10 @@
-.row
-  .columns
-    .quote_box
-      %h3.heading= t('thought')
-      %p
-        #{icon('quote-left')} #{@pensee_random} #{icon('quote-right')}
-    %hr
-  .columns.dark_header
-    = link_to autoposts_path do
-      %h2.heading= t('toread')
-  .columns
-    - @autoposts.each do |auto|
-      .columns.medium-6.article_box
-        = render "shared/article_box", obj: auto
-    .button.tiny.radius.pull-left
-      = link_to t('moreautopost'), autoposts_path
-.row
-  .columns.dark_header
-    = link_to twtlinks_path do
-      %h2.heading 
-        = t('twtlinks') 
-        = icon('twitter')
-    %p=link_to "Posted by @jumijums", "https://twitter.com/jumijums"
-  .columns
-    - @twtlinks.each do |twt|
-      .columns.medium-6.article_box
-        = render "shared/article_box", obj: twt
-    .button.tiny.radius.pull-left
-      = link_to t('moretweets'), twtlinks_path
-.row
-  .columns.dark_header
-    %h2.heading= link_to t('food'), posts_path
-  .columns
-    %br
-    - @posts.each do |post|
-      .columns.medium-6.bd-left
-        %h4.time_date= post.created_at.strftime("%e %b")
-        %h3.heading= post.title
-        %p.p-1= post.text.html_safe
-    .button.tiny.radius.pull-left
-      = link_to t('seeall'), posts_path
+.columns
+  .quote_box
+    %h3.heading= t('thought')
+    %p
+      #{icon('quote-left')} #{@pensee_random} #{icon('quote-right')}
+  %hr
+  - @twtlinks.each do |twt|
+    = render "shared/article_box", obj: twt
+  .button.tiny.radius.pull-left
+    = link_to t('moretweets'), twtlinks_path

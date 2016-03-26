@@ -11,9 +11,7 @@
     = render "layouts/menu_bar"
     .row
       .columns.small-12.medium-4.big_title=t('title')
-      .columns.hide-for-small.medium-8.subtitle= t('tags')
       = yield
     .row-fluid
-      = render "layouts/next_articles"
       = render "layouts/footer"
     = javascript_include_tag "application"
