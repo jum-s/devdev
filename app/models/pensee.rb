@@ -2,7 +2,7 @@ class Pensee < ActiveRecord::Base
   validates_uniqueness_of :text
   attr_accessible :text
 
-  def create_pensees
+  def self.create_pensees
     file = open('https://raw.githubusercontent.com/jum-s/notes/master/pensees.txt').read
     parsed_text = Readability::Document.new(file, tags: %w[div]).content
     clean_ary = parsed_text.gsub(/<div>/, '')
