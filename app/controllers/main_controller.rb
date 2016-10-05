@@ -1,5 +1,4 @@
 class MainController < ApplicationController
-  before_action :pensees_and_posts
   include LanguageHelper
 
   def index
