@@ -3,7 +3,7 @@ class Pensee < ActiveRecord::Base
   attr_accessible :text
 
   def self.create_pensees
-    file = open('https://raw.githubusercontent.com/jum-s/notes/master/pensees.txt').read
+    file = open('public/pensees.txt').read
     parsed_text = Readability::Document.new(file, tags: %w[div]).content
     clean_ary = parsed_text.gsub(/<div>/, '')
                            .gsub(/<\/div>/, '')
