@@ -1,9 +1,4 @@
 .columns
-  .quote_box
-    %h3.heading= t('thought')
-    %p
-      #{icon('quote-left')} #{@pensee_random} #{icon('quote-right')}
-  %hr
   - @twtlinks.each do |twt|
     = render "shared/article_box", obj: twt
   .button.tiny.radius.pull-left
